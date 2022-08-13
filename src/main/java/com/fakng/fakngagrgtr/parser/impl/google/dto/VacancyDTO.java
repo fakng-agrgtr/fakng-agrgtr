@@ -7,6 +7,7 @@ import java.util.Map;
 
 @Data
 public class VacancyDTO {
+
     private String id;
     private String title;
     private List<String> categories;

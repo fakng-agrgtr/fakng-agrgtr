@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class ResponseDTO {
+
     private Integer count;
     private Integer nextPage;
     private Integer pageSize;
