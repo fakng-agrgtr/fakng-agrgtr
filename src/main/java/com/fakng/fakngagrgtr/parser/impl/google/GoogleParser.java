@@ -38,10 +38,8 @@ public class GoogleParser extends ApiParser {
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> vacancies = new ArrayList<>();
         for (int index = 2; index <= lastPage; index += 1) {
-            System.out.println("Page: " + index);
             List<VacancyDTO> jobs = getPage(index).getJobs();
             vacancies.addAll(jobs.stream().map(this::createVacancy).toList());
-            System.out.println("Length: " + vacancies.size());
         }
         return vacancies;
     }
@@ -49,20 +47,14 @@ public class GoogleParser extends ApiParser {
     private Vacancy createVacancy(VacancyDTO dto) {
         Vacancy vacancy = new Vacancy();
         vacancy.setId(parseVacancyId(dto.getId()));
-        System.out.println(vacancy.getId());
         vacancy.setTitle(dto.getTitle());
-        System.out.println(vacancy.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
-        System.out.println(vacancy.getUrl());
         vacancy.setCompany(google);
-        System.out.println(vacancy.getCompany());
         if (dto.getPublishDate() != null) {
             vacancy.setAddDate(parseLocalDateTime(dto.getPublishDate()));
         }
-        System.out.println(vacancy.getAddDate());
         vacancy.setLocation(null); // dto.locations?
         vacancy.setDescription(generateFullDescription(dto));
-        System.out.println(vacancy.getDescription() + "\n\n\n");
         return vacancy;
     }
 
