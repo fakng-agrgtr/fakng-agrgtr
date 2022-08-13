@@ -8,4 +8,4 @@ spring:
         password: admin
 
 url:
-    google: https://careers.google.com/jobs/results/?distance=50&hl=en_US&jlo=en_US&q=software%20engineer
+    google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date
