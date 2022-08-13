@@ -19,9 +19,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.code.gson:gson:2.9.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework:spring-webflux:5.3.22'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     runtimeOnly 'org.postgresql:postgresql'
     implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.63.0'
     compileOnly 'org.projectlombok:lombok'

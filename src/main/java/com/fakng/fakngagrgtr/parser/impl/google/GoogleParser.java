@@ -2,6 +2,9 @@ package com.fakng.fakngagrgtr.parser.impl.google;
 
 import com.fakng.fakngagrgtr.entity.Vacancy;
 import com.fakng.fakngagrgtr.parser.ApiParser;
+import com.fakng.fakngagrgtr.parser.impl.google.dto.ResponseDTO;
+import com.fakng.fakngagrgtr.parser.impl.google.dto.VacancyDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,33 +32,32 @@ public class GoogleParser extends ApiParser {
     @Override
     protected List<Vacancy> process() throws Exception {
         ResponseDTO firstPage = getPage(1);
-        List<VacancyDTO> googleVacancies = new ArrayList<>(firstPage.jobs);
-        for (int i = 2; i <= firstPage.count / firstPage.page_size + 1; i += 1) {
+        List<VacancyDTO> googleVacancies = new ArrayList<>(firstPage.getJobs());
+        for (int i = 2; i <= firstPage.getCount() / firstPage.getPageSize() + 1; i += 1) {
             System.out.println("Page " + i);
             ResponseDTO page = getPage(i);
-            googleVacancies.addAll(page.jobs);
+            googleVacancies.addAll(page.getJobs());
         }
         return googleVacancies.stream().map(this::createVacancy).toList();
     }
 
     private Vacancy createVacancy(VacancyDTO dto) {
         Vacancy vacancy = new Vacancy();
-        vacancy.setId(Long.parseLong(dto.id.split("/")[1]));
-        vacancy.setTitle(dto.title);
-        vacancy.setUrl(dto.applyUrl);
-        vacancy.setCompany(
-                null); // Google? dto.companyName? dto.companyId? It may be YouTube or anything else.
-        if (dto.publishDate != null) {
-            vacancy.setAddDate(LocalDateTime.parse(dto.publishDate,
+        vacancy.setId(Long.parseLong(dto.getId().split("/")[1]));
+        vacancy.setTitle(dto.getTitle());
+        vacancy.setUrl(dto.getApplyUrl());
+        vacancy.setCompany(null); // Google? dto.companyName? dto.companyId? It may be YouTube or anything else.
+        if (dto.getPublishDate() != null) {
+            vacancy.setAddDate(LocalDateTime.parse(dto.getPublishDate(),
                     DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX")));
         }
         vacancy.setLocation(null); // dto.locations?
         vacancy.setDescription(
-                dto.description + "\n" +
-                dto.summary + "\n" +
-                dto.qualifications + "\n" +
-                dto.responsibilities + "\n" +
-                dto.additionalInstructions
+                dto.getDescription() + "\n" +
+                dto.getSummary() + "\n" +
+                dto.getQualifications() + "\n" +
+                dto.getResponsibilities() + "\n" +
+                dto.getAdditionalInstructions()
         );
         return vacancy;
     }
