@@ -1,0 +1,11 @@
+server:
+    port: 8081
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/fakng-db?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: postgres
+        password: admin
+
+url:
+    google: https://careers.google.com/jobs/results/?distance=50&hl=en_US&jlo=en_US&q=software%20engineer
