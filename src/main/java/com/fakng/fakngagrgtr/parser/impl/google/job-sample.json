@@ -1,0 +1,49 @@
+{
+  "id": "jobs/106171236028949190",
+  "title": "Senior Staff Software Engineer, Machine Learning, YouTube",
+  "categories": [
+    "SOFTWARE_ENGINEERING"
+  ],
+  "apply_url": "https://www.google.com/about/careers/applications/signin?jobId=CiUAL2FckbnD5ijftoXFAYPKMqcNb004sqVZGeCJcALZz20ac-CUEjsA4ixdmxyj17Ls69xSKC1rZzcuK_miW97T4tJwmYnf-IXZSnaSH4UNjWSPKO57R7PiEvEV2Js-zQfjnA%3D%3D_V2&jobTitle=Senior+Staff+Software+Engineer&loc=US",
+  "responsibilities": "<ul>\n<li>Provide technical leadership on high-impact projects.</li>\n<li>Influence and coach a distributed team of engineers.</li>\n<li>Facilitate alignment and clarity across teams on goals, outcomes, and timelines.</li>\n<li>Manage project priorities, deadlines, and deliverables.</li>\n<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>\n</ul>",
+  "qualifications": "<p>Minimum qualifications:</p><ul>\n<li>Bachelor's degree or equivalent practical experience.\n</li>\n<li>8 years of experience in software development, and with data structures/algorithms.\n</li>\n<li> 5 years of experience with design and architecture and testing/launching software products.<br></li>\n<li>7 years of experience with machine learning algorithms and tools (e.g., TensorFlow), artificial intelligence, deep learning and/or natural language processing.\n</li>\n</ul><br><p>Preferred qualifications:</p><ul>\n<li>Master’s degree or PhD in Engineering, Computer Science, or a related technical field.</li>\n<li>5 years of experience in a technical leadership role leading project teams and setting technical direction.</li>\n<li>3 years of experience working in a complex, matrixed organization involving cross-functional, and/or cross-business projects.</li>\n</ul>",
+  "company_id": "companies/ad872500-709d-4a93-97e3-76be227f77a1",
+  "company_name": "YouTube",
+  "language_code": "en-US",
+  "locations": [
+    {
+      "display": "Mountain View, CA, USA",
+      "lat": 37.4238808,
+      "lon": -122.0916446,
+      "address_lines": [
+        "Google Building GWC1, 2025 Garcia Ave, Mountain View, CA 94043, USA"
+      ],
+      "city": "Mountain View",
+      "post_code": "94043",
+      "country": "CA",
+      "country_code": "US",
+      "is_remote": false
+    }
+  ],
+  "description": "<p>Google's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another. Our products need to handle information at massive scale, and extend well beyond web search. We're looking for engineers who bring fresh ideas from all areas, including information retrieval, distributed computing, large-scale system design, networking and data storage, security, artificial intelligence, natural language processing, UI design and mobile; the list goes on and is growing every day. As a software engineer, you will work on a specific project critical to Google’s needs with opportunities to switch teams and projects as you and our fast-paced business grow and evolve. We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward.<br><br>With your technical expertise you will manage project priorities, deadlines, and deliverables. You will design, develop, test, deploy, maintain, and enhance software solutions.</p>\n<p>At YouTube, we believe that everyone deserves to have a voice, and that the world is a better place when we listen, share, and build community through our stories. We work together to give everyone the power to share their story, explore what they love, and connect with one another in the process. Working at the intersection of cutting-edge technology and boundless creativity, we move at the speed of culture with a shared goal to show people the world. We explore new ideas, solve real problems, and have fun — and we do it all together.</p>",
+  "education_levels": [
+    "MASTERS_OR_EQUIVALENT",
+    "BACHELORS_OR_EQUIVALENT",
+    "DOCTORAL_OR_EQUIVALENT"
+  ],
+  "created": "2022-08-11T13:01:21.034Z",
+  "modified": "2022-08-12T21:01:16.335Z",
+  "publish_date": "2022-08-12T21:01:16.479Z",
+  "application_instruction": null,
+  "eeo": "Google is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to equal employment opportunity regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or Veteran status. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. See also <a href=\"https://careers.google.com/eeo/\">Google's EEO Policy</a> and <a href=\"/jobs/dist/legal/OFCCP_EEO_Post.pdf\">EEO is the Law.</a>  If you have a disability or special need that requires accommodation, please let us know by completing our <a href=\"https://goo.gl/forms/aBt6Pu71i1kzpLHe2\">Accommodations for Applicants form</a>.",
+  "locations_count": 1,
+  "additional_instructions": null,
+  "summary": "<ul>\n<li>Bachelor's degree or equivalent practical experience.\n</li>\n<li>8 years of experience in software development, and with data structures/algorithms.\n</li>\n<li> 5 years of experience with design and architecture and testing/launching software products.<br></li>\n<li>7 years of experience with machine learning algorithms and tools (e.g., TensorFlow), artificial intelligence, deep learning and/or natural language processing.\n</li>\n</ul>",
+  "building_pins": [
+    {
+      "lat": 37.417507,
+      "lon": -122.079756
+    }
+  ],
+  "has_remote": false
+}
