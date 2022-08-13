@@ -4,9 +4,7 @@ import com.fakng.fakngagrgtr.entity.Vacancy;
 import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.parser.impl.google.dto.ResponseDTO;
 import com.fakng.fakngagrgtr.parser.impl.google.dto.VacancyDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fakng.fakngagrgtr.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,8 +22,11 @@ import java.util.List;
 @Component
 public class GoogleParser extends ApiParser {
 
-    public GoogleParser(@Autowired WebClient webClient, @Value("${url.google}") String url) {
+    private final CompanyRepository companyRepository;
+
+    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, @Value("${url.google}") String url) {
         super(webClient);
+        this.companyRepository = companyRepository;
         this.url = url;
     }
 
@@ -64,7 +65,7 @@ public class GoogleParser extends ApiParser {
 
     private ResponseDTO getPage(int index) throws IOException {
         String body = sendRequest(url + "&page=" + index);
-        return new Gson().fromJson(body, ResponseDTO.class);
+        return new ResponseDTO();
     }
 
     private String sendRequest(String url) throws IOException {
