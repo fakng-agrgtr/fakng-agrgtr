@@ -1,6 +1,5 @@
-package com.fakng.fakngagrgtr.repository;
+package com.fakng.fakngagrgtr.vacancy;
 
-import com.fakng.fakngagrgtr.entity.Vacancy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

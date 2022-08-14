@@ -1,6 +1,6 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.entity.Vacancy;
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
-package com.fakng.fakngagrgtr.entity;
+package com.fakng.fakngagrgtr.company;
 
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,10 +9,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "location")
+@Table(name = "company")
 @Data
 @EqualsAndHashCode(of = "id")
-public class Location {
+public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -20,7 +21,10 @@ public class Location {
     @Column(name = "title", length = 32, nullable = false)
     private String title;
 
+    @Column(name = "logo_url")
+    private String logoUrl;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "location")
+    @OneToMany(mappedBy = "company")
     private List<Vacancy> vacancies;
 }
