@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.parser.google.dto;
+package com.fakng.fakngagrgtr.parser.google;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class LocationDto {
+public class LocationDTO {
     private String display;
     private double lat;
     private double lon;

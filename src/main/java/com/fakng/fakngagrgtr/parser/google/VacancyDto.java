@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.parser.google.dto;
+package com.fakng.fakngagrgtr.parser.google;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -18,7 +18,7 @@ public class VacancyDto {
     private String companyId;
     private String companyName;
     private String language_code;
-    private List<LocationDto> locations;
+    private List<LocationDTO> locations;
     private String description;
     private List<String> educationLevels;
     private String created;
@@ -29,6 +29,6 @@ public class VacancyDto {
     private Integer locationsCount;
     private String additionalInstructions;
     private String summary;
-    private List<BuildingPin> buildingPins;
+    private List<BuildingPinDTO> buildingPins;
     private Boolean hasRemote;
 }

@@ -4,9 +4,6 @@ import com.fakng.fakngagrgtr.company.Company;
 import com.fakng.fakngagrgtr.location.Location;
 import com.fakng.fakngagrgtr.location.LocationRepository;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
-import com.fakng.fakngagrgtr.parser.google.dto.LocationDto;
-import com.fakng.fakngagrgtr.parser.google.dto.ResponseDto;
-import com.fakng.fakngagrgtr.parser.google.dto.VacancyDto;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.company.CompanyRepository;
@@ -34,13 +31,15 @@ public class GoogleParser extends ApiParser {
 
     @PostConstruct
     public void init() {
-        google = companyRepository.findByTitle(GOOGLE_NAME).orElseThrow(() -> new IllegalStateException(String.format("There is no %s company present in DB", GOOGLE_NAME)));
-        google.getLocations().forEach(location -> locationCache.putIfAbsent(location.getCity(), location.getCountry(), location));
+        google = companyRepository.findByTitle(GOOGLE_NAME)
+                .orElseThrow(() -> new IllegalStateException(String.format("There is no %s company present in DB", GOOGLE_NAME)));
+        google.getLocations()
+                .forEach(location -> locationCache.putIfAbsent(location.getCity(), location.getCountry(), location));
     }
 
     @Override
     protected List<Vacancy> getAllVacancies() throws Exception {
-        ResponseDto firstPage = getPage(1);
+        ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
         for (int idx = 2; idx <= lastPage; idx++) {
@@ -49,7 +48,7 @@ public class GoogleParser extends ApiParser {
         return allVacancies;
     }
 
-    private List<Vacancy> processPageResponse(ResponseDto response) {
+    private List<Vacancy> processPageResponse(ResponseDTO response) {
         return response.getJobs().stream()
                 .map(this::createVacancy)
                 .toList();
@@ -66,7 +65,7 @@ public class GoogleParser extends ApiParser {
         return vacancy;
     }
 
-    private void processLocations(Vacancy vacancy, List<LocationDto> locations) {
+    private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
         locations.forEach(location -> {
             String locationKey = locationCache.getLocationKey(location.getCity(), location.getCountryCode());
             if (locationCache.contains(locationKey)) {
@@ -77,7 +76,7 @@ public class GoogleParser extends ApiParser {
         });
     }
 
-    private void saveInDbAndCache(Vacancy vacancy, String locationKey, LocationDto location) {
+    private void saveInDbAndCache(Vacancy vacancy, String locationKey, LocationDTO location) {
         locationRepository.findByCity(location.getCity())
                 .or(() -> {
                     Location brandNew = new Location();
@@ -105,9 +104,9 @@ public class GoogleParser extends ApiParser {
                 "Has remote: " + dto.getHasRemote();
     }
 
-    private ResponseDto getPage(int page) {
+    private ResponseDTO getPage(int page) {
         ResponseSpec response = sendRequest(String.format(url, page));
-        return response.bodyToMono(ResponseDto.class).block();
+        return response.bodyToMono(ResponseDTO.class).block();
     }
 
     private ResponseSpec sendRequest(String url) {
