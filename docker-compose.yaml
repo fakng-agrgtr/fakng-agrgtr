@@ -30,22 +30,6 @@ services:
 #      POSTGRES_USER: ${POSTGRES_USER}
 #      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 #
-#  fakng-api:
-#    image: mhsl/fakng-api
-#    network_mode: bridge
-#    container_name: fakng-api
-#    ports:
-#      - 8080:8080
-#    depends_on:
-#      - db
-#    links:
-#      - db
-#    environment:
-#      DB_HOST: ${DB_HOST}
-#      POSTGRES_DB: ${POSTGRES_DB}
-#      POSTGRES_USER: ${POSTGRES_USER}
-#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#
 #  fakng-ui:
 #    image: mhsl/fakng-ui
 #    network_mode: bridge
