@@ -68,15 +68,14 @@ public class GoogleParser extends ApiParser {
     private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
         locations.forEach(location -> {
             String locationKey = locationCache.getLocationKey(location.getCity(), location.getCountryCode());
-            if (locationCache.contains(locationKey)) {
-                vacancy.addLocation(locationCache.get(locationKey));
-            } else {
-                saveInDbAndCache(vacancy, locationKey, location);
+            if (!locationCache.contains(locationKey)) {
+                saveInDbAndCache(locationKey, location);
             }
+            vacancy.addLocation(locationCache.get(locationKey));
         });
     }
 
-    private void saveInDbAndCache(Vacancy vacancy, String locationKey, LocationDTO location) {
+    private void saveInDbAndCache(String locationKey, LocationDTO location) {
         locationRepository.findByCity(location.getCity())
                 .or(() -> {
                     Location brandNew = new Location();
@@ -85,10 +84,7 @@ public class GoogleParser extends ApiParser {
                     brandNew.addCompany(google);
                     google.addLocation(brandNew);
                     return Optional.of(locationRepository.save(brandNew));
-                }).ifPresent(fresh -> {
-                    locationCache.putIfAbsent(locationKey, fresh);
-                    vacancy.addLocation(fresh);
-                });
+                }).ifPresent(fresh -> locationCache.putIfAbsent(locationKey, fresh));
     }
 
     private Long parseVacancyId(String dtoId) {
