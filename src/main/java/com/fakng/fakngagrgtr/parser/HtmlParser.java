@@ -15,22 +15,9 @@ import java.util.List;
 @Slf4j
 public abstract class HtmlParser extends Parser {
 
-    private WebClient htmlWebClient;
+    private final WebClient htmlWebClient;
 
-    @Override
-    public List<Vacancy> getAllVacancies() {
-        try {
-            HtmlPage page = downloadPage();
-            return process(page);
-        } catch (Exception e) {
-            log.error("Error while parsing page under url: {}", url, e);
-        }
-        return null; //хз
-    }
-
-    protected abstract List<Vacancy> process(HtmlPage page) throws Exception;
-
-    private HtmlPage downloadPage() throws IOException {
+    private HtmlPage downloadPage(String url) throws IOException {
         return htmlWebClient.getPage(url);
     }
 }
