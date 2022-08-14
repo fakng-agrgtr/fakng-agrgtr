@@ -20,13 +20,12 @@ import java.util.List;
 @Component
 public class GoogleParser extends ApiParser {
 
-    private static String GOOGLE_NAME = "Google";
-    private static final DateTimeFormatter datetimeFormat =
+    private static final String GOOGLE_NAME = "Google";
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
     private final Company google;
 
-    public GoogleParser(WebClient webClient, CompanyRepository companyRepository,
-            @Value("${url.google}") String url) {
+    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, @Value("${url.google}") String url) {
         super(webClient);
         this.url = url;
         this.google = companyRepository.findByTitle(GOOGLE_NAME).orElse(null);
@@ -72,13 +71,12 @@ public class GoogleParser extends ApiParser {
     }
 
     private LocalDateTime parseLocalDateTime(String datetime) {
-        return LocalDateTime.parse(datetime, datetimeFormat);
+        return LocalDateTime.parse(datetime, DATE_TIME_FORMATTER);
     }
 
     private ResponseDTO getPage(int index) throws IOException {
         ResponseSpec response = sendRequest(url + "&page=" + index);
         return response.bodyToMono(ResponseDTO.class).block();
-//        return new ObjectMapper().readValue(body, ResponseDTO.class);
     }
 
     private ResponseSpec sendRequest(String url) throws IOException {
