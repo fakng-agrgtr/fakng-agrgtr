@@ -6,6 +6,11 @@ spring:
         url: jdbc:postgresql://localhost:5432/fakng-db?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
         username: postgres
         password: admin
+    jpa:
+        show-sql: true
+    properties:
+        hibernate:
+            format_sql: true
 
 url:
     google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date

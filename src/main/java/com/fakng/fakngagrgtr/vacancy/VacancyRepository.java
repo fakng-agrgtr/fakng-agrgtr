@@ -12,7 +12,14 @@ import java.util.List;
 @Repository
 public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
 
-    @Query("select v from Vacancy v where v.company.id in :companyIds and v.location.id in :locationIds")
+    @Query(value = "select v from Vacancy v " +
+            "join fetch v.company c " +
+            "join fetch v.location l " +
+            "where c.id in :companyIds and l.id in :locationIds",
+            countQuery = "select count(v) from Vacancy v " +
+            "join v.company c " +
+            "join v.location l " +
+            "where c.id in :companyIds and l.id in :locationIds")
     Page<Vacancy> findAll(@Param("companyIds") List<Long> companyIds,
                           @Param("locationIds") List<Long> locationIds,
                           Pageable pageable);

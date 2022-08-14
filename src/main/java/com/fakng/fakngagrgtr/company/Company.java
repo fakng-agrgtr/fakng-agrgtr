@@ -1,6 +1,7 @@
 package com.fakng.fakngagrgtr.company;
 
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,6 +24,7 @@ public class Company {
     @Column(name = "logo_url")
     private String logoUrl;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Vacancy> vacancies;
 }
