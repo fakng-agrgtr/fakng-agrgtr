@@ -1,0 +1,3563 @@
+{
+  "main_categories": [
+    {
+      "name": "Engineering",
+      "slug": "engineering"
+    },
+    {
+      "name": "Data, Research & Insights",
+      "slug": "data-research-insights"
+    },
+    {
+      "name": "Product",
+      "slug": "product"
+    },
+    {
+      "name": "Workplace Services",
+      "slug": "workplace-services"
+    },
+    {
+      "name": "Sales",
+      "slug": "sales"
+    }
+  ],
+  "result": [
+    {
+      "id": "director-of-engineering-experience-2",
+      "text": "Director of Engineering, Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "engineering-manager-direct-guaranteed",
+      "text": "Engineering Manager, Direct Guaranteed",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "director-of-engineering-experience",
+      "text": "Director of Engineering, Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "machine-learning-engineer-creator-studio",
+      "text": "Machine Learning Engineer, Creator Studio",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-full-stack-web-engineer",
+      "text": "Senior Full Stack Web Engineer",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "machine-learning-engineer-content-intelligence",
+      "text": "Machine Learning Engineer, Content Intelligence",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "senior-fullstack-engineer-content-platform",
+      "text": "Senior Fullstack Engineer, Content Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-data-engineer-user-platform",
+      "text": "Senior Data Engineer, User Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-consumer-experience-4",
+      "text": "Android Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "ios-engineer-consumer-experience-2",
+      "text": "iOS Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-consumer-experience-3",
+      "text": "Android Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Madrid",
+        "slug": "madrid",
+        "num_jobs": 3
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "ios-engineer-consumer-experience",
+      "text": "iOS Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-consumer-experience",
+      "text": "Android Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-android-engineer-consumer-experience",
+      "text": "Senior Android Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-ios-engineer-consumer-experience",
+      "text": "Senior iOS Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Madrid",
+        "slug": "madrid",
+        "num_jobs": 3
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-backend-engineer-machine-learning-platform",
+      "text": "Senior Backend Engineer, Machine Learning Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "senior-engineering-manager-talk",
+      "text": "Senior Engineering Manager, Talk",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "engineering-manager-release-engineering",
+      "text": "Engineering Manager,  Release engineering",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "data-engineer-sales-engineering",
+      "text": "Data Engineer, Sales Engineering",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "security-engineering-manager-appsec",
+      "text": "Security Engineering Manager, AppSec",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "backend-engineer-content-platform",
+      "text": "Backend Engineer, Content Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "fullstack-engineer-content-platform",
+      "text": "Fullstack Engineer, Content Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-backend-engineer-content-platform",
+      "text": "Senior Backend Engineer, Content Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "director-of-engineering-ad-studio",
+      "text": "Director of Engineering,  Ad Studio",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-consumer-experience",
+      "text": "Backend Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "data-engineer-user-growth",
+      "text": "Data Engineer, User Growth",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "engineering-manager-freemium",
+      "text": "Engineering Manager, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "full-stack-engineer-platform-mission",
+      "text": "Fullstack Engineer, Platform Mission",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-frontend-engineer-machine-learning-platform",
+      "text": "Senior Frontend Engineer, Machine Learning Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "machine-learning-engineer-user-journey",
+      "text": "Machine Learning Engineer, User Journey",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "fullstack-engineer-soundtrap-freemium",
+      "text": "Fullstack Engineer, Soundtrap, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "staff-data-engineer-advertising",
+      "text": "Staff Data Engineer, Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-ios-engineer-ad-tech",
+      "text": "Senior iOS Engineer, Ad Tech",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer",
+      "text": "Backend Engineer, Music Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "senior-backend-engineer-fan-communities",
+      "text": "Senior Backend Engineer, Fan Commerce",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-backend-engineer-talk-monetization",
+      "text": "Staff Backend Engineer, Talk Monetization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-freemium",
+      "text": "Android Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Copenhagen",
+        "slug": "copenhagen",
+        "num_jobs": 1
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "ios-engineer-freemium-2",
+      "text": "iOS Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Denmark (Home Mix)",
+        "slug": "denmark-home-mix",
+        "num_jobs": 1
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "engineering-manager-spotify-for-artists",
+      "text": "Engineering Manager, Spotify for Artists",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-data-engineer-personalization",
+      "text": "Staff Data Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "Boston",
+        "slug": "boston",
+        "num_jobs": 6
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-customer-success-engineer-backstage",
+      "text": "Senior Customer Success Engineer, Backstage",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-kelp",
+      "text": "Data Engineer, Kelp",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "ios-staff-engineer-core-experience-expansion-evaluation",
+      "text": "iOS Staff Engineer, Core Experience (Expansion &amp; Evaluation)",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "backend-staff-engineer-core-experience-expansion-evaluation",
+      "text": "Backend Staff Engineer, Core Experience (Expansion &amp; Evaluation)",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "staff-data-scientist-freemium-product-insights",
+      "text": "Staff Data Scientist, Freemium Product Insights",
+      "main_category": {
+        "name": "Data, Research & Insights",
+        "slug": "data-research-insights"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "staff-backend-engineer-music-vertical-platform",
+      "text": "Staff Backend Engineer, Music Vertical Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "ios-engineer-remote-eligible-americas",
+      "text": "iOS Engineer (Remote Eligible, Americas)",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-engineer-platform-developer-experience-2",
+      "text": "Staff Engineer, Platform Developer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "full-stack-engineer-legal-ia-systems",
+      "text": "Full Stack Engineer, Legal &amp; IA Systems",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "senior-engineering-manager-self-serve-advertising",
+      "text": "Senior Engineering Manager, Self, Serve Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-software-engineer-platform",
+      "text": "Senior Software Engineer, Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "data-engineer-spotify-for-artists",
+      "text": "Data Engineer, Fan Insights and Guidance\/S4X",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "ios-engineer-user-platform",
+      "text": "iOS Engineer, User Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-product-manager-data-collection",
+      "text": "Senior Product Manager, Data Collection",
+      "main_category": {
+        "name": "Product",
+        "slug": "product"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "Sweden (Home Mix)",
+        "slug": "sweden-home-mix",
+        "num_jobs": 1
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "staff-web-engineer-soundtrap-core",
+      "text": "Staff Web Engineer, Soundtrap Core",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Client C++",
+        "slug": "client-c"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "director-of-engineering-content-integrity",
+      "text": "Director of Engineering, Content Integrity",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "engineering-manager-live-listener-growth-talk",
+      "text": "Engineering Manager, Live Listener Growth, Talk",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-site-reliability-engineer-core-infrastructure-2",
+      "text": "Senior Site Reliability Engineer, Data Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-audiobooks-gated-content",
+      "text": "Android Engineer, Audiobooks &amp; Gated Content",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "security-risk-manager",
+      "text": "Security Risk Manager",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Security",
+        "slug": "security"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "compliance-manager",
+      "text": "Compliance Manager",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Security",
+        "slug": "security"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-messaging",
+      "text": "Android Engineer, Messaging",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-data-scientist-commerce",
+      "text": "Senior Data Scientist, Commerce Platform",
+      "main_category": {
+        "name": "Data, Research & Insights",
+        "slug": "data-research-insights"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-site-reliability-engineer-megaphone",
+      "text": "Senior Site Reliability Engineer, Podcast Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-data-engineer-platform-mission-2",
+      "text": "Senior Data Engineer, Platform Mission",
+      "main_category": {
+        "name": "Data, Research & Insights",
+        "slug": "data-research-insights"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "streaming-media-staff-engineer-consumer-experience",
+      "text": "Streaming Media Staff Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "senior-mobile-engineer-internationalization",
+      "text": "Senior Mobile Engineer, Internationalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-web-engineer-internationalization",
+      "text": "Senior Web Engineer, Internationalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-personalization-4",
+      "text": "Data Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-backend-engineer-ad-tech",
+      "text": "Senior Backend Engineer, Ad tech",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-site-reliability-engineer-core-infrastructure",
+      "text": "Senior Site Reliability Engineer, Core Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Boston",
+        "slug": "boston",
+        "num_jobs": 6
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-advertising",
+      "text": "Backend Engineer, Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-advertising",
+      "text": "Senior Data Engineer, Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "it-technician-2",
+      "text": "IT Technician",
+      "main_category": {
+        "name": "Workplace Services",
+        "slug": "workplace-services"
+      },
+      "sub_category": {
+        "name": "Network Engineering & IT",
+        "slug": "network-engineering-it"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "director-of-engineering-cloud-native-infrastructure",
+      "text": "Senior Director of Engineering,  Cloud Native Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote ESTAmericas",
+        "slug": "remote-estamericas-remote",
+        "count": 25
+      }
+    },
+    {
+      "id": "machine-learning-engineer-personalization",
+      "text": "Machine Learning Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "data-engineer-advertising-technology",
+      "text": "Data Engineer, Advertising Technology",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-machine-learning-engineer-personalization",
+      "text": "Senior Machine Learning Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "Boston",
+        "slug": "boston",
+        "num_jobs": 6
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "senior-backend-engineer-royalties-and-reporting-remote-eligible-emea",
+      "text": "Senior Backend Engineer, Royalties and Reporting (Remote Eligible, EMEA)",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-backend-engineer-composer",
+      "text": "Senior Backend Engineer, Composer",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "fullstack-engineer-audiobooks-gated-content",
+      "text": "Fullstack Engineer, Audiobooks &amp; Gated Content",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-advertising-2",
+      "text": "Senior Android Engineer, AdTech",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-engineer-platform-developer-experience",
+      "text": "Staff Engineer, Platform Developer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "engineering-manager-machine-learning-platform",
+      "text": "Engineering Manager, Machine Learning Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-premium-offering",
+      "text": "Android Engineer, Premium Offering",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-advertising",
+      "text": "Senior Android Engineer, Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-machine-learning-engineer-voice-personalization",
+      "text": "Senior Machine Learning Engineer, Voice Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "Boston",
+        "slug": "boston",
+        "num_jobs": 6
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "staff-machine-learning-engineer-rewards",
+      "text": "Staff Machine Learning Engineer, Rewards",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "staff-machine-learning-engineer-lifetime-value",
+      "text": "Staff Machine Learning Engineer, Home Ranking",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "machine-learning-engineering-manager-freemium-2",
+      "text": "Machine Learning Engineering Manager, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-personalization-2",
+      "text": "Data Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-marketing-technology",
+      "text": "Marketing Technology Engineer",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-backend-engineer-personalization",
+      "text": "Staff Backend Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "backend-engineer-observability-infrastructure",
+      "text": "Backend Engineer, Observability Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "product-manager-security-2",
+      "text": "Product Manager, Security",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Security",
+        "slug": "security"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "product-manager-security",
+      "text": "Product Manager, Security",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Security",
+        "slug": "security"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "web-engineer-advertising-2",
+      "text": "Web Engineer, Advertising",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-reliability",
+      "text": "Backend Engineer, Reliability",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Boston",
+        "slug": "boston",
+        "num_jobs": 6
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "staff-machine-learning-engineer-content-intelligence",
+      "text": "Senior Machine Learning Engineer, Content Intelligence",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Machine Learning",
+        "slug": "machine-learning"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-android-engineer-freemium",
+      "text": "Android Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-ios-engineer-freemium",
+      "text": "iOS Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Berlin",
+        "slug": "berlin",
+        "num_jobs": 13
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-engineering-manager-ad-formats-client-platform",
+      "text": "Senior Engineering Manager, Ad Formats, Client Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-engineering-manager-data-products",
+      "text": "Senior Engineering Manager, Data Products",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "engineering-manager-messaging",
+      "text": "Engineering Manager, Messaging Applications",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "ios-engineer-freemium",
+      "text": "iOS Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "staff-engineer-platform-partner-experience",
+      "text": "Staff Engineer, Platform &amp; Partner Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "systems-backend-engineer-sales-operations-advertising",
+      "text": "Systems Backend Engineer, Sales Operations, Advertising",
+      "main_category": {
+        "name": "Sales",
+        "slug": "sales"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "web-full-stack-systems-engineer-sales-operations-advertising",
+      "text": "Web\/Full Stack Systems Engineer, Sales Operations, Advertising",
+      "main_category": {
+        "name": "Sales",
+        "slug": "sales"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-talk",
+      "text": "Android Engineer, Talk",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Toronto",
+        "slug": "toronto",
+        "num_jobs": 2
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-data-engineer-personalization-4",
+      "text": "Senior Data Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-creator-studio",
+      "text": "Senior Data Engineer, Creator Studio",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-personalization-3",
+      "text": "Data Engineer, Personalization",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "ios-engineer-consumer-experience-3",
+      "text": "iOS Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-audiobooks-gated-content",
+      "text": "Backend Engineer, Audiobooks &amp; Gated Content",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "experienced-data-engineer-talk",
+      "text": "Experienced Data Engineer, Talk",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "engineering-manager-advertising-technology",
+      "text": "Engineering Manager, Ads Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "data-engineer-insights-platform",
+      "text": "Senior Backend\/Data Engineer, Insights Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-insights-platform",
+      "text": "Senior Backend Engineer, Insights Platform",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "director-of-engineering-sales-tools",
+      "text": "Director of Engineering, Sales Tools",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Engineering Leadership",
+        "slug": "engineering-leadership"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-consumer-experience-2",
+      "text": "Android Engineer, Consumer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "experienced-web-engineer-podcast-creation-tools",
+      "text": "Experienced Web Engineer, Podcast Creation Tools",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Web",
+        "slug": "web"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "android-engineer-talk-vertical",
+      "text": "Android Engineer, Talk",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "backend-engineer-observability-infrastructure-2",
+      "text": "Backend Engineer, Observability Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "security-engineer-cloud-infrastructure",
+      "text": "Security Engineer, Cloud Infrastructure",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Security",
+        "slug": "security"
+      },
+      "location": {
+        "location": "Stockholm",
+        "slug": "stockholm",
+        "num_jobs": 31
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-freemium-mission",
+      "text": "Android Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "android-engineer-developer-experience",
+      "text": "Android Infrastructure Engineer, Developer Experience",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "Amsterdam",
+        "slug": "amsterdam",
+        "num_jobs": 9
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "senior-data-engineer-composer",
+      "text": "Senior Data Engineer, Composer",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 45
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    },
+    {
+      "id": "data-engineer-royalties-reporting",
+      "text": "Data Engineer, Royalties &amp; Reporting",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": false,
+      "remote_name": {
+        "name": "",
+        "slug": "",
+        "count": 0
+      }
+    },
+    {
+      "id": "android-engineer-greenroom",
+      "text": "Android Engineer, Spotify Live",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "experienced-data-engineer-creator-studio",
+      "text": "Data Engineer, Creator Studio, Music Mission",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Data",
+        "slug": "data"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    },
+    {
+      "id": "senior-backend-engineer-podcaster-mission",
+      "text": "Backend Engineer, Podcast Creation Tools",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Backend",
+        "slug": "backend"
+      },
+      "location": {
+        "location": "New York",
+        "slug": "new-york",
+        "num_jobs": 158
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote Americas",
+        "slug": "remote-americas",
+        "count": 106
+      }
+    }
+  ]
+}
