@@ -1,13 +1,14 @@
-package com.fakng.fakngagrgtr.parser.google;
+package com.fakng.fakngagrgtr.parser.google.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
-public class VacancyDTO {
-
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public class VacancyDto {
     private String id;
     private String title;
     private List<String> categories;
@@ -17,17 +18,17 @@ public class VacancyDTO {
     private String companyId;
     private String companyName;
     private String language_code;
-    private List<Map<String, Object>> locations;
+    private List<LocationDto> locations;
     private String description;
     private List<String> educationLevels;
     private String created;
     private String modified;
     private String publishDate;
-    private String applicationInstruction; // ?
+    private String applicationInstruction;
     private String eeo;
     private Integer locationsCount;
     private String additionalInstructions;
     private String summary;
-    private List<Map<String, Float>> buildingPins;
+    private List<BuildingPin> buildingPins;
     private Boolean hasRemote;
 }

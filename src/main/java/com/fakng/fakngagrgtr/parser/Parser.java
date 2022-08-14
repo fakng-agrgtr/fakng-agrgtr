@@ -1,13 +1,19 @@
 package com.fakng.fakngagrgtr.parser;
 
+import com.fakng.fakngagrgtr.parser.cache.LocationCache;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+@RequiredArgsConstructor
 @Slf4j
 public abstract class Parser {
 
+    protected final LocationCache locationCache;
     protected String url;
 
     public List<Vacancy> parse() {

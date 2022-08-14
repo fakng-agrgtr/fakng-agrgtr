@@ -1,6 +1,12 @@
 package com.fakng.fakngagrgtr.parser.google;
 
 import com.fakng.fakngagrgtr.company.Company;
+import com.fakng.fakngagrgtr.location.Location;
+import com.fakng.fakngagrgtr.location.LocationRepository;
+import com.fakng.fakngagrgtr.parser.cache.LocationCache;
+import com.fakng.fakngagrgtr.parser.google.dto.LocationDto;
+import com.fakng.fakngagrgtr.parser.google.dto.ResponseDto;
+import com.fakng.fakngagrgtr.parser.google.dto.VacancyDto;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.company.CompanyRepository;
@@ -9,57 +15,92 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class GoogleParser extends ApiParser {
 
     private static final String GOOGLE_NAME = "Google";
-    private static final DateTimeFormatter DATE_TIME_FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-    private final Company google;
+    private final CompanyRepository companyRepository;
+    private final LocationRepository locationRepository;
+    private Company google;
 
-    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, @Value("${url.google}") String url) {
-        super(webClient);
+    public GoogleParser(WebClient webClient, LocationCache locationCache, CompanyRepository companyRepository,
+                        LocationRepository locationRepository, @Value("${url.google}") String url) {
+        super(webClient, locationCache);
         this.url = url;
-        this.google = companyRepository.findByTitle(GOOGLE_NAME).orElse(null);
+        this.companyRepository = companyRepository;
+        this.locationRepository = locationRepository;
+    }
+
+    @PostConstruct
+    public void init() {
+        google = companyRepository.findByTitle(GOOGLE_NAME).orElseThrow(() -> new IllegalStateException(String.format("There is no %s company present in DB", GOOGLE_NAME)));
+        google.getLocations().forEach(location -> locationCache.putIfAbsent(location.getCity(), location.getCountry(), location));
     }
 
     @Override
     protected List<Vacancy> getAllVacancies() throws Exception {
-        ResponseDTO firstPage = getPage(1);
+        ResponseDto firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
-        List<Vacancy> vacancies = new ArrayList<>();
-        for (int index = 2; index <= lastPage; index += 1) {
-            List<VacancyDTO> jobs = getPage(index).getJobs();
-            vacancies.addAll(jobs.stream().map(this::createVacancy).toList());
+        List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
+        for (int idx = 2; idx <= lastPage; idx++) {
+            allVacancies.addAll(processPageResponse(getPage(idx)));
         }
-        return vacancies;
+        return allVacancies;
     }
 
-    private Vacancy createVacancy(VacancyDTO dto) {
+    private List<Vacancy> processPageResponse(ResponseDto response) {
+        return response.getJobs().stream()
+                .map(this::createVacancy)
+                .toList();
+    }
+
+    private Vacancy createVacancy(VacancyDto dto) {
         Vacancy vacancy = new Vacancy();
         vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
         vacancy.setCompany(google);
-        if (dto.getPublishDate() != null) {
-            vacancy.setAddDate(parseLocalDateTime(dto.getPublishDate()));
-        }
-        vacancy.setLocation(null); // dto.locations?
+        processLocations(vacancy, dto.getLocations());
         vacancy.setDescription(generateFullDescription(dto));
         return vacancy;
+    }
+
+    private void processLocations(Vacancy vacancy, List<LocationDto> locations) {
+        locations.forEach(location -> {
+            String locationKey = locationCache.getLocationKey(location.getCity(), location.getCountryCode());
+            if (locationCache.contains(locationKey)) {
+                vacancy.addLocation(locationCache.get(locationKey));
+            } else {
+                saveInDbAndCache(vacancy, locationKey, location);
+            }
+        });
+    }
+
+    private void saveInDbAndCache(Vacancy vacancy, String locationKey, LocationDto location) {
+        locationRepository.findByCity(location.getCity())
+                .or(() -> {
+                    Location brandNew = new Location();
+                    brandNew.setCity(location.getCity());
+                    brandNew.setCountry(location.getCountryCode());
+                    brandNew.addCompany(google);
+                    google.addLocation(brandNew);
+                    return Optional.of(locationRepository.save(brandNew));
+                }).ifPresent(fresh -> {
+                    locationCache.putIfAbsent(locationKey, fresh);
+                    vacancy.addLocation(fresh);
+                });
     }
 
     private Long parseVacancyId(String dtoId) {
         return Long.parseLong(dtoId.split("/")[1]);
     }
 
-    private String generateFullDescription(VacancyDTO dto) {
+    private String generateFullDescription(VacancyDto dto) {
         return dto.getDescription() + "\n" +
                 dto.getSummary() + "\n" +
                 dto.getQualifications() + "\n" +
@@ -68,16 +109,12 @@ public class GoogleParser extends ApiParser {
                 "Has remote: " + dto.getHasRemote();
     }
 
-    private LocalDateTime parseLocalDateTime(String datetime) {
-        return LocalDateTime.parse(datetime, DATE_TIME_FORMATTER);
+    private ResponseDto getPage(int page) {
+        ResponseSpec response = sendRequest(String.format(url, page));
+        return response.bodyToMono(ResponseDto.class).block();
     }
 
-    private ResponseDTO getPage(int index) throws IOException {
-        ResponseSpec response = sendRequest(url + "&page=" + index);
-        return response.bodyToMono(ResponseDTO.class).block();
-    }
-
-    private ResponseSpec sendRequest(String url) throws IOException {
+    private ResponseSpec sendRequest(String url) {
         return webClient
                 .get()
                 .uri(url)

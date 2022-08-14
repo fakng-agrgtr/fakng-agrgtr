@@ -1,11 +1,14 @@
 package com.fakng.fakngagrgtr.location;
 
+import com.fakng.fakngagrgtr.company.Company;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,13 +18,26 @@ import java.util.List;
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(generator = "location-seq-generator")
+    @GenericGenerator(name = "location-seq-generator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = @org.hibernate.annotations.Parameter(name = "sequence_name", value = "location_seq"))
+    private Integer id;
 
-    @Column(name = "title", length = 32, nullable = false)
-    private String title;
+    @Column(name = "city", length = 32)
+    private String city;
+
+    @Column(name = "country", length = 32, nullable = false)
+    private String country;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "location")
+    @ManyToMany(mappedBy = "locations")
     private List<Vacancy> vacancies;
+
+    @ManyToMany
+    @JoinTable(name = "company_location", joinColumns = @JoinColumn(name = "location_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
+    private List<Company> companies = new ArrayList<>();
+
+    public void addCompany(Company company) {
+        companies.add(company);
+    }
 }

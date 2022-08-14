@@ -5,6 +5,7 @@ import com.fakng.fakngagrgtr.location.LocationDto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class VacancyDto {
@@ -14,5 +15,5 @@ public class VacancyDto {
     private String url;
     private LocalDateTime addDate;
     private CompanyDto company;
-    private LocationDto location;
+    private List<LocationDto> location;
 }

@@ -8,6 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "vacancy")
@@ -36,7 +38,11 @@ public class Vacancy {
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private Location location;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "vacancy_location", joinColumns = @JoinColumn(name = "vacancy_id"), inverseJoinColumns = @JoinColumn(name = "location_id"))
+    private List<Location> locations = new ArrayList<>();
+
+    public void addLocation(Location location) {
+        locations.add(location);
+    }
 }
