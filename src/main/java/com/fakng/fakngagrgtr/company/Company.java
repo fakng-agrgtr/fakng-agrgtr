@@ -1,5 +1,6 @@
-package com.fakng.fakngagrgtr.entity;
+package com.fakng.fakngagrgtr.company;
 
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

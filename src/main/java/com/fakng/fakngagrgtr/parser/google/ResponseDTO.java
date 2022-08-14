@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.parser.impl.google.dto;
+package com.fakng.fakngagrgtr.parser.google;
 
 import lombok.Data;
 

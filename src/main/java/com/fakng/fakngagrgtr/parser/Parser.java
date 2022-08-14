@@ -1,6 +1,6 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.entity.Vacancy;
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
