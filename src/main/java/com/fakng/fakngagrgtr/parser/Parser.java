@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -24,9 +25,8 @@ public abstract class Parser {
         try {
             return getAllVacancies();
         } catch (Exception e) {
-            log.error("Error while parsing page under url: {}", url, e);
+            throw new RuntimeException(e);
         }
-        return null; //хз
     }
 
     protected abstract List<Vacancy> getAllVacancies() throws Exception;

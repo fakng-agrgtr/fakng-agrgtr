@@ -35,9 +35,7 @@ public abstract class HtmlParser extends Parser {
         return null; //хз
     }
 
-    protected abstract List<Vacancy> process(HtmlPage page) throws Exception;
-
-    private HtmlPage downloadPage() throws IOException {
+    private HtmlPage downloadPage(String url) throws IOException {
         return htmlWebClient.getPage(url);
     }
 }
