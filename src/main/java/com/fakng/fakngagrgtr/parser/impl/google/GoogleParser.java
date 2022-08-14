@@ -32,7 +32,7 @@ public class GoogleParser extends ApiParser {
     }
 
     @Override
-    protected List<Vacancy> process() throws Exception {
+    protected List<Vacancy> getAllVacancies() throws Exception {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> vacancies = new ArrayList<>();

@@ -18,7 +18,7 @@ public abstract class HtmlParser extends Parser {
     private WebClient htmlWebClient;
 
     @Override
-    public List<Vacancy> process() {
+    public List<Vacancy> getAllVacancies() {
         try {
             HtmlPage page = downloadPage();
             return process(page);

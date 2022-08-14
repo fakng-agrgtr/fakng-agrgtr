@@ -12,12 +12,12 @@ public abstract class Parser {
 
     public List<Vacancy> parse() {
         try {
-            return process();
+            return getAllVacancies();
         } catch (Exception e) {
             log.error("Error while parsing page under url: {}", url, e);
         }
         return null; //хз
     }
 
-    protected abstract List<Vacancy> process() throws Exception;
+    protected abstract List<Vacancy> getAllVacancies() throws Exception;
 }
