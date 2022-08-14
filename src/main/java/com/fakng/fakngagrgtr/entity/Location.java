@@ -1,5 +1,6 @@
 package com.fakng.fakngagrgtr.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,6 +20,7 @@ public class Location {
     @Column(name = "title", length = 32, nullable = false)
     private String title;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "location")
     private List<Vacancy> vacancies;
 }
