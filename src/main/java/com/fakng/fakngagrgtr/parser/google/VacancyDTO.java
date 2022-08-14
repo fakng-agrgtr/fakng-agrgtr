@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class VacancyDto {
+public class VacancyDTO {
     private String id;
     private String title;
     private List<String> categories;

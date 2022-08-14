@@ -42,8 +42,8 @@ public class GoogleParser extends ApiParser {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
-        for (int idx = 2; idx <= lastPage; idx++) {
-            allVacancies.addAll(processPageResponse(getPage(idx)));
+        for (int index = 2; index <= lastPage; index++) {
+            allVacancies.addAll(processPageResponse(getPage(index)));
         }
         return allVacancies;
     }
@@ -54,7 +54,7 @@ public class GoogleParser extends ApiParser {
                 .toList();
     }
 
-    private Vacancy createVacancy(VacancyDto dto) {
+    private Vacancy createVacancy(VacancyDTO dto) {
         Vacancy vacancy = new Vacancy();
         vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
@@ -95,7 +95,7 @@ public class GoogleParser extends ApiParser {
         return Long.parseLong(dtoId.split("/")[1]);
     }
 
-    private String generateFullDescription(VacancyDto dto) {
+    private String generateFullDescription(VacancyDTO dto) {
         return dto.getDescription() + "\n" +
                 dto.getSummary() + "\n" +
                 dto.getQualifications() + "\n" +

@@ -61,7 +61,7 @@ public class LocationCacheTest {
 
     private void testKeyGeneration(String city) {
         String country = "country";
-        String expectedKey = city == null ? "NO_CITY#country" : "city#country";
+        String expectedKey = city == null ? "NO_CITY#country" : city + "#country";
         String actualKey = cache.getLocationKey(city, country);
         assertEquals(expectedKey, actualKey);
     }

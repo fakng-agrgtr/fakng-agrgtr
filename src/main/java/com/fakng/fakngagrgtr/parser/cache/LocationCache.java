@@ -25,7 +25,7 @@ public class LocationCache {
 
     public void putIfAbsent(String city, String country, Location value) {
         String key = getLocationKey(city, country);
-        cache.putIfAbsent(key, value);
+        putIfAbsent(key, value);
     }
 
     public Location get(String key) {
