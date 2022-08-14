@@ -14,4 +14,3 @@ spring:
 
 url:
     google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date
-    spotify: https://api-dot-new-spotifyjobs-com.nw.r.appspot.com/wp-json/animal/v1/job/search?q=&l=&c=backend%2Cclient-c%2Cdata%2Cengineering-leadership%2Cmachine-learning%2Cmobile%2Cnetwork-engineering-it%2Csecurity%2Ctech-research%2Cweb&j=
