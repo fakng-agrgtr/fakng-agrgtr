@@ -1,5 +1,7 @@
 package com.fakng.fakngagrgtr.parser;
 
+import com.fakng.fakngagrgtr.company.CompanyRepository;
+import com.fakng.fakngagrgtr.location.LocationRepository;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,8 @@ import java.util.List;
 public abstract class Parser {
 
     protected final LocationCache locationCache;
+    protected final CompanyRepository companyRepository;
+    protected final LocationRepository locationRepository;
     protected String url;
 
     public List<Vacancy> parse() {

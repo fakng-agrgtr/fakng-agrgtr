@@ -24,16 +24,12 @@ import java.util.Optional;
 public class GoogleParser extends ApiParser {
 
     private static final String GOOGLE_NAME = "Google";
-    private final CompanyRepository companyRepository;
-    private final LocationRepository locationRepository;
     private Company google;
 
     public GoogleParser(WebClient webClient, LocationCache locationCache, CompanyRepository companyRepository,
                         LocationRepository locationRepository, @Value("${url.google}") String url) {
-        super(webClient, locationCache);
+        super(webClient, locationCache, companyRepository, locationRepository);
         this.url = url;
-        this.companyRepository = companyRepository;
-        this.locationRepository = locationRepository;
     }
 
     @PostConstruct
