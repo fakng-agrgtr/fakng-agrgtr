@@ -14,10 +14,9 @@ import javax.xml.bind.ValidationException;
 @RestControllerAdvice
 class CustomControllerAdvice {
 
-
-    @ExceptionHandler(FakngException.class)
-    public ResponseEntity<String> handleLibraryExceptions(FakngException e) {
-        logStackTrace(e);
+    @ExceptionHandler({FakngException.class})
+    public ResponseEntity<String> handleFakngExceptions(FakngException e) {
+        log.error("Throws exception: ", e);
         return new ResponseEntity<>(
                 e.getMessage(),
                 HttpStatus.valueOf(400)
@@ -26,7 +25,7 @@ class CustomControllerAdvice {
 
     @ExceptionHandler({ValidationException.class, HttpMessageNotReadableException.class})
     public ResponseEntity<String> handleJsonExceptions(Exception e) {
-        logStackTrace(e);
+        log.error("Throws exception: ", e);
         return new ResponseEntity<>(
                 FakngError.VALIDATION_ERROR.toString(),
                 HttpStatus.valueOf(400)
@@ -35,15 +34,10 @@ class CustomControllerAdvice {
 
     @ExceptionHandler
     public ResponseEntity<String> handleOtherExceptions(Exception e) {
-        logStackTrace(e);
+        log.error("Throws exception: ", e);
         return new ResponseEntity<>(
                 FakngError.TECHNICAL_ERROR.toString(),
                 HttpStatus.valueOf(500)
         );
-    }
-
-    private void logStackTrace(Exception e) {
-        for (StackTraceElement element : e.getStackTrace())
-            log.error(element.toString());
     }
 }
