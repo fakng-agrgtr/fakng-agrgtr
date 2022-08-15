@@ -1,5 +1,7 @@
-package com.fakng.fakngagrgtr.vacancy;
+package com.fakng.fakngagrgtr.servise;
 
+import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.persistent.vacancy.VacancyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

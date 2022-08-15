@@ -1,7 +1,7 @@
-package com.fakng.fakngagrgtr.company;
+package com.fakng.fakngagrgtr.persistent.company;
 
-import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.persistent.location.Location;
+import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

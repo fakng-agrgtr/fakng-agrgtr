@@ -1,7 +1,7 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.location.Location;
+import com.fakng.fakngagrgtr.persistent.company.Company;
+import com.fakng.fakngagrgtr.persistent.location.Location;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

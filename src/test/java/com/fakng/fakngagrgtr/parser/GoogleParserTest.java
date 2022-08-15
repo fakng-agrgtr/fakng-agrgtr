@@ -1,11 +1,9 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.company.CompanyRepository;
-import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.parser.cache.LocationCache;
+import com.fakng.fakngagrgtr.persistent.company.Company;
+import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.parser.google.GoogleParser;
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

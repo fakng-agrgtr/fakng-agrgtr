@@ -1,9 +1,9 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.location.LocationRepository;
+import com.fakng.fakngagrgtr.persistent.company.Company;
+import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
+import com.fakng.fakngagrgtr.servise.LocationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,13 +19,13 @@ public class LocationProcessorTest extends AbstractParserTest {
     private LocationProcessor locationProcessor;
 
     @Mock
-    private LocationRepository locationRepository;
+    private LocationService locationService;
 
     private final LocationCache locationCache = new LocationCache();
 
     @BeforeEach
     public void init() {
-        locationProcessor = new LocationProcessor(locationCache, locationRepository);
+        locationProcessor = new LocationProcessor(locationCache, locationService);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class LocationProcessorTest extends AbstractParserTest {
     public void testProcessNotCachedLocation() {
         Company company = prepareCompany();
         Location expectedLocation = company.getLocations().get(0);
-        Mockito.when(locationRepository.save(Mockito.any()))
+        Mockito.when(locationService.save(Mockito.any()))
                 .thenAnswer(invocation -> invocation.getArgument(0, Location.class));
 
         Location actualLocation = locationProcessor.processLocation(company,

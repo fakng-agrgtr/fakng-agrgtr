@@ -1,6 +1,6 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.company.CompanyRepository;
+import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import lombok.extern.slf4j.Slf4j;
