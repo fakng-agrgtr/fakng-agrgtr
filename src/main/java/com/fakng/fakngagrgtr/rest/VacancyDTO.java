@@ -1,7 +1,5 @@
-package com.fakng.fakngagrgtr.vacancy;
+package com.fakng.fakngagrgtr.rest;
 
-import com.fakng.fakngagrgtr.company.CompanyDTO;
-import com.fakng.fakngagrgtr.location.LocationDTO;
 import lombok.Data;
 
 import java.time.LocalDateTime;

@@ -1,8 +1,8 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.location.LocationRepository;
+import com.fakng.fakngagrgtr.persistent.company.Company;
+import com.fakng.fakngagrgtr.persistent.location.Location;
+import com.fakng.fakngagrgtr.persistent.location.LocationRepository;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

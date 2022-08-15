@@ -1,7 +1,7 @@
-package com.fakng.fakngagrgtr.vacancy;
+package com.fakng.fakngagrgtr.persistent.vacancy;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.location.Location;
+import com.fakng.fakngagrgtr.persistent.company.Company;
+import com.fakng.fakngagrgtr.persistent.location.Location;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;

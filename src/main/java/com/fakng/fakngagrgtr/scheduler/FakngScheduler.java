@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import javax.annotation.PostConstruct;
 
 import com.fakng.fakngagrgtr.parser.Parser;
-import com.fakng.fakngagrgtr.vacancy.VacancyRepository;
+import com.fakng.fakngagrgtr.persistent.vacancy.VacancyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -33,7 +33,8 @@ public class FakngScheduler {
     public void scheduleAggregation() {
         parsers.forEach(parser -> CompletableFuture
                 .supplyAsync(parser::parse)
-                .thenAccept(vacancyRepository::saveAll).exceptionally(ex -> {
+                .thenAccept(vacancyRepository::saveAll)
+                .exceptionally(ex -> {
                     ex.printStackTrace();
                     return null;
                 }));

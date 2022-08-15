@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.company;
+package com.fakng.fakngagrgtr.persistent.company;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
