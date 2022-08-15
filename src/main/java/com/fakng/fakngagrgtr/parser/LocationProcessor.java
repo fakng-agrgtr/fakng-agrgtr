@@ -2,8 +2,8 @@ package com.fakng.fakngagrgtr.parser;
 
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.location.Location;
-import com.fakng.fakngagrgtr.persistent.location.LocationRepository;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
+import com.fakng.fakngagrgtr.servise.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class LocationProcessor {
 
     protected final LocationCache locationCache;
-    private final LocationRepository locationRepository;
+    private final LocationService locationService;
 
     public void fillLocationCache(Company company) {
         company.getLocations()
@@ -30,14 +30,14 @@ public class LocationProcessor {
     }
 
     private void saveInDbAndCache(Company company, String locationKey, String city, String country) {
-        locationRepository.findByCity(city)
+        locationService.findByCity(city)
                 .or(() -> {
                     Location brandNew = new Location();
                     brandNew.setCity(city);
                     brandNew.setCountry(country);
                     brandNew.addCompany(company);
                     company.addLocation(brandNew);
-                    return Optional.of(locationRepository.save(brandNew));
+                    return Optional.of(locationService.save(brandNew));
                 }).ifPresent(fresh -> locationCache.putIfAbsent(locationKey, fresh));
     }
 }
