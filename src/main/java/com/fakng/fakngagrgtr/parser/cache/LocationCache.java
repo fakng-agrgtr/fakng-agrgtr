@@ -5,11 +5,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class LocationCache {
 
-    private final Map<String, Location> cache = new HashMap<>();
+    private final Map<String, Location> cache = new ConcurrentHashMap<>();
 
     public String getLocationKey(String city, String country) {
         return (city == null ? "NO_CITY" : city) + "#" + country;

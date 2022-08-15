@@ -3,7 +3,7 @@ package com.fakng.fakngagrgtr.parser;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
-import com.fakng.fakngagrgtr.servise.LocationService;
+import com.fakng.fakngagrgtr.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -3,7 +3,7 @@ package com.fakng.fakngagrgtr.parser;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
-import com.fakng.fakngagrgtr.servise.LocationService;
+import com.fakng.fakngagrgtr.service.LocationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
