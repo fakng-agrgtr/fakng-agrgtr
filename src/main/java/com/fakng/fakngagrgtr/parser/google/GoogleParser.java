@@ -10,11 +10,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class GoogleParser extends ApiParser {
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
     public GoogleParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
                         @Value("${url.google}") String url) {
@@ -80,6 +85,10 @@ public class GoogleParser extends ApiParser {
                 dto.getResponsibilities() + "\n" +
                 dto.getAdditionalInstructions() + "\n" +
                 "Has remote: " + dto.getHasRemote();
+    }
+
+    private LocalDateTime parseLocalDateTime(String datetime) {
+        return LocalDateTime.parse(datetime, DATE_TIME_FORMATTER);
     }
 
     private ResponseDTO getPage(int page) {
