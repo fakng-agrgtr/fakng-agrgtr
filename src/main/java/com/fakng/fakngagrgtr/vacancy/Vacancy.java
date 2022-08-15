@@ -32,6 +32,9 @@ public class Vacancy {
     @CreationTimestamp
     private LocalDateTime addDate;
 
+    @Column(name = "published_date")
+    private LocalDateTime publishedDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
