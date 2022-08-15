@@ -54,6 +54,9 @@ public class GoogleParser extends ApiParser {
         vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
+        if (dto.getPublishDate() != null) {
+            vacancy.setPublishedDate(parseLocalDateTime(dto.getPublishDate()));
+        }
         vacancy.setCompany(company);
         processLocations(vacancy, dto.getLocations());
         vacancy.setDescription(generateFullDescription(dto));

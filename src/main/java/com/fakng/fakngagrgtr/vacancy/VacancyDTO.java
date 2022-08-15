@@ -16,4 +16,5 @@ public class VacancyDTO {
     private LocalDateTime addDate;
     private CompanyDTO company;
     private List<LocationDTO> location;
+    private LocalDateTime publishedDate;
 }
