@@ -1,6 +1,6 @@
 package com.fakng.fakngagrgtr.rest;
 
-import com.fakng.fakngagrgtr.servise.VacancyService;
+import com.fakng.fakngagrgtr.service.VacancyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

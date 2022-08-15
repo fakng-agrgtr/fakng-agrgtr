@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.servise;
+package com.fakng.fakngagrgtr.service;
 
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fakng.fakngagrgtr.persistent.vacancy.VacancyRepository;
