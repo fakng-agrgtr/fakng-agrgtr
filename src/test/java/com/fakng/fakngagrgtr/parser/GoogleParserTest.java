@@ -3,7 +3,6 @@ package com.fakng.fakngagrgtr.parser;
 import com.fakng.fakngagrgtr.company.Company;
 import com.fakng.fakngagrgtr.company.CompanyRepository;
 import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.location.LocationRepository;
 import com.fakng.fakngagrgtr.parser.cache.LocationCache;
 import com.fakng.fakngagrgtr.parser.google.GoogleParser;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
@@ -27,19 +26,16 @@ import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
-public class GoogleParserTest {
+public class GoogleParserTest extends AbstractParserTest {
 
     private static final String URL = "Google";
-
-    private final LocationCache locationCache = new LocationCache();
     private GoogleParser googleParser;
     @Mock
     private CompanyRepository companyRepository;
     @Mock
-    private LocationRepository locationRepository;
+    private LocationProcessor locationProcessor;
 
     @BeforeEach
     public void init() throws IOException {
@@ -51,27 +47,7 @@ public class GoogleParserTest {
                                 .body(json)
                                 .build()))
                 .build();
-        googleParser = new GoogleParser(webClient, locationCache, companyRepository, locationRepository, URL);
-    }
-
-    @Test
-    public void testInitFindsCompanyAndInitializesLocationCache() {
-        Company company = prepareCompany();
-        Mockito.when(companyRepository.findByTitle(URL))
-                .thenReturn(Optional.of(company));
-        String expectedKey1 = "city_1#country_1";
-        String expectedKey2 = "city_2#country_2";
-
-        googleParser.init();
-
-        assertEquals(company.getLocations().get(0), locationCache.get(expectedKey1));
-        assertEquals(company.getLocations().get(1), locationCache.get(expectedKey2));
-    }
-
-    @Test
-    public void testInitThrowsExceptionIfNoCompanyFound() {
-        assertThrows(IllegalStateException.class, () -> googleParser.init(),
-                "There is no Google company present in DB");
+        googleParser = new GoogleParser(webClient, companyRepository, locationProcessor, URL);
     }
 
     @Test
@@ -79,37 +55,15 @@ public class GoogleParserTest {
         Company company = prepareCompany();
         Mockito.when(companyRepository.findByTitle(URL))
                 .thenReturn(Optional.of(company));
+        Mockito.when(locationProcessor.processLocation(company, "city_1", "country_1"))
+                        .thenReturn(company.getLocations().get(0));
+        Mockito.when(locationProcessor.processLocation(company, "city_2", "country_2"))
+                .thenReturn(company.getLocations().get(1));
         googleParser.init();
         List<Vacancy> expectedVacancies = prepareVacancies(company);
 
         List<Vacancy> actualVacancies = googleParser.parse();
 
-        assertEquals(expectedVacancies.size(), actualVacancies.size());
-        for (int i = 0; i < expectedVacancies.size(); i++) {
-            assertVacancy(expectedVacancies.get(i), actualVacancies.get(i));
-        }
-    }
-
-    @Test
-    public void testParseCreatesVacanciesFromJson() {
-        Company company = new Company();
-        company.setId(1L);
-        Company clone = new Company();
-        clone.setId(1L);
-        Mockito.when(companyRepository.findByTitle(URL))
-                .thenReturn(Optional.of(company));
-        Mockito.when(locationRepository.findByCity(Mockito.anyString()))
-                        .thenReturn(Optional.empty());
-        Mockito.when(locationRepository.save(Mockito.any()))
-                .thenAnswer(invocation ->
-                        invocation.getArgument(0, Location.class));
-        googleParser.init();
-        List<Vacancy> expectedVacancies = prepareVacancies(clone);
-        expectedVacancies.get(0).addLocation(prepareLocation("city_1", "country_1", clone));
-        expectedVacancies.get(0).addLocation(prepareLocation("city_2", "country_2", clone));
-        expectedVacancies.get(1).addLocation(prepareLocation("city_1", "country_1", clone));
-
-        List<Vacancy> actualVacancies = googleParser.parse();
         assertEquals(expectedVacancies.size(), actualVacancies.size());
         for (int i = 0; i < expectedVacancies.size(); i++) {
             assertVacancy(expectedVacancies.get(i), actualVacancies.get(i));
@@ -150,35 +104,5 @@ public class GoogleParserTest {
         for (int i = 0; i < expected.getLocations().size(); i++) {
             assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
         }
-    }
-
-    private void assertLocation(Location expected, Location actual) {
-        assertEquals(expected.getCity(), actual.getCity());
-        assertEquals(expected.getCountry(), actual.getCountry());
-        assertEquals(expected.getCompanies().get(0), actual.getCompanies().get(0));
-    }
-
-    private Company prepareCompany() {
-        Company company = new Company();
-        Location first = prepareLocation("city_1", "country_1");
-        first.addCompany(company);
-        Location second = prepareLocation("city_2", "country_2");
-        second.addCompany(company);
-        company.addLocation(first);
-        company.addLocation(second);
-        return company;
-    }
-
-    private Location prepareLocation(String city, String country) {
-        Location location = new Location();
-        location.setCity(city);
-        location.setCountry(country);
-        return location;
-    }
-
-    private Location prepareLocation(String city, String country, Company company) {
-        Location location = prepareLocation(city, country);
-        location.addCompany(company);
-        return location;
     }
 }

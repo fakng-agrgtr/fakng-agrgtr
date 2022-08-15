@@ -1,12 +1,9 @@
 package com.fakng.fakngagrgtr.parser.google;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.location.Location;
-import com.fakng.fakngagrgtr.location.LocationRepository;
-import com.fakng.fakngagrgtr.parser.cache.LocationCache;
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
-import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.company.CompanyRepository;
+import com.fakng.fakngagrgtr.parser.ApiParser;
+import com.fakng.fakngagrgtr.parser.LocationProcessor;
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,30 +12,28 @@ import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class GoogleParser extends ApiParser {
 
-    private static final String GOOGLE_NAME = "Google";
-    private Company google;
-
-    public GoogleParser(WebClient webClient, LocationCache locationCache, CompanyRepository companyRepository,
-                        LocationRepository locationRepository, @Value("${url.google}") String url) {
-        super(webClient, locationCache, companyRepository, locationRepository);
+    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
+                        @Value("${url.google}") String url) {
+        super(webClient, companyRepository, locationProcessor);
         this.url = url;
     }
 
     @PostConstruct
     public void init() {
-        google = companyRepository.findByTitle(GOOGLE_NAME)
-                .orElseThrow(() -> new IllegalStateException(String.format("There is no %s company present in DB", GOOGLE_NAME)));
-        google.getLocations()
-                .forEach(location -> locationCache.putIfAbsent(location.getCity(), location.getCountry(), location));
+        initBase();
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() throws Exception {
+    protected String getCompanyName() {
+        return "Google";
+    }
+
+    @Override
+    protected List<Vacancy> getAllVacancies() {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
@@ -59,32 +54,16 @@ public class GoogleParser extends ApiParser {
         vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
-        vacancy.setCompany(google);
+        vacancy.setCompany(company);
         processLocations(vacancy, dto.getLocations());
         vacancy.setDescription(generateFullDescription(dto));
         return vacancy;
     }
 
     private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
-        locations.forEach(location -> {
-            String locationKey = locationCache.getLocationKey(location.getCity(), location.getCountryCode());
-            if (!locationCache.contains(locationKey)) {
-                saveInDbAndCache(locationKey, location);
-            }
-            vacancy.addLocation(locationCache.get(locationKey));
-        });
-    }
-
-    private void saveInDbAndCache(String locationKey, LocationDTO location) {
-        locationRepository.findByCity(location.getCity())
-                .or(() -> {
-                    Location brandNew = new Location();
-                    brandNew.setCity(location.getCity());
-                    brandNew.setCountry(location.getCountryCode());
-                    brandNew.addCompany(google);
-                    google.addLocation(brandNew);
-                    return Optional.of(locationRepository.save(brandNew));
-                }).ifPresent(fresh -> locationCache.putIfAbsent(locationKey, fresh));
+        locations.forEach(location -> vacancy.addLocation(
+                locationProcessor.processLocation(company, location.getCity(), location.getCountryCode()))
+        );
     }
 
     private Long parseVacancyId(String dtoId) {
