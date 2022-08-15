@@ -1,5 +1,8 @@
-package com.fakng.fakngagrgtr.vacancy;
+package com.fakng.fakngagrgtr.service.impl;
 
+import com.fakng.fakngagrgtr.model.Vacancy;
+import com.fakng.fakngagrgtr.repository.VacancyRepository;
+import com.fakng.fakngagrgtr.service.VacancyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -14,13 +17,15 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class VacancyService {
+public class VacancyServiceImpl implements VacancyService {
 
     private final VacancyRepository vacancyRepository;
 
+    @Override
     @Transactional(readOnly = true)
     public Page<Vacancy> findAll(List<Long> companyIds, List<Long> locationIds, int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         return vacancyRepository.findAll(companyIds, locationIds, pageable);
     }
+
 }

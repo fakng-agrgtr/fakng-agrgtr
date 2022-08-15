@@ -1,9 +1,8 @@
 package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.model.Vacancy;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j

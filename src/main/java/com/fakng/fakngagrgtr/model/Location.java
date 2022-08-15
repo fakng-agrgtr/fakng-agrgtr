@@ -1,6 +1,6 @@
-package com.fakng.fakngagrgtr.location;
+package com.fakng.fakngagrgtr.model;
 
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.model.Vacancy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,9 +1,9 @@
 package com.fakng.fakngagrgtr.parser.google;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
+import com.fakng.fakngagrgtr.model.Company;
+import com.fakng.fakngagrgtr.model.Vacancy;
 import com.fakng.fakngagrgtr.parser.ApiParser;
-import com.fakng.fakngagrgtr.company.CompanyRepository;
+import com.fakng.fakngagrgtr.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import javax.annotation.PostConstruct;
 
 import com.fakng.fakngagrgtr.parser.Parser;
-import com.fakng.fakngagrgtr.vacancy.VacancyRepository;
+import com.fakng.fakngagrgtr.repository.VacancyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;

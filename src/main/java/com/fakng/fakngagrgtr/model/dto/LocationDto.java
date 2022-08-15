@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.location;
+package com.fakng.fakngagrgtr.model.dto;
 
 import lombok.Data;
 
