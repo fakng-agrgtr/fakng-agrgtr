@@ -8,12 +8,13 @@ spring:
         password: admin
     jpa:
         show-sql: true
+        open-in-view: false
     properties:
         hibernate:
             format_sql: true
 
 url:
-    google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date
+    google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date&page=%d
 
 agrgtr:
     cron: 0 */12 * * * * #at 0th min of every 12th hour

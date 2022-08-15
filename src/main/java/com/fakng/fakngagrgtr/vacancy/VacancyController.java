@@ -1,7 +1,5 @@
 package com.fakng.fakngagrgtr.vacancy;
 
-import com.fakng.fakngagrgtr.vacancy.VacancyDto;
-import com.fakng.fakngagrgtr.vacancy.VacancyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,9 +19,9 @@ public class VacancyController {
     private final ObjectMapper objectMapper;
 
     @GetMapping("/vacancy")
-    public Page<VacancyDto> getVacancies(@RequestParam List<Long> companyIds, @RequestParam List<Long> locationIds,
+    public Page<VacancyDTO> getVacancies(@RequestParam List<Long> companyIds, @RequestParam List<Long> locationIds,
                                          @RequestParam int page, @RequestParam int pageSize) {
         return vacancyService.findAll(companyIds, locationIds, page, pageSize)
-                .map(vacancy -> objectMapper.convertValue(vacancy, VacancyDto.class));
+                .map(vacancy -> objectMapper.convertValue(vacancy, VacancyDTO.class));
     }
 }

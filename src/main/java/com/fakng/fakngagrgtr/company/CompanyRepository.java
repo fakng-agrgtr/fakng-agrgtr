@@ -1,7 +1,8 @@
 package com.fakng.fakngagrgtr.company;
 
-import com.fakng.fakngagrgtr.company.Company;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -9,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface CompanyRepository extends CrudRepository<Company, Long> {
 
-    Optional<Company> findByTitle(String title);
+    @Query("select c from Company c left join fetch c.locations where c.title = :title")
+    Optional<Company> findByTitle(@Param("title") String title);
 }

@@ -14,11 +14,11 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
 
     @Query(value = "select v from Vacancy v " +
             "join fetch v.company c " +
-            "join fetch v.location l " +
+            "join fetch v.locations l " +
             "where c.id in :companyIds and l.id in :locationIds",
             countQuery = "select count(v) from Vacancy v " +
             "join v.company c " +
-            "join v.location l " +
+            "join v.locations l " +
             "where c.id in :companyIds and l.id in :locationIds")
     Page<Vacancy> findAll(@Param("companyIds") List<Long> companyIds,
                           @Param("locationIds") List<Long> locationIds,

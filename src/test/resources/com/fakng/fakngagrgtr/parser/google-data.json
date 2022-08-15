@@ -1,0 +1,118 @@
+{
+  "jobs": [
+    {
+      "id": "job/1",
+      "title": "title_1",
+      "categories": [
+        "SOFTWARE_ENGINEERING"
+      ],
+      "apply_url": "apply_url_1",
+      "responsibilities": "responsibilities_1",
+      "qualifications": "qualifications_1",
+      "company_id": "companies/ad872500-709d-4a93-97e3-76be227f77a1",
+      "company_name": "YouTube",
+      "language_code": "en-US",
+      "locations": [
+        {
+          "display": "Mountain View, CA, USA",
+          "lat": 37.4238808,
+          "lon": -122.0916446,
+          "address_lines": [
+            "Google Building GWC1, 2025 Garcia Ave, Mountain View, CA 94043, USA"
+          ],
+          "city": "city_1",
+          "post_code": "94043",
+          "country": "CA",
+          "country_code": "country_1",
+          "is_remote": false
+        },
+        {
+          "display": "Boston, CA, USA",
+          "lat": 37.4238808,
+          "lon": -122.0916446,
+          "address_lines": [
+            "Google Building GWC1, 2025 Garcia Ave, Mountain View, CA 94043, USA"
+          ],
+          "city": "city_2",
+          "post_code": "94043",
+          "country": "CA",
+          "country_code": "country_2",
+          "is_remote": false
+        }
+      ],
+      "description": "description_1",
+      "education_levels": [
+        "MASTERS_OR_EQUIVALENT",
+        "BACHELORS_OR_EQUIVALENT",
+        "DOCTORAL_OR_EQUIVALENT"
+      ],
+      "created": "2022-08-11T13:01:21.034Z",
+      "modified": "2022-08-12T21:01:16.335Z",
+      "publish_date": "2022-08-12T21:01:16.479Z",
+      "application_instruction": null,
+      "eeo": "Google is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to equal employment opportunity regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or Veteran status. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. See also <a href=\"https://careers.google.com/eeo/\">Google's EEO Policy</a> and <a href=\"/jobs/dist/legal/OFCCP_EEO_Post.pdf\">EEO is the Law.</a>  If you have a disability or special need that requires accommodation, please let us know by completing our <a href=\"https://goo.gl/forms/aBt6Pu71i1kzpLHe2\">Accommodations for Applicants form</a>.",
+      "locations_count": 1,
+      "additional_instructions": "instructions_1",
+      "summary": "summary_1",
+      "building_pins": [
+        {
+          "lat": 37.417507,
+          "lon": -122.079756
+        }
+      ],
+      "has_remote": true
+    },
+    {
+      "id": "job/2",
+      "title": "title_2",
+      "categories": [
+        "SOFTWARE_ENGINEERING"
+      ],
+      "apply_url": "apply_url_2",
+      "responsibilities": "responsibilities_2",
+      "qualifications": "qualifications_2",
+      "company_id": "companies/ad872500-709d-4a93-97e3-76be227f77a1",
+      "company_name": "YouTube",
+      "language_code": "en-US",
+      "locations": [
+        {
+          "display": "Zurich, Switzerland",
+          "lat": 37.4238808,
+          "lon": -122.0916446,
+          "address_lines": [
+            "Google Building GWC1, 2025 Garcia Ave, Mountain View, CA 94043, USA"
+          ],
+          "city": "city_1",
+          "post_code": "94043",
+          "country": "SW",
+          "country_code": "country_1",
+          "is_remote": false
+        }
+      ],
+      "description": "description_2",
+      "education_levels": [
+        "MASTERS_OR_EQUIVALENT",
+        "BACHELORS_OR_EQUIVALENT",
+        "DOCTORAL_OR_EQUIVALENT"
+      ],
+      "created": "2022-08-11T13:01:21.034Z",
+      "modified": "2022-08-12T21:01:16.335Z",
+      "publish_date": "2022-08-12T21:01:16.479Z",
+      "application_instruction": null,
+      "eeo": "Google is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to equal employment opportunity regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or Veteran status. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. See also <a href=\"https://careers.google.com/eeo/\">Google's EEO Policy</a> and <a href=\"/jobs/dist/legal/OFCCP_EEO_Post.pdf\">EEO is the Law.</a>  If you have a disability or special need that requires accommodation, please let us know by completing our <a href=\"https://goo.gl/forms/aBt6Pu71i1kzpLHe2\">Accommodations for Applicants form</a>.",
+      "locations_count": 1,
+      "additional_instructions": "instructions_2",
+      "summary": "summary_2",
+      "building_pins": [
+        {
+          "lat": 37.417507,
+          "lon": -122.079756
+        }
+      ],
+      "has_remote": false
+    }
+  ],
+  "count": 2,
+  "page_size": 100,
+  "next_page": 2
+}

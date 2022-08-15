@@ -1,15 +1,15 @@
 package com.fakng.fakngagrgtr.parser.google;
 
-import com.fakng.fakngagrgtr.company.Company;
-import com.fakng.fakngagrgtr.vacancy.Vacancy;
-import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.company.CompanyRepository;
+import com.fakng.fakngagrgtr.parser.ApiParser;
+import com.fakng.fakngagrgtr.parser.LocationProcessor;
+import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
-import java.io.IOException;
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,27 +18,40 @@ import java.util.List;
 @Component
 public class GoogleParser extends ApiParser {
 
-    private static final String GOOGLE_NAME = "Google";
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-    private final Company google;
 
-    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, @Value("${url.google}") String url) {
-        super(webClient);
+    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
+                        @Value("${url.google}") String url) {
+        super(webClient, companyRepository, locationProcessor);
         this.url = url;
-        this.google = companyRepository.findByTitle(GOOGLE_NAME).orElse(null);
+    }
+
+    @PostConstruct
+    public void init() {
+        initBase();
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() throws Exception {
+    protected String getCompanyName() {
+        return "Google";
+    }
+
+    @Override
+    protected List<Vacancy> getAllVacancies() {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
-        List<Vacancy> vacancies = new ArrayList<>();
-        for (int index = 2; index <= lastPage; index += 1) {
-            List<VacancyDTO> jobs = getPage(index).getJobs();
-            vacancies.addAll(jobs.stream().map(this::createVacancy).toList());
+        List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
+        for (int index = 2; index <= lastPage; index++) {
+            allVacancies.addAll(processPageResponse(getPage(index)));
         }
-        return vacancies;
+        return allVacancies;
+    }
+
+    private List<Vacancy> processPageResponse(ResponseDTO response) {
+        return response.getJobs().stream()
+                .map(this::createVacancy)
+                .toList();
     }
 
     private Vacancy createVacancy(VacancyDTO dto) {
@@ -46,14 +59,19 @@ public class GoogleParser extends ApiParser {
         vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
-        vacancy.setCompany(google);
         if (dto.getPublishDate() != null) {
             vacancy.setPublishedDate(parseLocalDateTime(dto.getPublishDate()));
         }
-        vacancy.setAddDate(LocalDateTime.now());
-        vacancy.setLocation(null); // dto.locations?
+        vacancy.setCompany(company);
+        processLocations(vacancy, dto.getLocations());
         vacancy.setDescription(generateFullDescription(dto));
         return vacancy;
+    }
+
+    private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
+        locations.forEach(location -> vacancy.addLocation(
+                locationProcessor.processLocation(company, location.getCity(), location.getCountryCode()))
+        );
     }
 
     private Long parseVacancyId(String dtoId) {
@@ -73,12 +91,12 @@ public class GoogleParser extends ApiParser {
         return LocalDateTime.parse(datetime, DATE_TIME_FORMATTER);
     }
 
-    private ResponseDTO getPage(int index) throws IOException {
-        ResponseSpec response = sendRequest(url + "&page=" + index);
+    private ResponseDTO getPage(int page) {
+        ResponseSpec response = sendRequest(String.format(url, page));
         return response.bodyToMono(ResponseDTO.class).block();
     }
 
-    private ResponseSpec sendRequest(String url) throws IOException {
+    private ResponseSpec sendRequest(String url) {
         return webClient
                 .get()
                 .uri(url)

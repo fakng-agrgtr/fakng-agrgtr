@@ -1,9 +1,9 @@
-package com.fakng.fakngagrgtr.location;
+package com.fakng.fakngagrgtr.company;
 
 import lombok.Data;
 
 @Data
-public class LocationDto {
+public class CompanyDTO {
     private long id;
     private String title;
 }

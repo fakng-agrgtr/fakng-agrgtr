@@ -3,18 +3,32 @@ CREATE SEQUENCE location_seq;
 CREATE SEQUENCE vacancy_seq;
 CREATE SEQUENCE subscription_seq;
 CREATE SEQUENCE company_sub_seq;
+CREATE SEQUENCE vacancy_location_seq;
+CREATE SEQUENCE company_location_seq;
 
 CREATE TABLE location
 (
     id    INT         NOT NULL DEFAULT nextval('location_seq') PRIMARY KEY,
-    title VARCHAR(32) NOT NULL
+    city VARCHAR(32),
+    country VARCHAR(32) NOT NULL
 );
+
+CREATE UNIQUE INDEX location_idx ON location (city, country);
 
 CREATE TABLE company
 (
     id       INT         NOT NULL DEFAULT nextval('company_seq') PRIMARY KEY,
-    title    VARCHAR(32) NOT NULL,
+    title    VARCHAR(32) NOT NULL UNIQUE,
     logo_url VARCHAR(256)
+);
+
+CREATE TABLE company_location (
+    id BIGINT NOT NULL DEFAULT nextval('company_location_seq') PRIMARY KEY,
+    company_id INT NOT NULL,
+    location_id INT NOT NULL,
+
+    CONSTRAINT cl_company_fk FOREIGN KEY (company_id) REFERENCES company (id),
+    CONSTRAINT cl_location_fk FOREIGN KEY (location_id) REFERENCES location (id)
 );
 
 CREATE TABLE vacancy
@@ -33,6 +47,15 @@ CREATE TABLE vacancy
 
 CREATE INDEX vacancy_company_idx ON vacancy (company_id);
 CREATE INDEX vacancy_location_idx ON vacancy (location_id);
+
+CREATE TABLE vacancy_location (
+    id BIGINT NOT NULL DEFAULT nextval('vacancy_location_seq') PRIMARY KEY,
+    vacancy_id BIGINT NOT NULL,
+    location_id INT NOT NULL,
+
+    CONSTRAINT vl_vacancy_fk FOREIGN KEY (vacancy_id) REFERENCES vacancy (id),
+    CONSTRAINT vl_location_fk FOREIGN KEY (location_id) REFERENCES location (id)
+);
 
 CREATE TABLE subscription
 (

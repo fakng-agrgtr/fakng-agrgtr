@@ -1,11 +1,13 @@
 package com.fakng.fakngagrgtr.company;
 
+import com.fakng.fakngagrgtr.location.Location;
 import com.fakng.fakngagrgtr.vacancy.Vacancy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,4 +29,12 @@ public class Company {
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Vacancy> vacancies;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "companies")
+    private List<Location> locations = new ArrayList<>();
+
+    public void addLocation(Location location) {
+        locations.add(location);
+    }
 }
