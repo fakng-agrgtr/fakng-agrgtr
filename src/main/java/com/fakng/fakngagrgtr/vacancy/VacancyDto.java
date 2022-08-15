@@ -13,6 +13,7 @@ public class VacancyDto {
     private String description;
     private String url;
     private LocalDateTime addDate;
+    private LocalDateTime publishedDate;
     private CompanyDto company;
     private LocationDto location;
 }
