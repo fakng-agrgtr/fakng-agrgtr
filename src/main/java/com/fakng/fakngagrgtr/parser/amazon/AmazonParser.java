@@ -24,6 +24,8 @@ import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 @Component
 public class AmazonParser extends ApiParser {
 
+    // Amazon doesn't allow to get more than 10000 vacancies.
+    private static final int MAX_VACANCIES_COUNT = 10000;
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("MMMM d, u", Locale.ENGLISH);
 
@@ -50,7 +52,7 @@ public class AmazonParser extends ApiParser {
         int offset = 0;
         ResponseDTO firstPage = getPage(offset);
         List<Vacancy> vacancies = new ArrayList<>(processPageResponse(firstPage));
-        while (vacancies.size() < firstPage.getHits() && vacancies.size() < 10000) {
+        while (vacancies.size() < firstPage.getHits() && vacancies.size() < MAX_VACANCIES_COUNT) {
             ResponseDTO page = getPage(vacancies.size());
             vacancies.addAll(processPageResponse(page));
         }
@@ -67,7 +69,6 @@ public class AmazonParser extends ApiParser {
 
     private Vacancy createVacancy(VacancyDTO dto) {
         Vacancy vacancy = new Vacancy();
-//        vacancy.setId(dto.getId()); // need to create string field for containing native id
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(parseUrl(dto));
         vacancy.setPublishedDate(parseLocalDateTime(dto));
