@@ -1,5 +1,6 @@
 package com.fakng.fakngagrgtr.persistent.vacancy;
 
+import com.fakng.fakngagrgtr.persistent.company.Company;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,6 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
     Page<Vacancy> findAll(@Param("companyIds") List<Long> companyIds,
                           @Param("locationIds") List<Long> locationIds,
                           Pageable pageable);
+
+    List<Vacancy> findByCompany(Company company);
 }
