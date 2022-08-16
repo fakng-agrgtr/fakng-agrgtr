@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.rest;
+package com.fakng.fakngagrgtr.rest.vacancy;
 
 import lombok.Data;
 
