@@ -20,7 +20,7 @@ public class FakngScheduler {
 
     private final List<Parser> parsers;
     private final VacancyRepository vacancyRepository;
-    @Value("${agrgtr.pool-size}")
+    @Value("${agrgtr.pool-size:1}")
     private int poolSize;
     private ExecutorService executor;
 
@@ -29,7 +29,7 @@ public class FakngScheduler {
         executor = Executors.newFixedThreadPool(poolSize);
     }
 
-    @Scheduled(cron = "${agrgtr.cron}")
+    @Scheduled(cron = "${agrgtr.cron}:0 */12 * * * *")
     public void scheduleAggregation() {
         parsers.forEach(parser -> CompletableFuture
                 .supplyAsync(parser::parse)
