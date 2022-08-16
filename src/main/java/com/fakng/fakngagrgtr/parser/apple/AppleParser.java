@@ -131,6 +131,6 @@ public class AppleParser extends HtmlParser {
     }
 
     private String parseCountry(String country) {
-        return country.substring(country.indexOf('-'));
+        return country.substring(country.indexOf('-') + 1);
     }
 }
