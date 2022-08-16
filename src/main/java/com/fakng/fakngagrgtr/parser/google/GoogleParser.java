@@ -21,8 +21,11 @@ public class GoogleParser extends ApiParser {
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
-    public GoogleParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
-                        @Value("${url.google}") String url) {
+    public GoogleParser(
+            WebClient webClient,
+            CompanyRepository companyRepository,
+            LocationProcessor locationProcessor,
+            @Value("${url.google}") String url) {
         super(webClient, companyRepository, locationProcessor);
         this.url = url;
     }
@@ -69,9 +72,10 @@ public class GoogleParser extends ApiParser {
     }
 
     private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
-        locations.forEach(location -> vacancy.addLocation(
-                locationProcessor.processLocation(company, location.getCity(), location.getCountryCode()))
-        );
+        locations.forEach(location -> {
+            vacancy.addLocation(locationProcessor.processLocation(
+                    company, location.getCity(), location.getCountryCode()));
+        });
     }
 
     private Long parseVacancyId(String dtoId) {
@@ -92,14 +96,7 @@ public class GoogleParser extends ApiParser {
     }
 
     private ResponseDTO getPage(int page) {
-        ResponseSpec response = sendRequest(String.format(url, page));
+        ResponseSpec response = getRequest(String.format(url, page));
         return response.bodyToMono(ResponseDTO.class).block();
-    }
-
-    private ResponseSpec sendRequest(String url) {
-        return webClient
-                .get()
-                .uri(url)
-                .retrieve();
     }
 }
