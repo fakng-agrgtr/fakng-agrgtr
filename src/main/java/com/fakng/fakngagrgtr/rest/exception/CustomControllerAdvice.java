@@ -1,7 +1,5 @@
 package com.fakng.fakngagrgtr.rest.exception;
 
-import com.fakng.fakngagrgtr.rest.exception.ErrorMessage;
-import com.fakng.fakngagrgtr.rest.exception.FakngException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
