@@ -1,7 +1,5 @@
-package com.fakng.fakngagrgtr.controller;
+package com.fakng.fakngagrgtr.rest.exception;
 
-import com.fakng.fakngagrgtr.enumiration.FakngError;
-import com.fakng.fakngagrgtr.exception.FakngException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +25,7 @@ class CustomControllerAdvice {
     public ResponseEntity<String> handleJsonExceptions(Exception e) {
         log.error("Throws exception: ", e);
         return new ResponseEntity<>(
-                FakngError.VALIDATION_ERROR.toString(),
+                ErrorMessage.VALIDATION_ERROR.toString(),
                 HttpStatus.valueOf(400)
         );
     }
@@ -36,7 +34,7 @@ class CustomControllerAdvice {
     public ResponseEntity<String> handleOtherExceptions(Exception e) {
         log.error("Throws exception: ", e);
         return new ResponseEntity<>(
-                FakngError.TECHNICAL_ERROR.toString(),
+                ErrorMessage.TECHNICAL_ERROR.toString(),
                 HttpStatus.valueOf(500)
         );
     }
