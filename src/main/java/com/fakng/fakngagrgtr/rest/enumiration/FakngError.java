@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.enumiration;
+package com.fakng.fakngagrgtr.rest.enumiration;
 
 public enum FakngError {
 

@@ -1,7 +1,7 @@
-package com.fakng.fakngagrgtr.controller;
+package com.fakng.fakngagrgtr.rest.controller;
 
-import com.fakng.fakngagrgtr.enumiration.FakngError;
-import com.fakng.fakngagrgtr.exception.FakngException;
+import com.fakng.fakngagrgtr.rest.enumiration.FakngError;
+import com.fakng.fakngagrgtr.rest.exception.FakngException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

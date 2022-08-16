@@ -1,6 +1,6 @@
-package com.fakng.fakngagrgtr.exception;
+package com.fakng.fakngagrgtr.rest.exception;
 
-import com.fakng.fakngagrgtr.enumiration.FakngError;
+import com.fakng.fakngagrgtr.rest.enumiration.FakngError;
 
 public abstract class FakngException extends RuntimeException {
 
