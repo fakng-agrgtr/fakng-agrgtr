@@ -8,18 +8,17 @@ import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlScript;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,11 +26,11 @@ import java.util.stream.Collectors;
 @Component
 public class AppleParser extends HtmlParser {
 
-    private static final int TIMEOUT_REQUEST = 5000;
     private static final String URL_FOR_VACANCY = "https://jobs.apple.com/en-us/details/";
-    private static final String COUNT_PAGES_ADDRESS = "span[class=pageNumber]";
-    private static final String JSON_BODY_ADDRESS = "script[type=text/javascript]";
-
+    private static final String ELEMENT_NAME_WITH_PAGE_COUNT = "frmPagination";
+    private static final String ELEMENT_TAG_WITH_PAGE_COUNT = "span";
+    private static final String PATH_TO_VACANCIES = "searchResults";
+    private static final String PATH_TO_FIELD_WITH_JSON_BODY = ".//script";
     private static final JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
     private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -56,41 +55,37 @@ public class AppleParser extends HtmlParser {
 
     @Override
     protected List<Vacancy> getAllVacancies() throws Exception {
-        Document doc = getResponseByPage(0);
-        int countPages = getCountPages(doc);
-        List<Vacancy> allVacancies = new ArrayList<>(getVacanciesFromDoc(doc));
+        HtmlPage htmlPage = getResponseByPage(0);
+        int countPages = getCountPages(htmlPage);
+        List<Vacancy> allVacancies = new ArrayList<>(getVacanciesFromDoc(htmlPage));
         for (int i = 1; i < countPages; i++) {
-            doc = getResponseByPage(i);
-            allVacancies.addAll(getVacanciesFromDoc(doc));
+            htmlPage = getResponseByPage(i);
+            allVacancies.addAll(getVacanciesFromDoc(htmlPage));
         }
         return allVacancies;
     }
 
-    private Document getResponseByPage(int numberOfPage) throws IOException {
-        return Jsoup.parse(new URL(String.format(url, numberOfPage)), TIMEOUT_REQUEST);
+    private HtmlPage getResponseByPage(int numberOfPage) throws IOException {
+        return downloadPage(String.format(url, numberOfPage));
     }
 
-    private int getCountPages(Document doc) {
-        return Integer.parseInt(doc.select(COUNT_PAGES_ADDRESS).get(1).text());
+    private int getCountPages(HtmlPage htmlPage) {
+        return Integer.parseInt(htmlPage.getElementsByIdAndOrName(ELEMENT_NAME_WITH_PAGE_COUNT).get(0).getElementsByTagName(ELEMENT_TAG_WITH_PAGE_COUNT).get(1).getVisibleText());
     }
 
-    private List<Vacancy> getVacanciesFromDoc(Document doc) throws ParseException, JsonProcessingException {
-        String jsonBody = getJsonBody(doc);
+    private List<Vacancy> getVacanciesFromDoc(HtmlPage htmlpage) throws ParseException, JsonProcessingException {
+        String jsonBody = getJsonBody(htmlpage);
         return getVacanciesFromJsonBody(jsonBody);
     }
 
-    private String getJsonBody(Document doc) {
-        return doc.select(JSON_BODY_ADDRESS)
-                .first()
-                .childNode(0).toString()
-                .replace(";", "")
-                .trim()
-                .substring(19);
+    private String getJsonBody(HtmlPage htmlPage) {
+        String textContent = ((HtmlScript) htmlPage.getByXPath(PATH_TO_FIELD_WITH_JSON_BODY).get(1)).getTextContent();
+        return textContent.substring(textContent.indexOf('{'), textContent.lastIndexOf('}') + 1);
     }
 
     private List<Vacancy> getVacanciesFromJsonBody(String json) throws ParseException, JsonProcessingException {
         JSONObject jsonBody = parse(json);
-        JSONArray searchResults = (JSONArray) jsonBody.get("searchResults");
+        JSONArray searchResults = (JSONArray) jsonBody.get(PATH_TO_VACANCIES);
         List<Vacancy> vacancies = new ArrayList<>();
         for (Object vacancyJson : searchResults) {
             VacancyApple vacancyApple = toVacancyApple(vacancyJson);
