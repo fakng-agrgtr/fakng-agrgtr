@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.rest;
+package com.fakng.fakngagrgtr.rest.vacancy;
 
 import com.fakng.fakngagrgtr.service.VacancyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
