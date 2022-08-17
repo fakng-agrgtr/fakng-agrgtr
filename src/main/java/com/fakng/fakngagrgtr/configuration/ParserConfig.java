@@ -1,5 +1,7 @@
 package com.fakng.fakngagrgtr.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import net.minidev.json.parser.JSONParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
@@ -25,5 +27,15 @@ public class ParserConfig {
         return WebClient.builder()
                 .exchangeStrategies(strategies)
                 .build();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
+    }
+
+    @Bean
+    public JSONParser jsonParser(){
+        return new JSONParser(JSONParser.MODE_JSON_SIMPLE);
     }
 }

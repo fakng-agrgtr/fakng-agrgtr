@@ -3,18 +3,17 @@ package com.fakng.fakngagrgtr.parser.apple;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @JsonIgnoreProperties({"localeInfo"})
-public class VacancyApple {
+public class VacancyDTO {
 
     private String id;
 
     private String jobSummary;
 
-    private List<LocationApple> locations;
+    private List<LocationDTO> locations;
 
     private String positionId;
 
@@ -32,11 +31,8 @@ public class VacancyApple {
 
     private Integer standardWeeklyHours;
 
-    private TeamApple team;
+    private TeamDTO team;
 
     private Boolean homeOffice;
 
-    public LocalDateTime getPostDateTime(){
-        return LocalDateTime.parse(postDateInGMT.replace("Z", ""));
-    }
 }

@@ -3,7 +3,7 @@ package com.fakng.fakngagrgtr.parser.apple;
 import lombok.Data;
 
 @Data
-public class TeamApple {
+public class TeamDTO {
     public String teamName;
 
     public String teamID;
