@@ -10,10 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomText;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import net.minidev.json.parser.JSONParser;
-import net.minidev.json.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,27 +18,21 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class AppleParser extends HtmlParser {
 
     private static final String URL_FOR_VACANCY = "https://jobs.apple.com/en-us/details/";
     private static final String XPATH_TO_PAGE_COUNT = "//*[@id='frmPagination']/span[2]/text()";
-    private static final String PATH_TO_VACANCIES = "searchResults";
     private static final String XPATH_TO_FIELD_WITH_JSON_BODY = "/html/body/script[1]/text()";
-    private final JSONParser jsonParser;
     private final ObjectMapper mapper;
-
 
     public AppleParser(WebClient htmlWebClient,
                        CompanyRepository companyRepository,
                        LocationProcessor locationProcessor,
                        @Value("${url.apple}") String url,
-                       JSONParser jsonParser,
                        ObjectMapper mapper) {
         super(htmlWebClient, companyRepository, locationProcessor);
-        this.jsonParser = jsonParser;
         this.mapper = mapper;
         this.url = url;
     }
@@ -77,7 +67,7 @@ public class AppleParser extends HtmlParser {
         return Integer.parseInt(htmlPage.getByXPath(XPATH_TO_PAGE_COUNT).get(0).toString());
     }
 
-    private List<Vacancy> getVacanciesFromHtml(HtmlPage htmlpage) throws ParseException, JsonProcessingException {
+    private List<Vacancy> getVacanciesFromHtml(HtmlPage htmlpage) throws JsonProcessingException {
         String jsonBody = getJsonBody(htmlpage);
         return getVacanciesFromJsonBody(jsonBody);
     }
@@ -87,23 +77,11 @@ public class AppleParser extends HtmlParser {
         return textContent.substring(textContent.indexOf('{'), textContent.lastIndexOf('}') + 1);
     }
 
-    private List<Vacancy> getVacanciesFromJsonBody(String json) throws ParseException, JsonProcessingException {
-        JSONObject jsonBody = parse(json);
-        JSONArray searchResults = (JSONArray) jsonBody.get(PATH_TO_VACANCIES);
-        List<Vacancy> vacancies = new ArrayList<>();
-        for (Object vacancyJson : searchResults) {
-            VacancyDTO vacancyDTO = toVacancyDTO(vacancyJson);
-            vacancies.add(toVacancy(vacancyDTO));
-        }
-        return vacancies;
-    }
-
-    private JSONObject parse(String json) throws ParseException {
-        return (JSONObject) jsonParser.parse(json);
-    }
-
-    private VacancyDTO toVacancyDTO(Object vacancyJson) throws JsonProcessingException {
-        return mapper.readValue(vacancyJson.toString(), VacancyDTO.class);
+    private List<Vacancy> getVacanciesFromJsonBody(String json) throws JsonProcessingException {
+        ResponseDTO responseDTO = mapper.readValue(json, ResponseDTO.class);
+        return responseDTO.getSearchResults().stream()
+                .map(this::toVacancy)
+                .toList();
     }
 
     private Vacancy toVacancy(VacancyDTO vacancyDTO) {
@@ -123,14 +101,14 @@ public class AppleParser extends HtmlParser {
                 vacancyDTO.getJobSummary();
     }
 
-    private LocalDateTime toLocalDateTime(String postDateInGMT){
+    private LocalDateTime toLocalDateTime(String postDateInGMT) {
         return LocalDateTime.parse(postDateInGMT.replace("Z", ""));
     }
 
     private List<Location> toLocations(List<LocationDTO> locationDTOs) {
         return locationDTOs.stream()
                 .map(locationDTO -> locationProcessor.processLocation(company, locationDTO.getCity(), parseCountry(locationDTO.getCountryID())))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private String parseCountry(String country) {
