@@ -1,0 +1,53 @@
+{
+  "main_categories": [
+    {
+      "name": "Engineering",
+      "slug": "engineering"
+    },
+    {
+      "name": "Data, Research & Insights",
+      "slug": "data-research-insights"
+    },
+    {
+      "name": "Product",
+      "slug": "product"
+    },
+    {
+      "name": "Workplace Services",
+      "slug": "workplace-services"
+    },
+    {
+      "name": "Sales",
+      "slug": "sales"
+    }
+  ],
+  "result": [
+    {
+      "id": "junior-android-engineer-freemium",
+      "text": "Junior Android Engineer, Freemium",
+      "main_category": {
+        "name": "Engineering",
+        "slug": "engineering"
+      },
+      "sub_category": {
+        "name": "Mobile",
+        "slug": "mobile"
+      },
+      "location": {
+        "location": "London",
+        "slug": "london",
+        "num_jobs": 44
+      },
+      "job_type": {
+        "name": "Permanent",
+        "slug": "permanent"
+      },
+      "is_remote": true,
+      "remote_name": {
+        "name": "Remote EMEA",
+        "slug": "remote-emea",
+        "count": 78
+      }
+    }
+  ]
+}
