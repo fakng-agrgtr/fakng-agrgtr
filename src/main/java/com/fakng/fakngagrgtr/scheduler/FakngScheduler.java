@@ -29,7 +29,7 @@ public class FakngScheduler {
         executor = Executors.newFixedThreadPool(poolSize);
     }
 
-    @Scheduled(cron = "${agrgtr.cron}:0 */12 * * * *")
+    @Scheduled(cron = "${agrgtr.cron:0 */12 * * * *}")
     public void scheduleAggregation() {
         parsers.forEach(parser -> CompletableFuture
                 .supplyAsync(parser::parse)
