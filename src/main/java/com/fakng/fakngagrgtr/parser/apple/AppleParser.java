@@ -80,18 +80,18 @@ public class AppleParser extends HtmlParser {
     private List<Vacancy> getVacanciesFromJsonBody(String json) throws JsonProcessingException {
         ResponseDTO responseDTO = mapper.readValue(json, ResponseDTO.class);
         return responseDTO.getSearchResults().stream()
-                .map(this::toVacancy)
+                .map(this::parseVacancy)
                 .toList();
     }
 
-    private Vacancy toVacancy(VacancyDTO vacancyDTO) {
+    private Vacancy parseVacancy(VacancyDTO vacancyDTO) {
         Vacancy vacancy = new Vacancy();
         vacancy.setTitle(vacancyDTO.getPostingTitle());
         vacancy.setDescription(generateFullDescription(vacancyDTO));
         vacancy.setUrl(URL_FOR_VACANCY + vacancyDTO.getPositionId());
-        vacancy.setPublishedDate(toLocalDateTime(vacancyDTO.getPostDateInGMT()));
+        vacancy.setPublishedDate(parseLocalDateTime(vacancyDTO.getPostDateInGMT()));
         vacancy.setCompany(company);
-        vacancy.setLocations(toLocations(vacancyDTO.getLocations()));
+        vacancy.setLocations(parseLocations(vacancyDTO.getLocations()));
         return vacancy;
     }
 
@@ -101,13 +101,16 @@ public class AppleParser extends HtmlParser {
                 vacancyDTO.getJobSummary();
     }
 
-    private LocalDateTime toLocalDateTime(String postDateInGMT) {
+    private LocalDateTime parseLocalDateTime(String postDateInGMT) {
         return LocalDateTime.parse(postDateInGMT.replace("Z", ""));
     }
 
-    private List<Location> toLocations(List<LocationDTO> locationDTOs) {
+    private List<Location> parseLocations(List<LocationDTO> locationDTOs) {
         return locationDTOs.stream()
-                .map(locationDTO -> locationProcessor.processLocation(company, locationDTO.getCity(), parseCountry(locationDTO.getCountryID())))
+                .map(locationDTO -> locationProcessor.processLocation(
+                        company,
+                        locationDTO.getCity(),
+                        parseCountry(locationDTO.getCountryID())))
                 .toList();
     }
 

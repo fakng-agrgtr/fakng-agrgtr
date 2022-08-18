@@ -5,20 +5,20 @@ import lombok.Data;
 @Data
 public class LocationDTO {
 
-    public String city;
+    private String city;
 
-    public Integer level;
+    private Integer level;
 
-    public String metro;
+    private String metro;
 
-    public String name;
+    private String name;
 
-    public String stateProvince;
+    private String stateProvince;
 
-    public String countryName;
+    private String countryName;
 
-    public String region;
+    private String region;
 
-    public String countryID;
+    private String countryID;
 
 }

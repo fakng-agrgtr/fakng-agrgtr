@@ -31,7 +31,7 @@ public class ParserConfig {
     }
 
     @Bean
-    public ObjectMapper objectMapper(){
+    public ObjectMapper objectMapper() {
         return Jackson2ObjectMapperBuilder
                 .json()
                 .build()

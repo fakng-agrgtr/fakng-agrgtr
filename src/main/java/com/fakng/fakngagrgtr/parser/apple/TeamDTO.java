@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class TeamDTO {
-    public String teamName;
+    private String teamName;
 
-    public String teamID;
+    private String teamID;
 
-    public String teamCode;
+    private String teamCode;
 }
