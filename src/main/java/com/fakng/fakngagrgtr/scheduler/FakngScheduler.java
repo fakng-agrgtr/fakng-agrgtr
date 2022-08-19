@@ -32,7 +32,7 @@ public class FakngScheduler {
     @Scheduled(cron = "${agrgtr.cron:0 */12 * * * *}")
     public void scheduleAggregation() {
         parsers.forEach(parser -> CompletableFuture
-                .supplyAsync(parser::parse)
+                .supplyAsync(parser::parse, executor)
                 .thenAccept(vacancyRepository::saveAll)
                 .exceptionally(ex -> {
                     ex.printStackTrace();

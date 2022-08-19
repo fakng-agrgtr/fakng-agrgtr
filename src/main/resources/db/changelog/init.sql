@@ -40,6 +40,7 @@ CREATE TABLE vacancy
     company_id  INT                      NOT NULL,
     location_id BIGINT                   NOT NULL,
     add_date    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    published_date TIMESTAMP WITHOUT TIME ZONE,
 
     CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id),
     CONSTRAINT vacancy_location_fk FOREIGN KEY (location_id) REFERENCES location (id)
