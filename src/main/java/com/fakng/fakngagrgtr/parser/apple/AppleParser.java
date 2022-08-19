@@ -88,6 +88,7 @@ public class AppleParser extends HtmlParser {
         Vacancy vacancy = new Vacancy();
         vacancy.setTitle(vacancyDTO.getPostingTitle());
         vacancy.setDescription(generateFullDescription(vacancyDTO));
+        vacancy.setJobId(vacancyDTO.getPositionId());
         vacancy.setUrl(URL_FOR_VACANCY + vacancyDTO.getPositionId());
         vacancy.setPublishedDate(parseLocalDateTime(vacancyDTO.getPostDateInGMT()));
         vacancy.setCompany(company);

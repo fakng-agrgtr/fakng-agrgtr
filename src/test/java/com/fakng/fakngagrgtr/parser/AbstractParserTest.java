@@ -37,6 +37,7 @@ public abstract class AbstractParserTest {
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getDescription(), actual.getDescription());
         assertEquals(expected.getUrl(), actual.getUrl());
+        assertEquals(expected.getJobId(), actual.getJobId());
         assertEquals(expected.getPublishedDate(), actual.getPublishedDate());
         assertEquals(expected.getCompany().getId(), actual.getCompany().getId());
         assertEquals(expected.getLocations().size(), actual.getLocations().size());

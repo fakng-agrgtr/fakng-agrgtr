@@ -89,7 +89,8 @@ class AppleParserTest extends AbstractParserTest {
 
         Vacancy first = new Vacancy();
         first.setTitle("title_1");
-        first.setUrl("https://jobs.apple.com/en-us/details/apple_1");
+        first.setJobId("apple_1");
+        first.setUrl("https://jobs.apple.com/en-us/details/" + first.getJobId());
         first.setCompany(company);
         first.setDescription("team_1\ntitle_1\ndescription_1");
         first.setLocations(company.getLocations());
@@ -98,7 +99,8 @@ class AppleParserTest extends AbstractParserTest {
 
         Vacancy second = new Vacancy();
         second.setTitle("title_2");
-        second.setUrl("https://jobs.apple.com/en-us/details/apple_2");
+        second.setJobId("apple_2");
+        second.setUrl("https://jobs.apple.com/en-us/details/" + second.getJobId());
         second.setCompany(company);
         second.setDescription("team_2\ntitle_2\ndescription_2");
         second.setLocations(company.getLocations().subList(0, 1));
