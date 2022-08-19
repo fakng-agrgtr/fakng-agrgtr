@@ -72,7 +72,6 @@ public class GoogleParserTest extends AbstractParserTest {
         List<Vacancy> vacancies = new ArrayList<>();
 
         Vacancy first = new Vacancy();
-        first.setId(1L);
         first.setTitle("title_1");
         first.setUrl("apply_url_1");
         first.setCompany(company);
@@ -81,7 +80,6 @@ public class GoogleParserTest extends AbstractParserTest {
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
-        second.setId(2L);
         second.setTitle("title_2");
         second.setUrl("apply_url_2");
         second.setCompany(company);
@@ -93,7 +91,6 @@ public class GoogleParserTest extends AbstractParserTest {
     }
 
     private void assertVacancy(Vacancy expected, Vacancy actual) {
-        assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getDescription(), actual.getDescription());
         assertEquals(expected.getUrl(), actual.getUrl());
