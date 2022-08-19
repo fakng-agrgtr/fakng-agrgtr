@@ -5,7 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
+import org.springframework.web.util.UriBuilder;
 import reactor.core.publisher.Mono;
+
+import java.net.URI;
+import java.util.function.Function;
 
 @Component
 @Slf4j
@@ -23,17 +27,17 @@ public abstract class ApiParser extends Parser {
         this.webClient = webClient;
     }
 
-    protected ResponseSpec getRequest(String url) {
+    protected ResponseSpec getRequest(Function<UriBuilder, URI> uriFunction) {
         return webClient
                 .get()
-                .uri(url)
+                .uri(uriFunction)
                 .retrieve();
     }
 
-    protected ResponseSpec postRequest(String url, Object body, Class<?> bodyType) {
+    protected ResponseSpec postRequest(Function<UriBuilder, URI> uriFunction, Object body, Class<?> bodyType) {
         return webClient
                 .post()
-                .uri(url)
+                .uri(uriFunction)
                 .body(Mono.just(body), bodyType)
                 .retrieve();
     }

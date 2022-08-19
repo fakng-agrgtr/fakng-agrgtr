@@ -6,7 +6,6 @@ import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +17,8 @@ import java.util.List;
 @Component
 public class GoogleParser extends ApiParser {
 
+    @Value("${google.page_size:100}")
+    private int pageSize;
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
@@ -89,8 +90,12 @@ public class GoogleParser extends ApiParser {
     }
 
     private ResponseDTO getPage(int page) {
-        // TODO
-        ResponseSpec response = getRequest("");
+        ResponseSpec response = getRequest(uriBuilder -> uriBuilder
+                .queryParam("sort_by","date")
+                .queryParam("page_size", this.pageSize)
+                .queryParam("page", page)
+                .queryParam("q", "")
+                .build());
         return response.bodyToMono(ResponseDTO.class).block();
     }
 }

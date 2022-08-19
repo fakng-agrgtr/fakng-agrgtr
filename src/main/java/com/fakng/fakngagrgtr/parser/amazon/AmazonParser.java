@@ -18,7 +18,6 @@ import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
 @Component
@@ -26,6 +25,9 @@ public class AmazonParser extends ApiParser {
 
     // Amazon doesn't allow to get more than 10000 vacancies.
     private static final int MAX_VACANCIES_COUNT = 10000;
+
+    @Value("${amazon.result_limit:100}")
+    private int resultLimit;
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("MMMM d, u", Locale.ENGLISH);
 
@@ -100,8 +102,12 @@ public class AmazonParser extends ApiParser {
     }
 
     private ResponseDTO getPage(int offset) {
-        //TODO
-        ResponseSpec request = getRequest(String.format("url", offset));
+        ResponseSpec request = getRequest(uriBuilder -> uriBuilder
+                .queryParam("sort", "recent")
+                .queryParam("category[]", "software-development")
+                .queryParam("result_limit", this.resultLimit)
+                .queryParam("offset", offset)
+                .build());
         return request.bodyToMono(ResponseDTO.class).block();
     }
 }
