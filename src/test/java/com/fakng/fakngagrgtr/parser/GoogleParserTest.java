@@ -18,6 +18,7 @@ import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -77,6 +78,7 @@ public class GoogleParserTest extends AbstractParserTest {
         first.setCompany(company);
         first.setDescription("description_1\nsummary_1\nqualifications_1\nresponsibilities_1\ninstructions_1\nHas remote: true");
         first.setLocations(company.getLocations());
+        first.setPublishedDate(LocalDateTime.parse("2022-08-13T00:00:00.001"));
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
@@ -85,6 +87,7 @@ public class GoogleParserTest extends AbstractParserTest {
         second.setCompany(company);
         second.setDescription("description_2\nsummary_2\nqualifications_2\nresponsibilities_2\ninstructions_2\nHas remote: false");
         second.setLocations(company.getLocations().isEmpty() ? new ArrayList<>() : company.getLocations().subList(0, 1));
+        second.setPublishedDate(LocalDateTime.parse("2022-08-13T00:00:00.002"));
         vacancies.add(second);
 
         return vacancies;

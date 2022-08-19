@@ -19,6 +19,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -92,6 +93,7 @@ class AppleParserTest extends AbstractParserTest {
         first.setCompany(company);
         first.setDescription("team_1\ntitle_1\ndescription_1");
         first.setLocations(company.getLocations());
+        first.setPublishedDate(LocalDateTime.parse("2022-08-13T00:00:00.000000001"));
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
@@ -100,6 +102,7 @@ class AppleParserTest extends AbstractParserTest {
         second.setCompany(company);
         second.setDescription("team_2\ntitle_2\ndescription_2");
         second.setLocations(company.getLocations().subList(0, 1));
+        second.setPublishedDate(LocalDateTime.parse("2022-08-13T00:00:00.000000002"));
         vacancies.add(second);
 
         return vacancies;
