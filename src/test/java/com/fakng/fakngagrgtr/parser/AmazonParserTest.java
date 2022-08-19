@@ -3,10 +3,8 @@ package com.fakng.fakngagrgtr.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -75,6 +73,7 @@ public class AmazonParserTest extends AbstractParserTest {
         List<Vacancy> vacancies = new ArrayList<>();
 
         Vacancy first = new Vacancy();
+        first.setJobId("994952");
         first.setTitle("title_1");
         first.setUrl("https://www.amazon.jobs" + "/url_1");
         first.setCompany(company);
@@ -83,6 +82,7 @@ public class AmazonParserTest extends AbstractParserTest {
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
+        second.setJobId("954155");
         second.setTitle("title_2");
         second.setUrl("https://www.amazon.jobs" + "/url_2");
         second.setCompany(company);

@@ -33,7 +33,7 @@ public abstract class AbstractParserTest {
     }
 
     protected void assertVacancy(Vacancy expected, Vacancy actual) {
-        assertEquals(expected.getId(), actual.getId());
+        assertEquals(expected.getJobId(), actual.getJobId());
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getDescription(), actual.getDescription());
         assertEquals(expected.getUrl(), actual.getUrl());
