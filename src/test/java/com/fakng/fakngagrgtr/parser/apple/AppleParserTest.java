@@ -1,11 +1,12 @@
 package com.fakng.fakngagrgtr.parser.apple;
 
-import com.fakng.fakngagrgtr.configuration.ParserConfig;
 import com.fakng.fakngagrgtr.parser.AbstractParserTest;
 import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,8 +44,15 @@ class AppleParserTest extends AbstractParserTest {
                 companyRepository,
                 locationProcessor,
                 URL,
-                new ParserConfig().objectMapper()
+                getObjectMapper()
         );
+    }
+
+    private ObjectMapper getObjectMapper() {
+        return Jackson2ObjectMapperBuilder
+                .json()
+                .build()
+                .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
     }
 
     @Test
