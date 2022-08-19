@@ -30,6 +30,9 @@ public class Vacancy {
     @Column(name = "url", length = 512, nullable = false)
     private String url;
 
+    @Column(name = "job_id", length = 32, nullable = false)
+    private String jobId;
+
     @Column(name = "add_date")
     @CreationTimestamp
     private LocalDateTime addDate;

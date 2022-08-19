@@ -75,6 +75,7 @@ public class GoogleParserTest extends AbstractParserTest {
         Vacancy first = new Vacancy();
         first.setTitle("title_1");
         first.setUrl("apply_url_1");
+        first.setJobId("1");
         first.setCompany(company);
         first.setDescription("description_1\nsummary_1\nqualifications_1\nresponsibilities_1\ninstructions_1\nHas remote: true");
         first.setLocations(company.getLocations());
@@ -84,6 +85,7 @@ public class GoogleParserTest extends AbstractParserTest {
         Vacancy second = new Vacancy();
         second.setTitle("title_2");
         second.setUrl("apply_url_2");
+        second.setJobId("2");
         second.setCompany(company);
         second.setDescription("description_2\nsummary_2\nqualifications_2\nresponsibilities_2\ninstructions_2\nHas remote: false");
         second.setLocations(company.getLocations().isEmpty() ? new ArrayList<>() : company.getLocations().subList(0, 1));
@@ -91,5 +93,17 @@ public class GoogleParserTest extends AbstractParserTest {
         vacancies.add(second);
 
         return vacancies;
+    }
+
+    private void assertVacancy(Vacancy expected, Vacancy actual) {
+        assertEquals(expected.getTitle(), actual.getTitle());
+        assertEquals(expected.getDescription(), actual.getDescription());
+        assertEquals(expected.getUrl(), actual.getUrl());
+        assertEquals(expected.getJobId(), actual.getJobId());
+        assertEquals(expected.getCompany().getId(), actual.getCompany().getId());
+        assertEquals(expected.getLocations().size(), actual.getLocations().size());
+        for (int i = 0; i < expected.getLocations().size(); i++) {
+            assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
+        }
     }
 }
