@@ -13,8 +13,6 @@ public class VacancyDTO {
 
     private String positionId;
 
-    private String postingDate;
-
     private String postingTitle;
 
     private String postDateInGMT;
