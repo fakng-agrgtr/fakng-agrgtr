@@ -92,15 +92,4 @@ public class AmazonParserTest extends AbstractParserTest {
 
         return vacancies;
     }
-
-    private void assertVacancy(Vacancy expected, Vacancy actual) {
-        assertEquals(expected.getTitle(), actual.getTitle());
-        assertEquals(expected.getDescription(), actual.getDescription());
-        assertEquals(expected.getUrl(), actual.getUrl());
-        assertEquals(expected.getCompany().getId(), actual.getCompany().getId());
-        assertEquals(expected.getLocations().size(), actual.getLocations().size());
-        for (int i = 0; i < expected.getLocations().size(); i++) {
-            assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
-        }
-    }
 }
