@@ -26,6 +26,7 @@ public class AmazonParser extends ApiParser {
 
     // Amazon doesn't allow to get more than 10000 vacancies.
     private static final int MAX_VACANCIES_COUNT = 10000;
+    private static final String JOB_URL_FORMAT = "https://www.amazon.jobs%s";
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("MMMM d, u", Locale.ENGLISH);
 
@@ -71,6 +72,7 @@ public class AmazonParser extends ApiParser {
         Vacancy vacancy = new Vacancy();
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(parseUrl(dto));
+        vacancy.setJobId(dto.getIdIcims());
         vacancy.setPublishedDate(parseLocalDateTime(dto));
         vacancy.setCompany(company);
         vacancy.addLocation(parseLocation(dto));
@@ -79,7 +81,7 @@ public class AmazonParser extends ApiParser {
     }
 
     private String parseUrl(VacancyDTO dto) {
-        return "https://www.amazon.jobs" + dto.getJobPath();
+        return String.format(JOB_URL_FORMAT, dto.getJobPath());
     }
 
     private LocalDateTime parseLocalDateTime(VacancyDTO dto) {
