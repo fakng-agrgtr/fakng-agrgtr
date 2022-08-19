@@ -47,7 +47,7 @@ class AppleParserTest extends AbstractParserTest {
     }
 
     @Test
-    void getCompanyName() {
+    public void testCompanyNameIsApple() {
         assertEquals(appleParser.getCompanyName(), "Apple");
     }
 
@@ -94,17 +94,5 @@ class AppleParserTest extends AbstractParserTest {
         vacancies.add(second);
 
         return vacancies;
-    }
-
-    private void assertVacancy(Vacancy expected, Vacancy actual) {
-        assertEquals(expected.getId(), actual.getId());
-        assertEquals(expected.getTitle(), actual.getTitle());
-        assertEquals(expected.getDescription(), actual.getDescription());
-        assertEquals(expected.getUrl(), actual.getUrl());
-        assertEquals(expected.getCompany().getId(), actual.getCompany().getId());
-        assertEquals(expected.getLocations().size(), actual.getLocations().size());
-        for (int i = 0; i < expected.getLocations().size(); i++) {
-            assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
-        }
     }
 }
