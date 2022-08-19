@@ -36,10 +36,12 @@ CREATE TABLE vacancy
     id          BIGINT                   NOT NULL DEFAULT nextval('vacancy_seq') PRIMARY KEY,
     title       VARCHAR(128)             NOT NULL,
     description VARCHAR                  NOT NULL,
+    job_id      VARCHAR(32)              NOT NULL,
     url         VARCHAR                  NOT NULL,
     company_id  INT                      NOT NULL,
     location_id BIGINT                   NOT NULL,
     add_date    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    published_date TIMESTAMP WITHOUT TIME ZONE,
 
     CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id),
     CONSTRAINT vacancy_location_fk FOREIGN KEY (location_id) REFERENCES location (id)

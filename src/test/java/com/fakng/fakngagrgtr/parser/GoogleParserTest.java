@@ -72,18 +72,18 @@ public class GoogleParserTest extends AbstractParserTest {
         List<Vacancy> vacancies = new ArrayList<>();
 
         Vacancy first = new Vacancy();
-        first.setId(1L);
         first.setTitle("title_1");
         first.setUrl("apply_url_1");
+        first.setJobId("1");
         first.setCompany(company);
         first.setDescription("description_1\nsummary_1\nqualifications_1\nresponsibilities_1\ninstructions_1\nHas remote: true");
         first.setLocations(company.getLocations());
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
-        second.setId(2L);
         second.setTitle("title_2");
         second.setUrl("apply_url_2");
+        second.setJobId("2");
         second.setCompany(company);
         second.setDescription("description_2\nsummary_2\nqualifications_2\nresponsibilities_2\ninstructions_2\nHas remote: false");
         second.setLocations(company.getLocations().isEmpty() ? new ArrayList<>() : company.getLocations().subList(0, 1));

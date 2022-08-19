@@ -59,9 +59,9 @@ public class GoogleParser extends ApiParser {
 
     private Vacancy createVacancy(VacancyDTO dto) {
         Vacancy vacancy = new Vacancy();
-        vacancy.setId(parseVacancyId(dto.getId()));
         vacancy.setTitle(dto.getTitle());
         vacancy.setUrl(dto.getApplyUrl());
+        vacancy.setJobId(parseJobId(dto.getId()));
         if (dto.getPublishDate() != null) {
             vacancy.setPublishedDate(parseLocalDateTime(dto.getPublishDate()));
         }
@@ -71,15 +71,15 @@ public class GoogleParser extends ApiParser {
         return vacancy;
     }
 
+    private String parseJobId(String jobId) {
+        return jobId.substring(jobId.indexOf("/") + 1);
+    }
+
     private void processLocations(Vacancy vacancy, List<LocationDTO> locations) {
         locations.forEach(location -> {
             vacancy.addLocation(locationProcessor.processLocation(
                     company, location.getCity(), location.getCountryCode()));
         });
-    }
-
-    private Long parseVacancyId(String dtoId) {
-        return Long.parseLong(dtoId.split("/")[1]);
     }
 
     private String generateFullDescription(VacancyDTO dto) {
