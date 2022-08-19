@@ -22,12 +22,10 @@ public class GoogleParser extends ApiParser {
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
     public GoogleParser(
-            WebClient webClient,
             CompanyRepository companyRepository,
             LocationProcessor locationProcessor,
-            @Value("${url.google}") String url) {
-        super(webClient, companyRepository, locationProcessor);
-        this.url = url;
+            @Value("${google.url}") String url) {
+        super(createWebClient(url), companyRepository, locationProcessor);
     }
 
     @PostConstruct
@@ -91,7 +89,8 @@ public class GoogleParser extends ApiParser {
     }
 
     private ResponseDTO getPage(int page) {
-        ResponseSpec response = getRequest(String.format(url, page));
+        // TODO
+        ResponseSpec response = getRequest("");
         return response.bodyToMono(ResponseDTO.class).block();
     }
 }

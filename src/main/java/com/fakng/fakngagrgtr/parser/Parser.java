@@ -15,7 +15,6 @@ import java.util.List;
 public abstract class Parser {
     protected final CompanyRepository companyRepository;
     protected final LocationProcessor locationProcessor;
-    protected String url;
     protected Company company;
 
     protected void initBase() {

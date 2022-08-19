@@ -29,12 +29,11 @@ public class AmazonParser extends ApiParser {
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormatter.ofPattern("MMMM d, u", Locale.ENGLISH);
 
-    public AmazonParser(WebClient webClient,
+    public AmazonParser(
             CompanyRepository companyRepository,
             LocationProcessor locationProcessor,
-            @Value("${url.amazon}") String url) {
-        super(webClient, companyRepository, locationProcessor);
-        this.url = url;
+            @Value("${amazon.url}") String url) {
+        super(createWebClient(url), companyRepository, locationProcessor);
     }
 
     @PostConstruct
@@ -101,7 +100,8 @@ public class AmazonParser extends ApiParser {
     }
 
     private ResponseDTO getPage(int offset) {
-        ResponseSpec request = getRequest(String.format(url, offset));
+        //TODO
+        ResponseSpec request = getRequest(String.format("url", offset));
         return request.bodyToMono(ResponseDTO.class).block();
     }
 }

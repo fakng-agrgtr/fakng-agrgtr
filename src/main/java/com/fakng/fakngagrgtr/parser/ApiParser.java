@@ -13,6 +13,11 @@ public abstract class ApiParser extends Parser {
 
     protected final WebClient webClient;
 
+    protected static WebClient createWebClient(String url) {
+        if (url.isEmpty()) throw new RuntimeException();
+        return WebClient.create(url);
+    }
+
     public ApiParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor) {
         super(companyRepository, locationProcessor);
         this.webClient = webClient;
