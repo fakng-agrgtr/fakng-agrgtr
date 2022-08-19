@@ -7,8 +7,6 @@ import java.util.List;
 @Data
 public class VacancyDTO {
 
-    private String id;
-
     private String jobSummary;
 
     private List<LocationDTO> locations;
@@ -21,16 +19,5 @@ public class VacancyDTO {
 
     private String postDateInGMT;
 
-    private String transformedPostingTitle;
-
-    private String reqId;
-
-    private Boolean managedPipelineRole;
-
-    private Integer standardWeeklyHours;
-
     private TeamDTO team;
-
-    private Boolean homeOffice;
-
 }
