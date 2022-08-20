@@ -1,0 +1,35 @@
+{
+  "id": "PIPE-200314122",
+  "jobSummary": "Do you love how it feels to help others?  After customers purchase our products, you’re the one who helps them get more out of their new Apple technology. Your day in the Apple Store is filled with a range of focused support and service tasks. Whether you’re helping customers get started with the Mac or finding answers to their questions about other Apple devices, you’re ready to share knowledge and provide exceptional assistance. You gain satisfaction from bringing resolution and insight to each customer, elevating his or her relationship with Apple to the next level.\n\nBoth full-time and part-time jobs are available.",
+  "locations": [
+    {
+      "city": "",
+      "stateProvince": "",
+      "countryName": "India",
+      "metro": "",
+      "region": "",
+      "name": "India",
+      "countryID": "country-IND",
+      "level": 1
+    }
+  ],
+  "positionId": "200314122",
+  "postingDate": "Aug 15, 2022",
+  "postingTitle": "IN-Technical Specialist",
+  "localeInfo": {
+    "languageCode": "en_US",
+    "dateFormat": "MMM D, YYYY",
+    "defaultLocaleCode": "en-us"
+  },
+  "postDateInGMT": "2022-08-15T20:54:12.366214635Z",
+  "transformedPostingTitle": "in-technical-specialist",
+  "reqId": "PIPE-200314122",
+  "managedPipelineRole": true,
+  "standardWeeklyHours": 40,
+  "team": {
+    "teamName": "Apple Retail",
+    "teamID": "teamsAndSubTeams-APPST",
+    "teamCode": "APPST"
+  },
+  "homeOffice": false
+}

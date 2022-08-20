@@ -19,7 +19,7 @@ public abstract class HtmlParser extends Parser {
         this.htmlWebClient = htmlWebClient;
     }
 
-    private HtmlPage downloadPage(String url) throws IOException {
+    protected HtmlPage downloadPage(String url) throws IOException {
         return htmlWebClient.getPage(url);
     }
 }
