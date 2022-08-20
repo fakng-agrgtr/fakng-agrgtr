@@ -16,7 +16,7 @@ import java.util.Map;
 @Component
 public class UberParser extends ApiParser {
 
-    public static final String VACANCY_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
+    private static final String VACANCY_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
 
     public UberParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
                       @Value("${url.uber}") String url) {
