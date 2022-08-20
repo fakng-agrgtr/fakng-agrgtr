@@ -2,6 +2,7 @@ package com.fakng.fakngagrgtr.parser;
 
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.location.Location;
+import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,5 +30,19 @@ public abstract class AbstractParserTest {
         location.setCity(city);
         location.setCountry(country);
         return location;
+    }
+
+    protected void assertVacancy(Vacancy expected, Vacancy actual) {
+        assertEquals(expected.getId(), actual.getId());
+        assertEquals(expected.getTitle(), actual.getTitle());
+        assertEquals(expected.getDescription(), actual.getDescription());
+        assertEquals(expected.getUrl(), actual.getUrl());
+        assertEquals(expected.getJobId(), actual.getJobId());
+        assertEquals(expected.getPublishedDate(), actual.getPublishedDate());
+        assertEquals(expected.getCompany().getId(), actual.getCompany().getId());
+        assertEquals(expected.getLocations().size(), actual.getLocations().size());
+        for (int i = 0; i < expected.getLocations().size(); i++) {
+            assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
+        }
     }
 }
