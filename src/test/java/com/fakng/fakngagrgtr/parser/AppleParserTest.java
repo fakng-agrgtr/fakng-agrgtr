@@ -64,8 +64,12 @@ class AppleParserTest extends AbstractParserTest {
                 .thenReturn(company.getLocations().get(0));
         Mockito.when(locationProcessor.processLocation(company, "city_2", "country_2"))
                 .thenReturn(company.getLocations().get(1));
-        Mockito.when(htmlWebClient.getPage(URL))
-                .thenReturn(htmlWebClient.loadHtmlCodeIntoCurrentWindow(Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))));
+        try (WebClient trueClient = new WebClient()) {
+            Mockito.when(htmlWebClient.getPage(URL))
+                    .thenReturn(trueClient.loadHtmlCodeIntoCurrentWindow(
+                            Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))
+                    ));
+        }
 
         appleParser.init();
 
