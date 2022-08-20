@@ -16,6 +16,7 @@ spring:
 url:
     google: https://careers.google.com/api/v3/search/?q=&page_size=100&sort_by=date&page=%d
     amazon: https://www.amazon.jobs/en/search.json?offset=%d&result_limit=100&category[]=software-development&sort=recent
+    apple: https://jobs.apple.com/en-us/search?sort=newest&page=%d
 
 agrgtr:
     cron: 0 */12 * * * * #at 0th min of every 12th hour
