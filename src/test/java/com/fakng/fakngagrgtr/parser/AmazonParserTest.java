@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -79,6 +80,7 @@ public class AmazonParserTest extends AbstractParserTest {
         first.setCompany(company);
         first.setDescription("description 1\nbasic_qualifications 1\npreferred_qualifications 1");
         first.addLocation(company.getLocations().get(0));
+        first.setPublishedDate(LocalDateTime.of(2019, 11, 18, 0, 0));
         vacancies.add(first);
 
         Vacancy second = new Vacancy();
@@ -88,6 +90,7 @@ public class AmazonParserTest extends AbstractParserTest {
         second.setCompany(company);
         second.setDescription("description 2\nbasic_qualifications 2\npreferred_qualifications 2");
         second.addLocation(company.getLocations().get(1));
+        second.setPublishedDate(LocalDateTime.of(2019, 11, 18, 0, 0));
         vacancies.add(second);
 
         return vacancies;
