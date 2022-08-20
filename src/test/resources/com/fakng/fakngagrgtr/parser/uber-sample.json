@@ -1,0 +1,79 @@
+{
+  "status": "success",
+  "data": {
+    "results": [
+      {
+        "id": 1,
+        "title": "title_1",
+        "description": "desc_1",
+        "department": "Engineering",
+        "type": "",
+        "programAndPlatform": "",
+        "location": {
+          "country": "IND",
+          "region": "Karnataka",
+          "city": "Bangalore",
+          "countryName": "India"
+        },
+        "featured": false,
+        "level": "5",
+        "creationDate": "2022-03-31T16:58:00.000Z",
+        "otherLevels": null,
+        "team": "Backend",
+        "portalID": "EXTERNAL",
+        "isPipeline": false,
+        "statusID": "D31001",
+        "statusName": "Approved",
+        "updatedDate": "2022-08-14T00:00:00.001Z",
+        "uniqueSkills": "",
+        "allLocations": [
+          {
+            "country": "country_1",
+            "region": "Karnataka",
+            "city": "city_1",
+            "countryName": "India"
+          },
+          {
+            "country": "country_2",
+            "region": "Karnataka",
+            "city": "city_2",
+            "countryName": "India"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "title_2",
+        "description": "desc_2",
+        "department": "Engineering",
+        "type": "",
+        "programAndPlatform": "",
+        "location": {
+          "country": "IND",
+          "region": "Karnataka",
+          "city": "Bangalore",
+          "countryName": "India"
+        },
+        "featured": false,
+        "level": "5",
+        "creationDate": "2022-03-31T16:58:00.000Z",
+        "otherLevels": null,
+        "team": "Backend",
+        "portalID": "EXTERNAL",
+        "isPipeline": false,
+        "statusID": "D31001",
+        "statusName": "Approved",
+        "updatedDate": "2022-08-13T00:00:00.002Z",
+        "uniqueSkills": "",
+        "allLocations": [
+          {
+            "country": "country_1",
+            "region": "Karnataka",
+            "city": "city_1",
+            "countryName": "India"
+          }
+        ]
+      }
+    ]
+  }
+}

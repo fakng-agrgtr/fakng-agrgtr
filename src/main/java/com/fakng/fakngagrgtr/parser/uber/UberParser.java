@@ -40,7 +40,7 @@ public class UberParser extends ApiParser {
         Vacancy vacancy = new Vacancy();
         vacancy.setJobId(dto.getId());
         vacancy.setTitle(dto.getTitle());
-        //vacancy.setDescription(dto.getDescription());
+        vacancy.setDescription(dto.getDescription());
         vacancy.setUrl(String.format(VACANCY_FORMAT, vacancy.getJobId()));
         vacancy.setCompany(company);
         vacancy.setPublishedDate(parseDate(dto.getUpdatedDate()));

@@ -3,10 +3,33 @@ package com.fakng.fakngagrgtr.parser;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class AbstractParserTest {
+
+    protected String getTestJson(String fileName) throws IOException {
+        return IOUtils.toString(Objects.requireNonNull(this.getClass().getResourceAsStream(fileName)), StandardCharsets.UTF_8);
+    }
+
+    protected WebClient mockWebClient(String body) {
+        return WebClient.builder()
+                .exchangeFunction(clientRequest ->
+                        Mono.just(ClientResponse.create(HttpStatus.OK)
+                                .header("content-type", "application/json")
+                                .body(body)
+                                .build()))
+                .build();
+    }
 
     protected void assertLocation(Location expected, Location actual) {
         assertEquals(expected.getCity(), actual.getCity());

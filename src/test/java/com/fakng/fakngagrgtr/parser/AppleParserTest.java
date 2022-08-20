@@ -1,7 +1,6 @@
-package com.fakng.fakngagrgtr.parser.apple;
+package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.parser.AbstractParserTest;
-import com.fakng.fakngagrgtr.parser.LocationProcessor;
+import com.fakng.fakngagrgtr.parser.apple.AppleParser;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
@@ -57,11 +56,6 @@ class AppleParserTest extends AbstractParserTest {
     }
 
     @Test
-    public void testCompanyNameIsApple() {
-        assertEquals(appleParser.getCompanyName(), "Apple");
-    }
-
-    @Test
     public void testParseCreatesVacanciesFromJsonWithCachedLocations() throws IOException {
         Company company = prepareCompany();
         Mockito.when(companyRepository.findByTitle(URL))
@@ -71,7 +65,7 @@ class AppleParserTest extends AbstractParserTest {
         Mockito.when(locationProcessor.processLocation(company, "city_2", "country_2"))
                 .thenReturn(company.getLocations().get(1));
         Mockito.when(htmlWebClient.getPage(URL))
-                .thenReturn(new WebClient().loadHtmlCodeIntoCurrentWindow(Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))));
+                .thenReturn(htmlWebClient.loadHtmlCodeIntoCurrentWindow(Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))));
 
         appleParser.init();
 
