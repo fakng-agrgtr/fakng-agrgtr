@@ -20,4 +20,6 @@ url:
 
 agrgtr:
     cron: 0 */12 * * * * #at 0th min of every 12th hour
-    pool-size: 5
+    pool-size:
+        primary: 5
+        secondary: 10

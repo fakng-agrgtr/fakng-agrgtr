@@ -49,6 +49,11 @@ public class AmazonParser extends ApiParser {
     }
 
     @Override
+    protected Iterable<Vacancy> enrichVacanciesWithDetails(Iterable<Vacancy> vacancies) {
+        return null;
+    }
+
+    @Override
     protected List<Vacancy> getAllVacancies() {
         int offset = 0;
         ResponseDTO firstPage = getPage(offset);

@@ -5,6 +5,7 @@ import com.fakng.fakngagrgtr.persistent.location.Location;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,7 +19,9 @@ import java.util.List;
 public class Vacancy {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "vacancy-seq-generator")
+    @GenericGenerator(name = "vacancy-seq-generator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = @org.hibernate.annotations.Parameter(name = "sequence_name", value = "vacancy_seq"))
     private Long id;
 
     @Column(name = "title", length = 128, nullable = false)
@@ -37,6 +40,9 @@ public class Vacancy {
     @CreationTimestamp
     private LocalDateTime addDate;
 
+    @Column(name = "fully_constructed", nullable = false)
+    private boolean fullyConstructed;
+
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 
@@ -50,5 +56,6 @@ public class Vacancy {
 
     public void addLocation(Location location) {
         locations.add(location);
+        location.addVacancy(this);
     }
 }

@@ -39,16 +39,14 @@ CREATE TABLE vacancy
     job_id      VARCHAR(32)              NOT NULL,
     url         VARCHAR                  NOT NULL,
     company_id  INT                      NOT NULL,
-    location_id BIGINT                   NOT NULL,
     add_date    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     published_date TIMESTAMP WITHOUT TIME ZONE,
+    fully_constructed BOOLEAN NOT NULL DEFAULT FALSE,
 
-    CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id),
-    CONSTRAINT vacancy_location_fk FOREIGN KEY (location_id) REFERENCES location (id)
+    CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
 CREATE INDEX vacancy_company_idx ON vacancy (company_id);
-CREATE INDEX vacancy_location_idx ON vacancy (location_id);
 
 CREATE TABLE vacancy_location (
     id BIGINT NOT NULL DEFAULT nextval('vacancy_location_seq') PRIMARY KEY,

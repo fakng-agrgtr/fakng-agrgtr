@@ -40,4 +40,8 @@ public class Location {
     public void addCompany(Company company) {
         companies.add(company);
     }
+
+    public void addVacancy(Vacancy vacancy) {
+        vacancies.add(vacancy);
+    }
 }

@@ -41,6 +41,11 @@ public class GoogleParser extends ApiParser {
     }
 
     @Override
+    protected Iterable<Vacancy> enrichVacanciesWithDetails(Iterable<Vacancy> vacancies) {
+        return null;
+    }
+
+    @Override
     protected List<Vacancy> getAllVacancies() {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
