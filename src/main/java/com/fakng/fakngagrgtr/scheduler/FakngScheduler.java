@@ -33,7 +33,8 @@ public class FakngScheduler {
     public void scheduleAggregation() {
         parsers.forEach(parser -> CompletableFuture
                 .supplyAsync(parser::parse, executor)
-                .thenAccept(vacancyRepository::saveAll)
+                .thenAccept(vacancyRepository::saveAll) // replace with smart save method
+                .thenRun(parser::requestNewVacanciesDetails) // thenRun?
                 .exceptionally(ex -> {
                     ex.printStackTrace();
                     return null;
