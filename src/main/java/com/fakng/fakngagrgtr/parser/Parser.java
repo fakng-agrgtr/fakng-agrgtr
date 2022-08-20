@@ -102,7 +102,7 @@ public abstract class Parser {
     protected abstract String getCompanyName();
 
     private List<Vacancy> findNewVacancies(List<Vacancy> allVacancies) {
-        return new ArrayList<>(); // TODO
+        return allVacancies; // TODO
     }
 
     private boolean saveNewVacancyDetails(String url) {
