@@ -18,7 +18,6 @@ import java.util.Map;
 public class UberParser extends ApiParser {
 
     private static final String VACANCY_URL_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
-    private static final String CSRF_TOKEN_HEADER = "X-Csrf-Token";
 
     public UberParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
                       @Value("${url.uber}") String url) {
@@ -62,7 +61,7 @@ public class UberParser extends ApiParser {
 
     private List<VacancyDTO> requestVacancies() {
         RequestDTO request = buildRequest();
-        ResponseDTO response = postRequest(url, request, RequestDTO.class, Map.of(CSRF_TOKEN_HEADER, "''"))
+        ResponseDTO response = postRequest(url, request, RequestDTO.class, Map.of("X-Csrf-Token", "''"))
                 .bodyToMono(ResponseDTO.class)
                 .block();
         if (response != null) {
