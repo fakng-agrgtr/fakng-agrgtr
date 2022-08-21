@@ -3,6 +3,7 @@ package com.fakng.fakngagrgtr.parser.uber;
 import com.fakng.fakngagrgtr.parser.ApiParser;
 import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
+import com.fakng.fakngagrgtr.persistent.location.Location;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -45,14 +46,14 @@ public class UberParser extends ApiParser {
         vacancy.setUrl(String.format(VACANCY_URL_FORMAT, vacancy.getJobId()));
         vacancy.setCompany(company);
         vacancy.setPublishedDate(parseDate(dto.getUpdatedDate()));
-        parseLocations(vacancy, dto);
+        vacancy.setLocations(parseLocations(dto));
         return vacancy;
     }
 
-    private void parseLocations(Vacancy vacancy, VacancyDTO dto) {
-        dto.getAllLocations().forEach(location -> vacancy.addLocation(
-                locationProcessor.processLocation(company, location.getCity(), location.getCountry())
-        ));
+    private List<Location> parseLocations(VacancyDTO dto) {
+        return dto.getAllLocations().stream()
+                .map(location -> locationProcessor.processLocation(company, location.getCity(), location.getCountry()))
+                .toList();
     }
 
     private LocalDateTime parseDate(String date) {
