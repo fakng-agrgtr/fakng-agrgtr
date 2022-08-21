@@ -18,7 +18,7 @@ public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Integer id;
 
     @Column(name = "title", length = 32, nullable = false)
     private String title;

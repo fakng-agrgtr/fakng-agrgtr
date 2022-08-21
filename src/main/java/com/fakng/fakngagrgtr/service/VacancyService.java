@@ -23,15 +23,15 @@ public class VacancyService {
     private final VacancyBatchRepository vacancyBatchRepository;
 
     @Transactional(readOnly = true)
-    public Page<Vacancy> findAll(List<Long> companyIds, List<Long> locationIds, int page, int pageSize) {
+    public Page<Vacancy> findAll(List<Integer> companyIds, List<Integer> locationIds, String title, int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
-        return vacancyRepository.findAll(companyIds, locationIds, pageable);
+        return vacancyRepository.findAll(companyIds, locationIds, title, pageable);
     }
 
     @Transactional
     public void updateOrMarkInactive(List<Vacancy> vacancies) {
         vacancyBatchRepository.upsertAll(vacancies);
-        Long companyId = vacancies.get(0).getCompany().getId();
+        Integer companyId = vacancies.get(0).getCompany().getId();
         vacancyRepository.markNotPresentAsInactive(companyId, mapToJobIds(vacancies));
     }
 

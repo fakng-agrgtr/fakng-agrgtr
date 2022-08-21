@@ -33,6 +33,7 @@ public class Location {
     @ManyToMany(mappedBy = "locations")
     private List<Vacancy> vacancies;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "company_location", joinColumns = @JoinColumn(name = "location_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
     private List<Company> companies = new ArrayList<>();
