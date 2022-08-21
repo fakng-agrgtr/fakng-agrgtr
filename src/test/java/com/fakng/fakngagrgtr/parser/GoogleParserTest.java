@@ -4,24 +4,17 @@ import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.parser.google.GoogleParser;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
-import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,7 +31,7 @@ public class GoogleParserTest extends AbstractParserTest {
 
     @BeforeEach
     public void init() throws IOException {
-        String json = getTestJson("google-data.json");
+        String json = getTestData("google-data.json");
         googleParser = new GoogleParser(mockWebClient(json), companyRepository, locationProcessor, URL);
     }
 

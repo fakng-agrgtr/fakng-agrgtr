@@ -29,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class AppleParserTest extends AbstractParserTest {
 
     private static final String URL = "Apple";
+    private static final String DATA_PATH = "apple-data.html";
     private AppleParser appleParser;
     @Mock
     private WebClient htmlWebClient;
@@ -56,7 +57,7 @@ class AppleParserTest extends AbstractParserTest {
     }
 
     @Test
-    public void testParseCreatesVacanciesFromJsonWithCachedLocations() throws IOException {
+    public void testParseCreatesVacanciesFromJsonWithCachedLocations() throws Exception {
         Company company = prepareCompany();
         Mockito.when(companyRepository.findByTitle(URL))
                 .thenReturn(Optional.of(company));
@@ -64,12 +65,8 @@ class AppleParserTest extends AbstractParserTest {
                 .thenReturn(company.getLocations().get(0));
         Mockito.when(locationProcessor.processLocation(company, "city_2", "country_2"))
                 .thenReturn(company.getLocations().get(1));
-        try (WebClient trueClient = new WebClient()) {
-            Mockito.when(htmlWebClient.getPage(URL))
-                    .thenReturn(trueClient.loadHtmlCodeIntoCurrentWindow(
-                            Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))
-                    ));
-        }
+        mockHtmlClient(trueClient -> Mockito.when(htmlWebClient.getPage(URL))
+                .thenReturn(trueClient.loadHtmlCodeIntoCurrentWindow(getTestData(DATA_PATH))));
 
         appleParser.init();
 

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class AbstractParserTest {
 
-    protected String getTestJson(String fileName) throws IOException {
+    protected String getTestData(String fileName) throws IOException {
         return IOUtils.toString(Objects.requireNonNull(this.getClass().getResourceAsStream(fileName)), StandardCharsets.UTF_8);
     }
 
@@ -29,6 +29,12 @@ public abstract class AbstractParserTest {
                                 .body(body)
                                 .build()))
                 .build();
+    }
+
+    protected void mockHtmlClient(Consumer<com.gargoylesoftware.htmlunit.WebClient> trueClientConsumer) throws Exception {
+        try (com.gargoylesoftware.htmlunit.WebClient trueClient = new com.gargoylesoftware.htmlunit.WebClient()) {
+            trueClientConsumer.accept(trueClient);
+        }
     }
 
     protected void assertLocation(Location expected, Location actual) {
@@ -66,5 +72,10 @@ public abstract class AbstractParserTest {
         for (int i = 0; i < expected.getLocations().size(); i++) {
             assertLocation(expected.getLocations().get(i), actual.getLocations().get(i));
         }
+    }
+
+    @FunctionalInterface
+    private interface Consumer<T> {
+        void accept(T arg) throws Exception;
     }
 }

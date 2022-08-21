@@ -34,7 +34,7 @@ public class UberParserTest extends AbstractParserTest {
 
     @BeforeEach
     public void init() throws IOException {
-        String json = getTestJson("uber-sample.json");
+        String json = getTestData("uber-data.json");
         uberParser = new UberParser(mockWebClient(json), companyRepository, locationProcessor, URL);
     }
 
