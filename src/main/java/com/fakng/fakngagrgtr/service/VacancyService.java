@@ -32,7 +32,7 @@ public class VacancyService {
     public void updateOrMarkInactive(List<Vacancy> vacancies) {
         vacancyBatchRepository.upsertAll(vacancies);
         Long companyId = vacancies.get(0).getCompany().getId();
-        vacancyRepository.markInactive(companyId, mapToJobIds(vacancies));
+        vacancyRepository.markNotPresentAsInactive(companyId, mapToJobIds(vacancies));
     }
 
     @Transactional

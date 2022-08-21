@@ -28,7 +28,7 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
 
     @Modifying
     @Query(value = "UPDATE vacancy SET active = false WHERE company_id = :companyId AND job_id NOT IN (:jobIds)", nativeQuery = true)
-    void markInactive(@Param("companyId") Long companyId, @Param("jobIds") List<String> jobIds);
+    void markNotPresentAsInactive(@Param("companyId") Long companyId, @Param("jobIds") List<String> jobIds);
 
     @Modifying
     void deleteByLastUpdatedBefore(LocalDateTime date);
