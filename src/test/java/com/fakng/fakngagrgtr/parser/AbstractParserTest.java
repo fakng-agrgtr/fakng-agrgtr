@@ -75,7 +75,7 @@ public abstract class AbstractParserTest {
     }
 
     @FunctionalInterface
-    private interface Consumer<T> {
+    protected interface Consumer<T> {
         void accept(T arg) throws Exception;
     }
 }
