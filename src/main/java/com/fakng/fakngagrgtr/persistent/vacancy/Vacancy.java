@@ -40,7 +40,7 @@ public class Vacancy {
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 
-    @Column(name = "lastUpdated", nullable = false)
+    @Column(name = "last_updated", nullable = false)
     private LocalDateTime lastUpdated;
 
     @Column(name = "active", nullable = false)
