@@ -1,6 +1,7 @@
 CREATE SEQUENCE company_seq;
 CREATE SEQUENCE location_seq;
 CREATE SEQUENCE vacancy_seq;
+CREATE SEQUENCE old_vacancy_seq;
 CREATE SEQUENCE subscription_seq;
 CREATE SEQUENCE company_sub_seq;
 CREATE SEQUENCE vacancy_location_seq;
@@ -39,16 +40,15 @@ CREATE TABLE vacancy
     job_id      VARCHAR(32)              NOT NULL,
     url         VARCHAR                  NOT NULL,
     company_id  INT                      NOT NULL,
-    location_id BIGINT                   NOT NULL,
     add_date    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    last_updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     published_date TIMESTAMP WITHOUT TIME ZONE,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
 
-    CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id),
-    CONSTRAINT vacancy_location_fk FOREIGN KEY (location_id) REFERENCES location (id)
+    CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
-CREATE INDEX vacancy_company_idx ON vacancy (company_id);
-CREATE INDEX vacancy_location_idx ON vacancy (location_id);
+CREATE UNIQUE INDEX vacancy_company_idx ON vacancy (company_id, job_id);
 
 CREATE TABLE vacancy_location (
     id BIGINT NOT NULL DEFAULT nextval('vacancy_location_seq') PRIMARY KEY,
