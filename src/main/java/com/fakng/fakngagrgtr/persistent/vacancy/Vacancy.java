@@ -40,6 +40,12 @@ public class Vacancy {
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 
+    @Column(name = "lastUpdated", nullable = false)
+    private LocalDateTime lastUpdated;
+
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;

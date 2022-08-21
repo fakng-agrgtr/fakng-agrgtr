@@ -21,3 +21,6 @@ url:
 agrgtr:
     cron: 0 */12 * * * * #at 0th min of every 12th hour
     pool-size: 5
+cleaner:
+    cron: 0 */12 * * * *
+    months-life-time: 3
