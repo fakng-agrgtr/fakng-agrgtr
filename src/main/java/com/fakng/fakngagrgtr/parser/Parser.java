@@ -53,6 +53,9 @@ public abstract class Parser {
             if (newVacancies.size() > 0) {
                 requestingNewVacanciesDelay = LocalDateTime.now();
             }
+            if (!requestsRestriction) {
+                requestNewVacanciesDetails(false);
+            }
             return allVacancies;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -71,10 +74,10 @@ public abstract class Parser {
         return requestingNewVacanciesDelay;
     }
 
-    public void requestNewVacanciesDetails() {
+    public void requestNewVacanciesDetails(boolean requestsRestriction) {
         int requestsAmount = 0;
         while (newVacancies.size() > 0) {
-            if (requestsRestriction && requestsAmount >= REQUESTS_LIMIT) {
+            if (requestsAmount >= REQUESTS_LIMIT) {
                 requestingNewVacanciesDelay = LocalDateTime.now().plusHours(REQUESTING_DELAY);
                 return;
             }

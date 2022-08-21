@@ -1,7 +1,9 @@
 package com.fakng.fakngagrgtr.parser;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,10 +16,11 @@ public class Initializer {
 
     public void initialize() {
         parsers.forEach(Parser::initialize);
+        Map<Parser, LocalDateTime> delays = new HashMap<>();
         while (!allParsersFinished()) {
             for (Parser parser : parsers) {
                 if (isParserReady(parser)) {
-                    parser.requestNewVacanciesDetails();
+                    parser.requestNewVacanciesDetails(true);
                 }
             }
         }
