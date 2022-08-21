@@ -16,7 +16,8 @@ import java.util.Map;
 @Component
 public class UberParser extends ApiParser {
 
-    private static final String VACANCY_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
+    private static final String VACANCY_URL_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
+    private static final String CSRF_TOKEN_HEADER = "X-Csrf-Token";
 
     public UberParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
                       @Value("${url.uber}") String url) {
@@ -41,13 +42,17 @@ public class UberParser extends ApiParser {
         vacancy.setJobId(dto.getId());
         vacancy.setTitle(dto.getTitle());
         vacancy.setDescription(dto.getDescription());
-        vacancy.setUrl(String.format(VACANCY_FORMAT, vacancy.getJobId()));
+        vacancy.setUrl(String.format(VACANCY_URL_FORMAT, vacancy.getJobId()));
         vacancy.setCompany(company);
         vacancy.setPublishedDate(parseDate(dto.getUpdatedDate()));
+        parseLocations(vacancy, dto);
+        return vacancy;
+    }
+
+    private void parseLocations(Vacancy vacancy, VacancyDTO dto) {
         dto.getAllLocations().forEach(location -> vacancy.addLocation(
                 locationProcessor.processLocation(company, location.getCity(), location.getCountry())
         ));
-        return vacancy;
     }
 
     private LocalDateTime parseDate(String date) {
@@ -55,9 +60,8 @@ public class UberParser extends ApiParser {
     }
 
     private List<VacancyDTO> requestVacancies() {
-        RequestDTO request = new RequestDTO();
-        request.addParam("query", "software engineer");
-        ResponseDTO response = postRequest(url, request, RequestDTO.class, Map.of("X-Csrf-Token", "''"))
+        RequestDTO request = buildRequest();
+        ResponseDTO response = postRequest(url, request, RequestDTO.class, Map.of(CSRF_TOKEN_HEADER, "''"))
                 .bodyToMono(ResponseDTO.class)
                 .block();
         if (response != null) {
@@ -65,6 +69,12 @@ public class UberParser extends ApiParser {
         } else {
             throw new IllegalStateException("No Uber vacancies found");
         }
+    }
+
+    private RequestDTO buildRequest() {
+        RequestDTO request = new RequestDTO();
+        request.addParam("query", "software engineer");
+        return request;
     }
 
     @Override

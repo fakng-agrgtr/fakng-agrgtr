@@ -7,5 +7,4 @@ import java.util.List;
 @Data
 class DataDTO {
     private List<VacancyDTO> results;
-    private TotalResultDTO totalResults;
 }

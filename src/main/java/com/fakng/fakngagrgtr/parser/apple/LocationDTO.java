@@ -3,10 +3,7 @@ package com.fakng.fakngagrgtr.parser.apple;
 import lombok.Data;
 
 @Data
-public class LocationDTO {
-
+class LocationDTO {
     private String city;
-
     private String countryID;
-
 }
