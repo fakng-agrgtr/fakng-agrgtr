@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ResponseDTO {
+class ResponseDTO {
     private List<VacancyDTO> searchResults;
 }

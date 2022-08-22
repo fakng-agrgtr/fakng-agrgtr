@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class ResponseDTO {
+class ResponseDTO {
     private Integer count;
     private Integer nextPage;
     private Integer pageSize;

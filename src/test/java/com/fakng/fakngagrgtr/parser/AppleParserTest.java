@@ -1,7 +1,6 @@
-package com.fakng.fakngagrgtr.parser.apple;
+package com.fakng.fakngagrgtr.parser;
 
-import com.fakng.fakngagrgtr.parser.AbstractParserTest;
-import com.fakng.fakngagrgtr.parser.LocationProcessor;
+import com.fakng.fakngagrgtr.parser.apple.AppleParser;
 import com.fakng.fakngagrgtr.persistent.company.Company;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
@@ -30,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class AppleParserTest extends AbstractParserTest {
 
     private static final String URL = "Apple";
+    private static final String DATA_PATH = "apple-data.html";
     private AppleParser appleParser;
     @Mock
     private WebClient htmlWebClient;
@@ -57,12 +57,7 @@ class AppleParserTest extends AbstractParserTest {
     }
 
     @Test
-    public void testCompanyNameIsApple() {
-        assertEquals(appleParser.getCompanyName(), "Apple");
-    }
-
-    @Test
-    public void testParseCreatesVacanciesFromJsonWithCachedLocations() throws IOException {
+    public void testParseCreatesVacanciesFromJsonWithCachedLocations() throws Exception {
         Company company = prepareCompany();
         Mockito.when(companyRepository.findByTitle(URL))
                 .thenReturn(Optional.of(company));
@@ -70,8 +65,8 @@ class AppleParserTest extends AbstractParserTest {
                 .thenReturn(company.getLocations().get(0));
         Mockito.when(locationProcessor.processLocation(company, "city_2", "country_2"))
                 .thenReturn(company.getLocations().get(1));
-        Mockito.when(htmlWebClient.getPage(URL))
-                .thenReturn(new WebClient().loadHtmlCodeIntoCurrentWindow(Files.readString(Paths.get("src/test/resources/com/fakng/fakngagrgtr/parser/apple-data.html"))));
+        mockHtmlClient(trueClient -> Mockito.when(htmlWebClient.getPage(URL))
+                .thenReturn(trueClient.loadHtmlCodeIntoCurrentWindow(getTestData(DATA_PATH))));
 
         appleParser.init();
 
