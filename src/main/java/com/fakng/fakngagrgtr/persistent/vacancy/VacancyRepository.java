@@ -17,11 +17,11 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
     @Query(value = "select v from Vacancy v " +
             "join fetch v.company c " +
             "join fetch v.locations l " +
-            "where c.id in :companyIds and l.id in :locationIds and lower(v.title) like lower(CONCAT(:title,'%'))",
+            "where c.id in :companyIds and l.id in :locationIds and lower(v.title) like lower(CONCAT('%',:title,'%'))",
             countQuery = "select count(v) from Vacancy v " +
             "join v.company c " +
             "join v.locations l " +
-            "where c.id in :companyIds and l.id in :locationIds and lower(v.title) like lower(CONCAT(:title,'%'))")
+            "where c.id in :companyIds and l.id in :locationIds and lower(v.title) like lower(CONCAT('%',:title,'%'))")
     Page<Vacancy> findAll(@Param("companyIds") List<Integer> companyIds,
                           @Param("locationIds") List<Integer> locationIds,
                           @Param("title") String title,
