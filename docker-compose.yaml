@@ -8,11 +8,18 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: fakng-db
     restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
 #  fakng-agrgtr:
 #    image: mhsl/fakng-agrgtr
