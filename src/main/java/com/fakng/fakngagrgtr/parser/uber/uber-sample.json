@@ -1,0 +1,40 @@
+{
+  "status": "success",
+  "data": {
+    "results": [
+      {
+        "id": 113719,
+        "title": "Senior Software Engineer",
+        "description": "na\n\n\n\nAt Uber, we reimagine the way the world moves for the better. The idea was born on a snowy night in Paris in 2008, and ever since then, our DNA of reimagination and reinvention carries on. We've grown into a global platform moving people and things in ever-expanding ways, taking on big problems to help drivers, riders, delivery partners, and eaters make movement happen at the push of a button for everyone, everywhere.\n\n \n\n  \nWe welcome people from all backgrounds who seek the opportunity to help build a future where everyone and everything can move independently. If you have the curiosity, passion, and collaborative spirit, work with us, and let's move the world forward, together.\n\n \n\n  \nOffices continue to be central to collaboration and Uber's cultural identity. Unless formally approved to work fully remotely, Uber expects employees to spend at least half of their work time in their assigned office. For certain roles, such as those based at green-light hubs, employees are expected to be in-office for 100% of their time. Please speak with your recruiter to better understand in-office expectations for this role. \n\n \n\n  \nUber is committed to a safe workplace.  We have implemented COVID-19 safety protocols that meet or exceed local public health guidelines.  Workplace safety remains our number one priority.  As a result, and depending on the workplace location, Uber either requires* or recommends employees be vaccinated to access any of our facilities; this is subject to change solely at the Company's discretion. \n\n \n\n  \n* Accommodations may be available based on religious and/or medical conditions, or as required by applicable law. To request an accommodation, please reach out to accommodations@uber.com",
+        "department": "Engineering",
+        "type": "",
+        "programAndPlatform": "",
+        "location": {
+          "country": "IND",
+          "region": "Karnataka",
+          "city": "Bangalore",
+          "countryName": "India"
+        },
+        "featured": false,
+        "level": "5",
+        "creationDate": "2022-03-31T16:58:00.000Z",
+        "otherLevels": null,
+        "team": "Backend",
+        "portalID": "EXTERNAL",
+        "isPipeline": false,
+        "statusID": "D31001",
+        "statusName": "Approved",
+        "updatedDate": "2022-08-17T10:13:00.000Z",
+        "uniqueSkills": "",
+        "allLocations": [
+          {
+            "country": "IND",
+            "region": "Karnataka",
+            "city": "Bangalore",
+            "countryName": "India"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -3,6 +3,6 @@ package com.fakng.fakngagrgtr.parser.apple;
 import lombok.Data;
 
 @Data
-public class TeamDTO {
+class TeamDTO {
     private String teamName;
 }

@@ -7,6 +7,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+
 @Component
 @Slf4j
 public abstract class ApiParser extends Parser {
@@ -25,11 +27,12 @@ public abstract class ApiParser extends Parser {
                 .retrieve();
     }
 
-    protected ResponseSpec postRequest(String url, Object body, Class<?> bodyType) {
-        return webClient
+    protected ResponseSpec postRequest(String url, Object body, Class<?> bodyType, Map<String, String> headers) {
+        WebClient.RequestBodySpec request = webClient
                 .post()
-                .uri(url)
-                .body(Mono.just(body), bodyType)
+                .uri(url);
+        headers.forEach(request::header);
+        return request.body(Mono.just(body), bodyType)
                 .retrieve();
     }
 }
