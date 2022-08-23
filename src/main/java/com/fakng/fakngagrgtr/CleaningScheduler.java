@@ -1,4 +1,4 @@
-package com.fakng.fakngagrgtr.scheduler;
+package com.fakng.fakngagrgtr;
 
 import com.fakng.fakngagrgtr.service.VacancyService;
 import lombok.RequiredArgsConstructor;

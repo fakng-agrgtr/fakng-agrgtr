@@ -3,7 +3,6 @@ package com.fakng.fakngagrgtr.parser.cache;
 import com.fakng.fakngagrgtr.persistent.location.Location;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
