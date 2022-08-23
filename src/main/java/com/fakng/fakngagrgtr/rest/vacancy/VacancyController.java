@@ -19,10 +19,13 @@ public class VacancyController {
     private final VacancyService vacancyService;
     private final ObjectMapper objectMapper;
 
-    @GetMapping("/vacancy")
-    public Page<VacancyDTO> getVacancies(@RequestParam List<Long> companyIds, @RequestParam List<Long> locationIds,
-                                         @RequestParam int page, @RequestParam int pageSize) {
-        return vacancyService.findAll(companyIds, locationIds, page, pageSize)
+    @GetMapping("/vacancy/list")
+    public Page<VacancyDTO> getVacancies(@RequestParam List<Integer> companyIds,
+                                         @RequestParam List<Integer> locationIds,
+                                         @RequestParam String title,
+                                         @RequestParam int page,
+                                         @RequestParam int pageSize) {
+        return vacancyService.findAll(companyIds, locationIds, title, page, pageSize)
                 .map(vacancy -> objectMapper.convertValue(vacancy, VacancyDTO.class));
     }
 }
