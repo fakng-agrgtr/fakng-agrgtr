@@ -30,63 +30,18 @@ public abstract class Parser {
     protected String url;
     protected Company company;
 
-    private boolean requestsRestriction = false;
-    private Queue<Vacancy> newVacancies;
-    private LocalDateTime requestingNewVacanciesDelay;
-
-    public void initialize() {
-        try {
-            newVacancies = new LinkedList<>(getAllVacancies());
-            if (newVacancies.size() > 0) {
-                requestingNewVacanciesDelay = LocalDateTime.now();
-                enableRequestsRestriction();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<Vacancy> parse() {
         try {
-            List<Vacancy> allVacancies = getAllVacancies();
-            newVacancies = new LinkedList<>(findNewVacancies(allVacancies));
-            if (newVacancies.size() > 0) {
-                requestingNewVacanciesDelay = LocalDateTime.now();
-            }
-            if (!requestsRestriction) {
-                requestNewVacanciesDetails(false);
-            }
-            return allVacancies;
+            return getAllVacancies();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void enableRequestsRestriction() {
-        requestsRestriction = true;
-    }
-
-    public void disableRequestsRestriction() {
-        requestsRestriction = false;
-    }
-
-    public LocalDateTime getRequestingNewVacanciesDelay() {
-        return requestingNewVacanciesDelay;
-    }
-
-    public void requestNewVacanciesDetails(boolean requestsRestriction) {
-        int requestsAmount = 0;
-        while (newVacancies.size() > 0) {
-            if (requestsAmount >= REQUESTS_LIMIT) {
-                requestingNewVacanciesDelay = LocalDateTime.now().plusHours(REQUESTING_DELAY);
-                return;
-            }
-            Vacancy vacancy = newVacancies.remove();
-            if (saveNewVacancyDetails(vacancy.getUrl())) {
-                requestsAmount += 1;
-            }
-        }
-        requestingNewVacanciesDelay = null;
+    public List<Vacancy> requestNewVacanciesDetails(List<Vacancy> vacancies) {
+        return vacancies.stream()
+                .map(this::getVacancyDetails)
+                .toList();
     }
 
     protected void initBase() {
@@ -98,21 +53,17 @@ public abstract class Parser {
 
     protected abstract List<Vacancy> getAllVacancies() throws Exception;
 
-    protected Vacancy parseVacancyPage(String url) {
-        return null;
+    protected Vacancy parseVacancyPage(Vacancy vacancy) throws Exception {
+        return vacancy;
     }
 
     protected abstract String getCompanyName();
 
-    private List<Vacancy> findNewVacancies(List<Vacancy> allVacancies) {
-        return allVacancies; // TODO
-    }
-
-    private boolean saveNewVacancyDetails(String url) {
-        Vacancy vacancy = parseVacancyPage(url);
-        if (vacancy != null) {
-            vacancyRepository.save(vacancy);
-            return true;
-        } else return false;
+    private Vacancy getVacancyDetails(Vacancy vacancy) {
+        try {
+            return parseVacancyPage(vacancy);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

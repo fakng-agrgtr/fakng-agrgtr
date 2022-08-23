@@ -25,3 +25,5 @@ agrgtr:
 cleaner:
     cron: 0 */12 * * * *
     months-life-time: 3
+initializer:
+    pool-size: 5
