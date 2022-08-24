@@ -5,9 +5,7 @@ import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.html.DomNodeList;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.*;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -19,6 +17,10 @@ import java.util.List;
 
 @Component
 public class StripeParser extends HtmlParser {
+
+    private final static String VACANCY_URL = "https://stripe.com/jobs/listing";
+    private final static String JOBS_PAGINATION_LIST_XPATH = "/html/body/div/section[4]/div/div[2]/div/div/nav/ul/li[7]/a";
+    private final static String VACANCY_TITLE_XPATH = "/html/body/section[1]/div/div[2]/div/div/section/header/h1";
 
     public StripeParser(WebClient htmlWebClient,
                         CompanyRepository companyRepository,
@@ -39,42 +41,43 @@ public class StripeParser extends HtmlParser {
     }
     @Override
     public List<Vacancy> getAllVacancies() throws IOException {
-        int offset = 0;
-        HtmlPage page;
-        DomNodeList<DomNode> links;
-
-        List<VacancyDTO> vacancyDTOList = new ArrayList<>();
+        HtmlPage page = downloadPage(String.format(url, 0));
+        int pageCount = getPageCount(page);
         List<Vacancy> vacancyList = new ArrayList<>();
 
-        while (true) {
-            page = downloadPage(String.format(url, offset));
-            links = page.querySelectorAll(".JobsListings__link");
-
-            if (links.size() == 0) {
-                break;
-            }
-
-            links.forEach(
-                    link -> vacancyDTOList.add(fillVacancyDTO(link.getAttributes().getNamedItem("href").getNodeValue().substring(13)))
-            );
-
-            vacancyDTOList.forEach(
-                    vacancyDTO -> vacancyList.add(fillVacancy(vacancyDTO))
-            );
-            offset++;
+        for (int i = 0; i <= pageCount; i++) {
+            page = downloadPage(String.format(url, pageCount));
+            vacancyList.addAll(fillVacancy2(getLinksFromPage(page)));
         }
 
         return vacancyList;
     }
 
+    private int getPageCount(HtmlPage page) {
+        return Integer.parseInt(page.getByXPath(JOBS_PAGINATION_LIST_XPATH).get(0).toString().replaceAll("\\D+", "")) / 100;
+    }
+
+    private DomNodeList<DomNode> getLinksFromPage(HtmlPage page) {
+        return page.querySelectorAll(".JobsListings__link");
+    }
+
+    private List<Vacancy> fillVacancy2(DomNodeList<DomNode> links) {
+        List<Vacancy> vacancies = new ArrayList<>();
+        links.forEach(link ->
+                vacancies.add(fillVacancyDTO(link.getAttributes().getNamedItem("href").getNodeValue().substring(13)))
+        );
+
+        return vacancies;
+    }
+
     @SneakyThrows
-    private VacancyDTO fillVacancyDTO(String link) {
+    private Vacancy fillVacancyDTO(String link) {
         VacancyDTO vacancyDTO = new VacancyDTO();
 
-        HtmlPage page = downloadPage("https://stripe.com/jobs/listing" + link);
+        HtmlPage page = downloadPage(VACANCY_URL + link);
         DomNodeList<DomNode> description = page.querySelectorAll(".ArticleMarkdown");
         DomNodeList<DomNode> jobElements = page.querySelectorAll(".JobDetailCardProperty__title");
-        DomNode title = page.querySelectorAll(".Copy__title").get(0);
+        HtmlHeading1 title = (HtmlHeading1) page.getByXPath(VACANCY_TITLE_XPATH).get(0);
 
         vacancyDTO.setDescription("");
 
@@ -83,17 +86,19 @@ public class StripeParser extends HtmlParser {
         );
 
         vacancyDTO.setLink(link);
-        vacancyDTO.setOfficeLocation(List.of(jobElements.get(0).getTextContent().replace(", or ", ", ").split(", ")));
-        vacancyDTO.setJobType(jobElements.get(jobElements.size() - 1).getTextContent());
-        vacancyDTO.setTeam(jobElements.get(jobElements.size() - 2).getTextContent());
+        vacancyDTO.setOfficeLocation(List.of(jobElements.get(0).getNextElementSibling().getTextContent().replace(" or ", "").split(", ")));
+        vacancyDTO.setJobType(jobElements.get(jobElements.size() - 1).getNextElementSibling().getTextContent());
+        vacancyDTO.setTeam(jobElements.get(jobElements.size() - 2).getNextElementSibling().getTextContent());
         vacancyDTO.setRoles(title.getTextContent());
 
         if (jobElements.size() == 4) {
             vacancyDTO.setHasRemote(true);
-            vacancyDTO.setRemoteLocation(List.of(jobElements.get(1).getTextContent().replace(", or ", ", ").split(", ")));
+            vacancyDTO.setRemoteLocation(List.of(jobElements.get(1).getNextElementSibling().getTextContent().replace(" or ", "").split(", ")));
         }
 
-        return vacancyDTO;
+        System.out.println(vacancyDTO);
+
+        return fillVacancy(vacancyDTO);
     }
 
     private Vacancy fillVacancy(VacancyDTO vacancyDTO) {
