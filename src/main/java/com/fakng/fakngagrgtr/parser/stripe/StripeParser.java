@@ -5,22 +5,29 @@ import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.*;
+import com.gargoylesoftware.htmlunit.html.DomElement;
+import com.gargoylesoftware.htmlunit.html.DomNode;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class StripeParser extends HtmlParser {
 
-    private final static String VACANCY_URL = "https://stripe.com/jobs/listing";
-    private final static String JOBS_PAGINATION_LIST_XPATH = "/html/body/div/section[4]/div/div[2]/div/div/nav/ul/li[7]/a";
-    private final static String VACANCY_TITLE_XPATH = "/html/body/section[1]/div/div[2]/div/div/section/header/h1";
+    private static final int pageSize = 100;
+    private static final String STRIPE_URL = "https://stripe.com";
+    private static final String JOBS_PAGINATION_LIST_XPATH = "//a[text()='Last']";
+    private static final String VACANCY_TITLE_XPATH = "//h1[@class='Copy__title']";
+    private static final String VACANCIES_URLS_XPATH = "//a[@data-analytics-label='jobs_listings_title_link']";
+    private static final String VACANCY_DESCRIPTION_BLOCK_XPATH = "//div[@class='ArticleMarkdown']//*";
+    private static final String VACANCY_CITIES_XPATH = "//span[@class='JobsListings__locationDisplayName']";
+    private static final String VACANCY_JOB_TYPE_XPATH = "//p[text()='Job type']";
+    private static final String VACANCY_TEAM_XPATH = "//p[text()='Team']";
 
     public StripeParser(WebClient htmlWebClient,
                         CompanyRepository companyRepository,
@@ -46,87 +53,104 @@ public class StripeParser extends HtmlParser {
         List<Vacancy> vacancyList = new ArrayList<>();
 
         for (int i = 0; i <= pageCount; i++) {
-            page = downloadPage(String.format(url, pageCount));
-            vacancyList.addAll(fillVacancy2(getLinksFromPage(page)));
+            page = downloadPage(String.format(url, i));
+            vacancyList.addAll(fillVacancy(
+                    page.getByXPath(VACANCIES_URLS_XPATH), page.getByXPath(VACANCY_CITIES_XPATH)
+            ));
         }
 
         return vacancyList;
     }
 
     private int getPageCount(HtmlPage page) {
-        return Integer.parseInt(page.getByXPath(JOBS_PAGINATION_LIST_XPATH).get(0).toString().replaceAll("\\D+", "")) / 100;
+        String url = ((DomElement) page.getByXPath(JOBS_PAGINATION_LIST_XPATH).get(0)).getAttribute("href");
+        return Integer.parseInt(url.replaceAll("\\D+", "")) / pageSize;
     }
 
-    private DomNodeList<DomNode> getLinksFromPage(HtmlPage page) {
-        return page.querySelectorAll(".JobsListings__link");
-    }
-
-    private List<Vacancy> fillVacancy2(DomNodeList<DomNode> links) {
+    private List<Vacancy> fillVacancy(List<DomNode> urls, List<DomElement> cities) {
         List<Vacancy> vacancies = new ArrayList<>();
-        links.forEach(link ->
-                vacancies.add(fillVacancyDTO(link.getAttributes().getNamedItem("href").getNodeValue().substring(13)))
-        );
+
+        for (int i = 0; i < urls.size(); i++) {
+            String jobId = urls.get(i).getAttributes().getNamedItem("href").getNodeValue();
+
+            // Skip repeating vacancies and parse locations for them
+            Set<LocationDTO> locationDTOs = new HashSet<>();
+            while (jobId.equals(urls.get(i).getAttributes().getNamedItem("href").getNodeValue())) {
+                locationDTOs.add(createLocationDto(cities.get(i)));
+                i++;
+            }
+
+            // Variable i stopped in incorrect position
+            i--;
+            vacancies.add(createVacancy(createVacancyDTO(jobId, locationDTOs)));
+        }
 
         return vacancies;
     }
 
     @SneakyThrows
-    private Vacancy fillVacancyDTO(String link) {
+    private VacancyDTO createVacancyDTO(String jobUrl, Set<LocationDTO> locationDTOS) {
         VacancyDTO vacancyDTO = new VacancyDTO();
 
-        HtmlPage page = downloadPage(VACANCY_URL + link);
-        DomNodeList<DomNode> description = page.querySelectorAll(".ArticleMarkdown");
-        DomNodeList<DomNode> jobElements = page.querySelectorAll(".JobDetailCardProperty__title");
-        HtmlHeading1 title = (HtmlHeading1) page.getByXPath(VACANCY_TITLE_XPATH).get(0);
+        HtmlPage page = downloadPage(STRIPE_URL + jobUrl);
+        DomElement title = (DomElement) page.getByXPath(VACANCY_TITLE_XPATH).get(0);
+        DomElement jobType = ((DomElement) page.getByXPath(VACANCY_JOB_TYPE_XPATH).get(0)).getNextElementSibling();
+        DomElement team = ((DomElement) page.getByXPath(VACANCY_TEAM_XPATH).get(0)).getNextElementSibling();
 
-        vacancyDTO.setDescription("");
+        vacancyDTO.setDescription(createDescription(page));
+        vacancyDTO.setUrl(STRIPE_URL + jobUrl);
+        vacancyDTO.setJobId(jobUrl.replaceAll("\\D+", ""));
+        vacancyDTO.setTeam(team.getTextContent());
+        vacancyDTO.setLocation(locationDTOS);
+        vacancyDTO.setJobType(jobType.getTextContent());
+        vacancyDTO.setTitle(title.getTextContent());
 
-        description.get(0).getChildren().forEach(
-                iter -> vacancyDTO.setDescription(vacancyDTO.getDescription() + iter.asNormalizedText())
-        );
-
-        vacancyDTO.setLink(link);
-        vacancyDTO.setOfficeLocation(List.of(jobElements.get(0).getNextElementSibling().getTextContent().replace(" or ", "").split(", ")));
-        vacancyDTO.setJobType(jobElements.get(jobElements.size() - 1).getNextElementSibling().getTextContent());
-        vacancyDTO.setTeam(jobElements.get(jobElements.size() - 2).getNextElementSibling().getTextContent());
-        vacancyDTO.setRoles(title.getTextContent());
-
-        if (jobElements.size() == 4) {
-            vacancyDTO.setHasRemote(true);
-            vacancyDTO.setRemoteLocation(List.of(jobElements.get(1).getNextElementSibling().getTextContent().replace(" or ", "").split(", ")));
-        }
-
-        System.out.println(vacancyDTO);
-
-        return fillVacancy(vacancyDTO);
+        return vacancyDTO;
     }
 
-    private Vacancy fillVacancy(VacancyDTO vacancyDTO) {
+    private Vacancy createVacancy(VacancyDTO vacancyDTO) {
         Vacancy vacancy = new Vacancy();
 
-        List<String> locations = new ArrayList<>();
-        String description = vacancyDTO.getDescription() +
-                (vacancyDTO.getHasRemote() ? "Has Remote: true" : "Has Remote: false");
-
-        if (vacancyDTO.getRemoteLocation() != null) {
-            locations.addAll(vacancyDTO.getRemoteLocation());
-        }
-        locations.addAll(vacancyDTO.getOfficeLocation());
-
-        vacancy.setTitle(vacancyDTO.getRoles());
-        vacancy.setUrl("https://stripe.com/jobs/listing" + vacancyDTO.getLink());
-        vacancy.setDescription(description);
+        vacancy.setTitle(vacancyDTO.getTitle());
+        vacancy.setDescription(createFullDescription(vacancyDTO));
+        vacancy.setUrl(vacancyDTO.getUrl());
+        vacancy.setJobId(vacancyDTO.getJobId());
         vacancy.setCompany(company);
-        processLocations(vacancy, locations);
+        processLocations(vacancy, vacancyDTO.getLocation());
 
         return vacancy;
     }
 
-    private void processLocations(Vacancy vacancy, List<String> locations) {
-        locations.forEach(location -> {
-            vacancy.addLocation(locationProcessor.processLocation(
-                    company, location, location
-            ));
-        });
+    private void processLocations(Vacancy vacancy, Set<LocationDTO> locations) {
+        locations.forEach(location -> vacancy.addLocation(locationProcessor.processLocation(
+                    company, location.getCity(), location.getCountryCode()
+            ))
+        );
+    }
+
+    private String createDescription(HtmlPage page) {
+        List<DomNode> description = page.getByXPath(VACANCY_DESCRIPTION_BLOCK_XPATH);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        description.forEach(
+                tag -> stringBuilder.append(tag.asNormalizedText()).append("\n")
+        );
+
+        return stringBuilder.toString();
+    }
+
+    private String createFullDescription(VacancyDTO vacancyDTO) {
+        return vacancyDTO.getDescription() + "\n" +
+                "Job Type: " + vacancyDTO.getJobType() + "\n" +
+                "Team: " + vacancyDTO.getTeam() + "\n";
+    }
+
+    private LocationDTO createLocationDto(DomElement city) {
+        LocationDTO locationDTO = new LocationDTO();
+        locationDTO.setCity(city.getTextContent());
+        // Get country code from alt attribute from the image next to city name
+        locationDTO.setCountryCode(city.getPreviousElementSibling().getAttribute("alt"));
+
+        return locationDTO;
     }
 }
