@@ -26,6 +26,12 @@ public class AppleParser extends HtmlParser {
     private static final String URL_FOR_VACANCY = "https://jobs.apple.com/en-us/details/";
     private static final String XPATH_TO_PAGE_COUNT = "//*[@id='frmPagination']/span[2]/text()";
     private static final String XPATH_TO_FIELD_WITH_JSON_BODY = "/html/body/script[1]/text()";
+    private static final String DETAILS_URL_FORMAT = "https://jobs.apple.com/en-us/details/%s";
+    private static final String JOB_SUMMARY_XPATH = "//div[@id='jd-job-summary']/span";
+    private static final String KEY_QUALIFICATIONS_XPATH = "//div[@id='jd-key-qualifications']//span";
+    private static final String BASIC_DESCRIPTION_XPATH = "//div[@id='jd-description']/span";
+    private static final String ADDITIONAL_REQS_XPATH = "//div[@id='jd-additional-requirements']//span";
+    private static final String EDUCATION_XPATH = "//div[@id='jd-education-experience']/span";
     private final ObjectMapper mapper;
 
     public AppleParser(WebClient htmlWebClient,
@@ -59,13 +65,6 @@ public class AppleParser extends HtmlParser {
         }
         return allVacancies;
     }
-
-    private static final String DETAILS_URL_FORMAT = "https://jobs.apple.com/en-us/details/%s";
-    private static final String JOB_SUMMARY_XPATH = "//div[@id='jd-job-summary']/span";
-    private static final String KEY_QUALIFICATIONS_XPATH = "//div[@id='jd-key-qualifications']//span";
-    private static final String BASIC_DESCRIPTION_XPATH = "//div[@id='jd-description']/span";
-    private static final String ADDITIONAL_REQS_XPATH = "//div[@id='jd-additional-requirements']//span";
-    private static final String EDUCATION_XPATH = "//div[@id='jd-education-experience']/span";
 
     @Override
     public void enrichWithDetails(Vacancy vacancy) throws IOException {
