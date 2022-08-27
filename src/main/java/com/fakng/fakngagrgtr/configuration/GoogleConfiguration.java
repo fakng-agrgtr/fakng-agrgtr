@@ -21,6 +21,12 @@ public class GoogleConfiguration {
     @Value("${google.minutes-per-processing}")
     private int minutesPerProcessing;
 
+    @Value("${google.max-failed-attempts-per-vacancy}")
+    private int maxFailedAttemptsPerVacancy;
+
+    @Value("${google.max-failed-attempts-per-enriching}")
+    private int maxFailedAttemptsPerEnriching;
+
     @Bean
     public ExecutorService googleExecutor() {
         return Executors.newFixedThreadPool(poolSize);
@@ -28,7 +34,15 @@ public class GoogleConfiguration {
 
     @Bean
     public VacancyProcessor googleProcessor(GoogleParser parser, VacancyService vacancyService) {
-        return new VacancyProcessor(googleExecutor(), parser, vacancyService,
-                poolSize, batchSize, minutesPerProcessing, false);
+        return VacancyProcessor.builder()
+                .parser(parser)
+                .vacancyService(vacancyService)
+                .executor(googleExecutor())
+                .poolSize(poolSize)
+                .batchSize(batchSize)
+                .minutesPerProcessing(minutesPerProcessing)
+                .maxFailedAttemptsPerVacancy(maxFailedAttemptsPerVacancy)
+                .maxFailedAttemptsPerEnriching(maxFailedAttemptsPerEnriching)
+                .build();
     }
 }

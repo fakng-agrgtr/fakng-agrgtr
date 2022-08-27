@@ -26,7 +26,9 @@ public abstract class Parser {
 
     public abstract List<Vacancy> getAllVacancies() throws Exception;
 
-    public abstract void enrichWithDetails(Vacancy vacancy);
+    public void enrichWithDetails(Vacancy vacancy) {
+
+    }
 
     protected abstract String getCompanyName();
 }

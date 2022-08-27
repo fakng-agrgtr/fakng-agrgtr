@@ -19,8 +19,14 @@ public class AmazonConfiguration {
     @Value("${amazon.batch-size}")
     private int batchSize;
 
-    @Value("${amaon.minutes-per-processing}")
+    @Value("${amazon.minutes-per-processing}")
     private int minutesPerProcessing;
+
+    @Value("${amazon.max-failed-attempts-per-vacancy}")
+    private int maxFailedAttemptsPerVacancy;
+
+    @Value("${amazon.max-failed-attempts-per-enriching}")
+    private int maxFailedAttemptsPerEnriching;
 
     @Bean
     public ExecutorService amazonExecutor() {
@@ -29,7 +35,15 @@ public class AmazonConfiguration {
 
     @Bean
     public VacancyProcessor amazonProcessor(AmazonParser parser, VacancyService vacancyService) {
-        return new VacancyProcessor(amazonExecutor(), parser, vacancyService,
-                poolSize, batchSize, minutesPerProcessing, false);
+        return VacancyProcessor.builder()
+                .parser(parser)
+                .vacancyService(vacancyService)
+                .executor(amazonExecutor())
+                .poolSize(poolSize)
+                .batchSize(batchSize)
+                .minutesPerProcessing(minutesPerProcessing)
+                .maxFailedAttemptsPerVacancy(maxFailedAttemptsPerVacancy)
+                .maxFailedAttemptsPerEnriching(maxFailedAttemptsPerEnriching)
+                .build();
     }
 }

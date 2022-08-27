@@ -22,6 +22,12 @@ public class AppleConfiguration {
     @Value("${apple.minutes-per-processing}")
     private int minutesPerProcessing;
 
+    @Value("${apple.max-failed-attempts-per-vacancy}")
+    private int maxFailedAttemptsPerVacancy;
+
+    @Value("${apple.max-failed-attempts-per-enriching}")
+    private int maxFailedAttemptsPerEnriching;
+
     @Bean
     public ExecutorService appleExecutor() {
         return Executors.newFixedThreadPool(poolSize);
@@ -29,7 +35,15 @@ public class AppleConfiguration {
 
     @Bean
     public VacancyProcessor appleProcessor(AppleParser parser, VacancyService vacancyService) {
-        return new VacancyProcessor(appleExecutor(), parser, vacancyService,
-                poolSize, batchSize, minutesPerProcessing, true);
+        return VacancyProcessor.builder()
+                .parser(parser)
+                .vacancyService(vacancyService)
+                .executor(appleExecutor())
+                .poolSize(poolSize)
+                .batchSize(batchSize)
+                .minutesPerProcessing(minutesPerProcessing)
+                .maxFailedAttemptsPerVacancy(maxFailedAttemptsPerVacancy)
+                .maxFailedAttemptsPerEnriching(maxFailedAttemptsPerEnriching)
+                .build();
     }
 }

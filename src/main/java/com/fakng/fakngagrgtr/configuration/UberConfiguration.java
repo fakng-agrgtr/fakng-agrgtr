@@ -21,6 +21,12 @@ public class UberConfiguration {
     @Value("${uber.minutes-per-processing}")
     private int minutesPerProcessing;
 
+    @Value("${uber.max-failed-attempts-per-vacancy}")
+    private int maxFailedAttemptsPerVacancy;
+
+    @Value("${uber.max-failed-attempts-per-enriching}")
+    private int maxFailedAttemptsPerEnriching;
+
     @Bean
     public ExecutorService uberExecutor() {
         return Executors.newFixedThreadPool(poolSize);
@@ -28,7 +34,15 @@ public class UberConfiguration {
 
     @Bean
     public VacancyProcessor uberProcessor(UberParser parser, VacancyService vacancyService) {
-        return new VacancyProcessor(uberExecutor(), parser, vacancyService,
-                poolSize, batchSize, minutesPerProcessing, true);
+        return VacancyProcessor.builder()
+                .parser(parser)
+                .vacancyService(vacancyService)
+                .executor(uberExecutor())
+                .poolSize(poolSize)
+                .batchSize(batchSize)
+                .minutesPerProcessing(minutesPerProcessing)
+                .maxFailedAttemptsPerVacancy(maxFailedAttemptsPerVacancy)
+                .maxFailedAttemptsPerEnriching(maxFailedAttemptsPerEnriching)
+                .build();
     }
 }

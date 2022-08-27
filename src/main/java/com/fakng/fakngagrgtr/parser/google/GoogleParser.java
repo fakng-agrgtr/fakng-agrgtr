@@ -51,11 +51,6 @@ public class GoogleParser extends ApiParser {
         return allVacancies;
     }
 
-    @Override
-    public void enrichWithDetails(Vacancy vacancy) {
-
-    }
-
     private List<Vacancy> processPageResponse(ResponseDTO response) {
         return response.getJobs().stream()
                 .map(this::createVacancy)

@@ -32,7 +32,7 @@ public class FakngScheduler {
     public void scheduleAggregation() {
         processors.forEach(processor -> CompletableFuture
                 .runAsync(processor::parse, executor)
-                .thenComposeAsync((v) -> processor.parsePages())
+                .thenComposeAsync((v) -> processor.parsePages(), executor)
                 .exceptionally(e -> {
                     log.error("Error while parsing vacancies", e);
                     return null;

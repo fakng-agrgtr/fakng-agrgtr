@@ -60,11 +60,6 @@ public class AmazonParser extends ApiParser {
         return vacancies;
     }
 
-    @Override
-    public void enrichWithDetails(Vacancy vacancy) {
-
-    }
-
     private List<Vacancy> processPageResponse(ResponseDTO response) {
         return Optional.of(response.getJobs())
                 .orElse(Collections.emptyList())
