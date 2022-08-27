@@ -4,6 +4,7 @@ import com.fakng.fakngagrgtr.parser.HtmlParser;
 import com.fakng.fakngagrgtr.parser.LocationProcessor;
 import com.fakng.fakngagrgtr.persistent.company.CompanyRepository;
 import com.fakng.fakngagrgtr.persistent.location.Location;
+import com.fakng.fakngagrgtr.persistent.vacancy.ProcessingStatus;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -127,6 +128,7 @@ public class AppleParser extends HtmlParser {
         vacancy.setPublishedDate(parseLocalDateTime(vacancyDTO.getPostDateInGMT()));
         vacancy.setCompany(company);
         vacancy.setLocations(parseLocations(vacancyDTO.getLocations()));
+        vacancy.setStatus(ProcessingStatus.NOT_READY);
         return vacancy;
     }
 
