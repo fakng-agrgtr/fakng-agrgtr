@@ -33,7 +33,7 @@ public class AmazonParser extends ApiParser {
     public AmazonParser(WebClient webClient,
             CompanyRepository companyRepository,
             LocationProcessor locationProcessor,
-            @Value("${url.amazon}") String url) {
+            @Value("${amazon.url}") String url) {
         super(webClient, companyRepository, locationProcessor);
         this.url = url;
     }
@@ -49,7 +49,7 @@ public class AmazonParser extends ApiParser {
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() {
+    public List<Vacancy> getAllVacancies() {
         int offset = 0;
         ResponseDTO firstPage = getPage(offset);
         List<Vacancy> vacancies = new ArrayList<>(processPageResponse(firstPage));
@@ -58,6 +58,11 @@ public class AmazonParser extends ApiParser {
             vacancies.addAll(processPageResponse(page));
         }
         return vacancies;
+    }
+
+    @Override
+    public void enrichWithDetails(Vacancy vacancy) {
+
     }
 
     private List<Vacancy> processPageResponse(ResponseDTO response) {

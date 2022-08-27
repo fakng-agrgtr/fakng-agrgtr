@@ -30,7 +30,7 @@ public class AppleParser extends HtmlParser {
     public AppleParser(WebClient htmlWebClient,
                        CompanyRepository companyRepository,
                        LocationProcessor locationProcessor,
-                       @Value("${url.apple}") String url,
+                       @Value("${apple.url}") String url,
                        ObjectMapper mapper) {
         super(htmlWebClient, companyRepository, locationProcessor);
         this.mapper = mapper;
@@ -48,7 +48,7 @@ public class AppleParser extends HtmlParser {
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() throws Exception {
+    public List<Vacancy> getAllVacancies() throws Exception {
         HtmlPage htmlPage = getPage(0);
         int countPages = getCountPages(htmlPage);
         List<Vacancy> allVacancies = new ArrayList<>(getVacanciesFromHtml(htmlPage));
@@ -57,6 +57,11 @@ public class AppleParser extends HtmlParser {
             allVacancies.addAll(getVacanciesFromHtml(htmlPage));
         }
         return allVacancies;
+    }
+
+    @Override
+    public void enrichWithDetails(Vacancy vacancy) {
+
     }
 
     private HtmlPage getPage(int numberOfPage) throws IOException {

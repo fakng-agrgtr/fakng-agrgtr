@@ -27,6 +27,10 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
                           @Param("title") String title,
                           Pageable pageable);
 
+    @Query(value = "select v from Vacancy v " +
+            "where v.status = 1 or (v.status = 2 and v.lastUpdated < :beforeDate)")
+    List<Vacancy> findAllNotReady(@Param("beforeDate") LocalDateTime beforeDate, Pageable pageable);
+
     @Modifying
     @Query(value = "UPDATE vacancy SET active = false WHERE company_id = :companyId AND job_id NOT IN (:jobIds)", nativeQuery = true)
     void markNotPresentAsInactive(@Param("companyId") Integer companyId, @Param("jobIds") List<String> jobIds);

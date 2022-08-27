@@ -47,7 +47,7 @@ public class GoogleParserTest extends AbstractParserTest {
         googleParser.init();
         List<Vacancy> expectedVacancies = prepareVacancies(company);
 
-        List<Vacancy> actualVacancies = googleParser.parse();
+        List<Vacancy> actualVacancies = googleParser.getAllVacancies();
 
         assertEquals(expectedVacancies.size(), actualVacancies.size());
         for (int i = 0; i < expectedVacancies.size(); i++) {

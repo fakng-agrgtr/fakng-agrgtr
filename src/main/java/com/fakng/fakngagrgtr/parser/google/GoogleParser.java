@@ -25,7 +25,7 @@ public class GoogleParser extends ApiParser {
             WebClient webClient,
             CompanyRepository companyRepository,
             LocationProcessor locationProcessor,
-            @Value("${url.google}") String url) {
+            @Value("${google.url}") String url) {
         super(webClient, companyRepository, locationProcessor);
         this.url = url;
     }
@@ -41,7 +41,7 @@ public class GoogleParser extends ApiParser {
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() {
+    public List<Vacancy> getAllVacancies() {
         ResponseDTO firstPage = getPage(1);
         int lastPage = firstPage.getCount() / firstPage.getPageSize() + 1;
         List<Vacancy> allVacancies = new ArrayList<>(processPageResponse(firstPage));
@@ -49,6 +49,11 @@ public class GoogleParser extends ApiParser {
             allVacancies.addAll(processPageResponse(getPage(index)));
         }
         return allVacancies;
+    }
+
+    @Override
+    public void enrichWithDetails(Vacancy vacancy) {
+
     }
 
     private List<Vacancy> processPageResponse(ResponseDTO response) {

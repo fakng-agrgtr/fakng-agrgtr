@@ -1,8 +1,8 @@
 package com.fakng.fakngagrgtr.scheduler;
 
-import com.fakng.fakngagrgtr.parser.Parser;
-import com.fakng.fakngagrgtr.service.VacancyService;
+import com.fakng.fakngagrgtr.parser.VacancyProcessor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -15,10 +15,10 @@ import java.util.concurrent.Executors;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class FakngScheduler {
 
-    private final List<Parser> parsers;
-    private final VacancyService vacancyService;
+    private final List<VacancyProcessor> processors;
     @Value("${agrgtr.pool-size:1}")
     private int poolSize;
     private ExecutorService executor;
@@ -30,11 +30,11 @@ public class FakngScheduler {
 
     @Scheduled(cron = "${agrgtr.cron:0 */12 * * * *}")
     public void scheduleAggregation() {
-        parsers.forEach(parser -> CompletableFuture
-                .supplyAsync(parser::parse, executor)
-                .thenAccept(vacancyService::updateOrMarkInactive)
-                .exceptionally(ex -> {
-                    ex.printStackTrace();
+        processors.forEach(processor -> CompletableFuture
+                .runAsync(processor::parse, executor)
+                .thenComposeAsync((v) -> processor.parsePages())
+                .exceptionally(e -> {
+                    log.error("Error while parsing vacancies", e);
                     return null;
                 }));
     }

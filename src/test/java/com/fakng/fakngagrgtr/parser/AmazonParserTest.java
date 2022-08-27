@@ -62,7 +62,7 @@ public class AmazonParserTest extends AbstractParserTest {
         amazonParser.init();
         List<Vacancy> expectedVacancies = prepareVacancies(company);
 
-        List<Vacancy> actualVacancies = amazonParser.parse();
+        List<Vacancy> actualVacancies = amazonParser.getAllVacancies();
 
         assertEquals(expectedVacancies.size(), actualVacancies.size());
         for (int i = 0; i < expectedVacancies.size(); i++) {

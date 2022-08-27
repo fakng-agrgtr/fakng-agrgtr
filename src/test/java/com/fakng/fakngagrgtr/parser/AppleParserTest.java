@@ -71,7 +71,7 @@ class AppleParserTest extends AbstractParserTest {
         appleParser.init();
 
         List<Vacancy> expectedVacancies = prepareVacancies(company);
-        List<Vacancy> actualVacancies = appleParser.parse();
+        List<Vacancy> actualVacancies = appleParser.getAllVacancies();
 
         assertEquals(expectedVacancies.size(), actualVacancies.size());
         for (int i = 0; i < expectedVacancies.size(); i++) {
