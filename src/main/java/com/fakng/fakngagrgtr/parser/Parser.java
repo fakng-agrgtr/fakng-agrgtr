@@ -31,4 +31,13 @@ public abstract class Parser {
     }
 
     protected abstract String getCompanyName();
+
+    protected String buildDescription(String... parts) {
+        StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            builder.append(part).append("\n");
+        }
+        builder.deleteCharAt(builder.length()-1);
+        return builder.toString();
+    }
 }

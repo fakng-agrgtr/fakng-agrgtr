@@ -8,6 +8,7 @@ import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomText;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,9 +60,39 @@ public class AppleParser extends HtmlParser {
         return allVacancies;
     }
 
-    @Override
-    public void enrichWithDetails(Vacancy vacancy) {
+    private static final String DETAILS_URL_FORMAT = "https://jobs.apple.com/en-us/details/%s";
+    private static final String JOB_SUMMARY_XPATH = "//div[@id='jd-job-summary']/span";
+    private static final String KEY_QUALIFICATIONS_XPATH = "//div[@id='jd-key-qualifications']//span";
+    private static final String BASIC_DESCRIPTION_XPATH = "//div[@id='jd-description']/span";
+    private static final String ADDITIONAL_REQS_XPATH = "//div[@id='jd-additional-requirements']//span";
+    private static final String EDUCATION_XPATH = "//div[@id='jd-education-experience']/span";
 
+    @Override
+    public void enrichWithDetails(Vacancy vacancy) throws IOException {
+        HtmlPage page = downloadPage(String.format(DETAILS_URL_FORMAT, vacancy.getJobId()));
+        String description = parseDescription(page);
+        vacancy.setDescription(description);
+    }
+
+    private String parseDescription(HtmlPage page) {
+        String summary = parseDescriptionPart(page, JOB_SUMMARY_XPATH);
+        String keyQualifications = parseMultipleDescriptionParts(page, KEY_QUALIFICATIONS_XPATH);
+        String description = parseDescriptionPart(page, BASIC_DESCRIPTION_XPATH);
+        String additionalReqs = parseMultipleDescriptionParts(page, ADDITIONAL_REQS_XPATH);
+        String education = parseDescriptionPart(page, EDUCATION_XPATH);
+        return buildDescription(summary, keyQualifications, description, additionalReqs, education);
+    }
+
+    private String parseDescriptionPart(HtmlPage page, String xPath) {
+        DomElement element = page.getFirstByXPath(xPath);
+        return element.getNodeValue();
+    }
+
+    private String parseMultipleDescriptionParts(HtmlPage page, String xPath) {
+        List<DomElement> elements = page.getByXPath(xPath);
+        StringBuilder builder = new StringBuilder();
+        elements.forEach(element -> builder.append(element.getNodeValue()));
+        return builder.toString();
     }
 
     private HtmlPage getPage(int numberOfPage) throws IOException {
