@@ -68,18 +68,6 @@ public class VacancyProcessor {
         }
     }
 
-    private void handleEnrichingResult(Vacancy vacancy, boolean enrichingResult) {
-        if (enrichingResult) {
-            vacancy.setStatus(ProcessingStatus.READY);
-        } else {
-            failedAttempts.incrementAndGet();
-        }
-    }
-
-    private boolean thereAreAttempts() {
-        return failedAttempts.get() < maxFailedAttemptsPerEnriching;
-    }
-
     private boolean tryEnriching(Vacancy vacancy) {
         int failedAttempts = 0;
         boolean success = false;
@@ -96,5 +84,17 @@ public class VacancyProcessor {
             }
         }
         return success;
+    }
+
+    private void handleEnrichingResult(Vacancy vacancy, boolean enrichingResult) {
+        if (enrichingResult) {
+            vacancy.setStatus(ProcessingStatus.READY);
+        } else {
+            failedAttempts.incrementAndGet();
+        }
+    }
+
+    private boolean thereAreAttempts() {
+        return failedAttempts.get() < maxFailedAttemptsPerEnriching;
     }
 }

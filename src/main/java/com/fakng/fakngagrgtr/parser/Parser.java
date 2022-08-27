@@ -26,7 +26,7 @@ public abstract class Parser {
 
     public abstract List<Vacancy> getAllVacancies() throws Exception;
 
-    public void enrichWithDetails(Vacancy vacancy) {
+    public void enrichWithDetails(Vacancy vacancy) throws Exception {
 
     }
 
