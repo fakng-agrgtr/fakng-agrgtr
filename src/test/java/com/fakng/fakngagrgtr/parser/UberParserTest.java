@@ -50,7 +50,7 @@ public class UberParserTest extends AbstractParserTest {
         uberParser.init();
         List<Vacancy> expectedVacancies = prepareVacancies(company);
 
-        List<Vacancy> actualVacancies = uberParser.parse();
+        List<Vacancy> actualVacancies = uberParser.getAllVacancies();
 
         assertEquals(expectedVacancies.size(), actualVacancies.size());
         for (int i = 0; i < expectedVacancies.size(); i++) {

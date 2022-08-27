@@ -1,5 +1,6 @@
 package com.fakng.fakngagrgtr.service;
 
+import com.fakng.fakngagrgtr.persistent.vacancy.ProcessingStatus;
 import com.fakng.fakngagrgtr.persistent.vacancy.Vacancy;
 import com.fakng.fakngagrgtr.persistent.vacancy.VacancyBatchRepository;
 import com.fakng.fakngagrgtr.persistent.vacancy.VacancyRepository;
@@ -26,6 +27,21 @@ public class VacancyService {
     public Page<Vacancy> findAll(List<Integer> companyIds, List<Integer> locationIds, String title, int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         return vacancyRepository.findAll(companyIds, locationIds, title, pageable);
+    }
+
+    @Transactional
+    public List<Vacancy> findNotReadyAndPutInProgress(int minutesPerProcessing, int batchSize) {
+        Pageable pageable = Pageable.ofSize(batchSize);
+        LocalDateTime beforeDate = LocalDateTime.now().minusMinutes(minutesPerProcessing);
+        List<Vacancy> vacancies = vacancyRepository.findAllNotReady(beforeDate, pageable);
+        vacancies.forEach(vacancy -> vacancy.setStatus(ProcessingStatus.IN_PROGRESS));
+        saveAll(vacancies);
+        return vacancies;
+    }
+
+    @Transactional
+    public void saveAll(List<Vacancy> vacancies) {
+        vacancyRepository.saveAll(vacancies);
     }
 
     @Transactional

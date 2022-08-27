@@ -5,6 +5,7 @@ import com.fakng.fakngagrgtr.persistent.location.Location;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -41,10 +42,15 @@ public class Vacancy {
     private LocalDateTime publishedDate;
 
     @Column(name = "last_updated", nullable = false)
+    @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
     @Column(name = "active", nullable = false)
     private boolean active;
+
+    @Column(name = "processing_status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private ProcessingStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id")

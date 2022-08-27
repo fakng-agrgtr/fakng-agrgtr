@@ -24,15 +24,20 @@ public abstract class Parser {
         locationProcessor.fillLocationCache(company);
     }
 
-    public List<Vacancy> parse() {
-        try {
-            return getAllVacancies();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public abstract List<Vacancy> getAllVacancies() throws Exception;
+
+    public void enrichWithDetails(Vacancy vacancy) throws Exception {
+
     }
 
-    protected abstract List<Vacancy> getAllVacancies() throws Exception;
-
     protected abstract String getCompanyName();
+
+    protected String buildDescription(String... parts) {
+        StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            builder.append(part).append("\n");
+        }
+        builder.deleteCharAt(builder.length()-1);
+        return builder.toString();
+    }
 }

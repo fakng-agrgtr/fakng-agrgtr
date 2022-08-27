@@ -44,6 +44,7 @@ CREATE TABLE vacancy
     last_updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     published_date TIMESTAMP WITHOUT TIME ZONE,
     active BOOLEAN NOT NULL DEFAULT TRUE,
+    processing_status SMALLINT NOT NULL,
 
     CONSTRAINT vacancy_company_fk FOREIGN KEY (company_id) REFERENCES company (id)
 );

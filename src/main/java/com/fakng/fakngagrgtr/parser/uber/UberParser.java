@@ -20,7 +20,7 @@ public class UberParser extends ApiParser {
     private static final String VACANCY_URL_FORMAT = "https://www.uber.com/global/en/careers/list/%s/";
 
     public UberParser(WebClient webClient, CompanyRepository companyRepository, LocationProcessor locationProcessor,
-                      @Value("${url.uber}") String url) {
+                      @Value("${uber.url}") String url) {
         super(webClient, companyRepository, locationProcessor);
         this.url = url;
     }
@@ -31,10 +31,15 @@ public class UberParser extends ApiParser {
     }
 
     @Override
-    protected List<Vacancy> getAllVacancies() {
+    public List<Vacancy> getAllVacancies() {
         return requestVacancies().stream()
                 .map(this::createVacancy)
                 .toList();
+    }
+
+    @Override
+    public void enrichWithDetails(Vacancy vacancy) {
+
     }
 
     private Vacancy createVacancy(VacancyDTO dto) {
