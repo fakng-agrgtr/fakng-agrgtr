@@ -51,13 +51,13 @@ public class StripeParser extends HtmlParser {
     public List<Vacancy> getAllVacancies() throws IOException {
         HtmlPage page = downloadPage(String.format(url, 0));
         int pageCount = getPageCount(page);
-        List<Vacancy> vacancyList = new ArrayList<>(fillVacancy(
+        List<Vacancy> vacancyList = new ArrayList<>(fillVacancies(
                 page.getByXPath(VACANCIES_URLS_XPATH), page.getByXPath(VACANCY_CITIES_XPATH)
         ));
 
         for (int i = 1; i <= pageCount; i++) {
             page = downloadPage(String.format(url, i));
-            vacancyList.addAll(fillVacancy(
+            vacancyList.addAll(fillVacancies(
                     page.getByXPath(VACANCIES_URLS_XPATH), page.getByXPath(VACANCY_CITIES_XPATH)
             ));
         }
@@ -66,11 +66,11 @@ public class StripeParser extends HtmlParser {
     }
 
     private int getPageCount(HtmlPage page) {
-        String url = ((DomElement) page.getByXPath(JOBS_PAGINATION_LIST_XPATH).get(0)).getAttribute("href");
-        return Integer.parseInt(url.replaceAll("\\D+", "")) / PAGE_SIZE;
+        String url = ((DomElement) page.getFirstByXPath(JOBS_PAGINATION_LIST_XPATH)).getAttribute("href");
+        return Integer.parseInt(url.replace("?skip=", "")) / PAGE_SIZE;
     }
 
-    private List<Vacancy> fillVacancy(List<DomNode> urls, List<DomElement> cities) throws IOException {
+    private List<Vacancy> fillVacancies(List<DomNode> urls, List<DomElement> cities) throws IOException {
         List<Vacancy> vacancies = new ArrayList<>();
 
         for (int i = 0; i < urls.size(); i++) {
@@ -92,22 +92,21 @@ public class StripeParser extends HtmlParser {
         return vacancies;
     }
 
-    private Vacancy createVacancy(String jobUrl, List<LocationDTO> locationDTOS) throws IOException {
+    private Vacancy createVacancy(String jobId, List<LocationDTO> locationDTOS) throws IOException {
         Vacancy vacancy = new Vacancy();
 
-        HtmlPage page = downloadPage(STRIPE_URL + jobUrl);
-        DomElement title = (DomElement) page.getByXPath(VACANCY_TITLE_XPATH).get(0);
-        DomElement jobType = ((DomElement) page.getByXPath(VACANCY_JOB_TYPE_XPATH).get(0)).getNextElementSibling();
-        DomElement team = ((DomElement) page.getByXPath(VACANCY_TEAM_XPATH).get(0)).getNextElementSibling();
+        HtmlPage page = downloadPage(STRIPE_URL + jobId);
+        DomElement title = page.getFirstByXPath(VACANCY_TITLE_XPATH);
+        DomElement jobType = ((DomElement) page.getFirstByXPath(VACANCY_JOB_TYPE_XPATH)).getNextElementSibling();
+        DomElement team = ((DomElement) page.getFirstByXPath(VACANCY_TEAM_XPATH)).getNextElementSibling();
 
         vacancy.setTitle(title.getTextContent());
         vacancy.setDescription(createFullDescription(
                 createDescription(page), jobType.getTextContent(), team.getTextContent())
         );
-        vacancy.setUrl(STRIPE_URL + jobUrl);
-        vacancy.setJobId(jobUrl.replaceAll("\\D+", ""));
+        vacancy.setUrl(STRIPE_URL + jobId);
+        vacancy.setJobId(jobId.replaceAll("/.*/", ""));
         vacancy.setCompany(company);
-
         vacancy.setLocations(processLocations(locationDTOS));
 
         return vacancy;
@@ -119,6 +118,7 @@ public class StripeParser extends HtmlParser {
                     company, locationDTO.getCity(), locationDTO.getCountryCode()
             ))
         );
+
         return locations;
     }
 
@@ -134,9 +134,9 @@ public class StripeParser extends HtmlParser {
     }
 
     private String createFullDescription(String description, String jobType, String team) {
-        return description + "\n" +
+        return description +
                 "Job Type: " + jobType + "\n" +
-                "Team: " + team + "\n";
+                "Team: " + team;
     }
 
     private LocationDTO createLocationDto(DomElement city) {
