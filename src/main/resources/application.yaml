@@ -18,6 +18,7 @@ url:
     amazon: https://www.amazon.jobs/en/search.json?offset=%d&result_limit=100&category[]=software-development&sort=recent
     apple: https://jobs.apple.com/en-us/search?sort=newest&page=%d
     uber: https://www.uber.com/api/loadSearchJobsResults?localeCode=en
+    stripe: https://stripe.com/jobs/search?skip=%d00
 
 agrgtr:
     cron: 0 */12 * * * * #at 0th min of every 12th hour
