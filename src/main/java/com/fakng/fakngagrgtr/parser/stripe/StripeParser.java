@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 @Component
 public class StripeParser extends HtmlParser {
-
     private static final int PAGE_SIZE = 100;
     private static final String STRIPE_URL = "https://stripe.com";
     private static final String JOBS_PAGINATION_LIST_XPATH = "//a[text()='Last']";
